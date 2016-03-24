@@ -1,0 +1,36 @@
+{
+  "name": "haili-angular-bootstrap",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "http-server -a 0.0.0.0 -p 8008"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/haili042/haili-angular-bootstrap.git"
+  },
+  "keywords": [
+    "angular",
+    "bootstrap"
+  ],
+  "author": "haili",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/haili042/haili-angular-bootstrap/issues"
+  },
+  "homepage": "https://github.com/haili042/haili-angular-bootstrap#readme",
+  "devDependencies": {
+    "gulp": "^3.9.1",
+    "gulp-clean": "^0.3.2",
+    "gulp-concat": "^2.4.1",
+    "gulp-cssnano": "^2.1.1",
+    "gulp-less": "^3.0.5",
+    "gulp-sourcemap": "^1.0.1",
+    "gulp-sourcemaps": "^1.6.0",
+    "gulp-uglify": "^1.5.3",
+    "gulp-watch": "^4.3.5",
+    "http-server": "^0.9.0"
+  }
+}
