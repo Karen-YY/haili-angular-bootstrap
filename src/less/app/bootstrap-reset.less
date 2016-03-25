@@ -1,5 +1,6 @@
 /* ========================================================================
    Component: bootstrap-reset.less
+   这个文件对 bootstrap 进行非侵入的重置
  ========================================================================== */
 
 @import (less, reference) "../../../lib/fontawesome/css/font-awesome.min.css";
@@ -16,9 +17,13 @@
 
 
 //
-// Use this file to reset simple bootstrap styles
-// instead of modifying the core files
-// Makes easy to update new framework versions
+// 依赖3个文件
+//        @import "bootstrap/variables";
+//        @import "bootstrap/mixins";
+//        @import "app/bootstrap-reset";
+// Normalize.css vs CSS reset
+//        Normalize.css是一种现代的、为HTML5准备的优质替代方案
+//        Reset通过为几乎所有的元素施加默认样式，强行使得元素有相同的视觉效果
 // --------------------------------------------------
 
 *:focus {
