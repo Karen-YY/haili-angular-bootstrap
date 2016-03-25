@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html ng-app="app">
 <head lang="en">
     <meta charset="UTF-8">
     <meta name="description" content="">
@@ -15,6 +15,29 @@
 </head>
 <body>
 
+    <div class="wrapper">
+        <!-- top navbar -->
+        <header id="header">
+        </header>
+
+        <!-- left menu bar -->
+        <aside id="leftBar"></aside>
+
+        <!-- right config bar -->
+        <!--<aside id="rightBar"></aside>-->
+
+        <!-- main content -->
+        <section id="content">
+
+            <div style="width: 100%;height: 1000px"></div>
+        </section>
+
+        <!-- footer bar -->
+        <footer id="footer"></footer>
+    </div>
+
+<script src="lib/angular/angular.min.js"></script>
+<script src="lib/angular-ui-router/angular-ui-router.min.js"></script>
 <script src="app/js/app.min.js"></script>
 </body>
 </html>

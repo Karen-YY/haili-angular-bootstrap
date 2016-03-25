@@ -4,5 +4,5 @@
  * v1.0.0
  * Author: haili042
  *
- */body{background-color:#f5f7fa}#nav{background-color:#337ab7}
+ */*{margin:0;padding:0}body{font-family:Microsoft YaHei,Source Sans Pro,sans-serif;color:#363636}h1,h2,h3,h4{font-weight:700}a{color:#363636}a:hover{text-decoration:none;cursor:pointer}ol,ul{list-style-type:none}li{list-style:none}.wrapper{width:100%;height:1px;min-height:100%;overflow-x:auto}#header{position:fixed;width:100%;height:56px;background-color:#23b7e5}#leftBar{position:fixed;width:220px;height:1px;min-height:100%;top:56px;left:0;bottom:0;background-color:#3a3f51}#rightBar{width:200px}#content{top:56px;bottom:60px;overflow:auto;background-color:#bc8f8f}#content,#footer{position:absolute;left:220px;right:0}#footer{height:60px;bottom:0;background-color:#888}body{background-color:#f5f7fa}#nav{background-color:#337ab7}
 /*# sourceMappingURL=app.css.map */
