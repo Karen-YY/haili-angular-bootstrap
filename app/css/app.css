@@ -287,18 +287,14 @@ fieldset .form-group {
 }
 .wrapper > .left-bar {
   position: fixed;
+  width: 220px;
   left: 0;
   top: 56px;
   bottom: 0;
   background-color: #3a3f51;
   z-index: 101;
 }
-@media only screen and (max-width: 991px) {
-  .wrapper > .left-bar {
-    width: 220px;
-  }
-}
-@media only screen and (max-width: 767px) {
+@media only screen and (max-width: 1199px) {
   .wrapper > .left-bar {
     width: 70px;
   }
@@ -315,13 +311,34 @@ fieldset .form-group {
   margin-bottom: 56px !important;
   z-index: 100;
 }
+@media only screen and (max-width: 1199px) {
+  .wrapper > .main-content {
+    margin-left: 70px;
+  }
+}
+@media only screen and (max-width: 479px) {
+  .wrapper > .main-content {
+    margin-left: 0;
+  }
+}
 .wrapper > .footer {
   position: absolute;
   left: 0;
   right: 0;
   height: 60px;
-  background-color: #888888;
+  border-top: 1px solid #e4eaec;
+  background-color: #dddddd;
   z-index: 100;
+}
+@media only screen and (max-width: 1199px) {
+  .wrapper > .footer {
+    left: 70px;
+  }
+}
+@media only screen and (max-width: 479px) {
+  .wrapper > .footer {
+    left: 0;
+  }
 }
 @media only screen and (max-width: 479px) {
   .wrapper > .left-bar {

@@ -7,9 +7,9 @@
 @font-color:                #363636;
 @header-bg-color:           #23b7e5; // #1797be;
 @left-bar-bg-color:         #3a3f51;
-@right-bar-bg-color:        #ffffff;
-@main-content-bg-color:     #ffffff;
-@footer-bg-color:           #888888;
+//@right-bar-bg-color:        #ffffff;
+//@main-content-bg-color:     #ffffff;
+@footer-bg-color:           #dddddd;
 
 // size
 @header-height:             56px;
@@ -44,15 +44,13 @@
   // 左侧菜单栏
   > .left-bar {
     position: fixed;
+    width: @left-bar-width;
     left: 0;
     top: @header-height;
     bottom: 0;
     background-color: @left-bar-bg-color;
     z-index: @z-index-main-section + 1;
-    @media @upto-desktop {
-      width: @left-bar-width;
-    }
-    @media @upto-tablet {
+    @media @upto-desktop-lg {
       width: @left-bar-width-collapsed;
     }
     @media @upto-mobile {
@@ -73,6 +71,12 @@
     top: @header-height;
     margin-bottom: @header-height !important; // 确保 footer 的位置
     z-index: @z-index-main-section;
+    @media @upto-desktop-lg {
+      margin-left: @left-bar-width-collapsed;
+    }
+    @media @upto-mobile {
+      margin-left: 0;
+    }
   }
 
   // 底部栏
@@ -81,9 +85,15 @@
     left: 0;
     right: 0;
     height: @footer-height;
-    //border-top: 1px solid @gray-light;
+    border-top: 1px solid @gray-light;
     background-color: @footer-bg-color;
     z-index: @z-index-main-section;
+    @media @upto-desktop-lg {
+      left: @left-bar-width-collapsed;
+    }
+    @media @upto-mobile {
+      left: 0;
+    }
   }
 }
 
