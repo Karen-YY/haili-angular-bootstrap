@@ -1,0 +1,4 @@
+[
+  "lib/angular/angular.js",
+  "lib/angular-ui-router/angular-ui-router.js"
+]

@@ -294,7 +294,7 @@ fieldset .form-group {
   background-color: #3a3f51;
   z-index: 101;
 }
-@media only screen and (max-width: 1199px) {
+@media only screen and (max-width: 991px) {
   .wrapper > .left-bar {
     width: 70px;
   }
@@ -306,12 +306,13 @@ fieldset .form-group {
 }
 .wrapper > .main-content {
   position: relative;
+  margin-left: 220px;
   height: 100%;
   top: 56px;
   margin-bottom: 56px !important;
   z-index: 100;
 }
-@media only screen and (max-width: 1199px) {
+@media only screen and (max-width: 991px) {
   .wrapper > .main-content {
     margin-left: 70px;
   }
@@ -323,6 +324,7 @@ fieldset .form-group {
 }
 .wrapper > .footer {
   position: absolute;
+  margin-left: 220px;
   left: 0;
   right: 0;
   height: 60px;
@@ -330,7 +332,7 @@ fieldset .form-group {
   background-color: #dddddd;
   z-index: 100;
 }
-@media only screen and (max-width: 1199px) {
+@media only screen and (max-width: 991px) {
   .wrapper > .footer {
     left: 70px;
   }

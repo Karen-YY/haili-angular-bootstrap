@@ -12,11 +12,12 @@
 // ----------------------
 // source path
 var src = {
-	js: 'src/js/*.js',											// js 文件
+	js: 'src/js/**/*.js',										// js 文件
 	tpl: 'src/tpl/**/*.html',									// 模版
+	lib: require('./lib/lib.json'),								// 所依赖的外部框架
 	img: 'src/img/**',											// 图片文件
 	less: 'src/less/*.less',									// less文件
-	jsWatch: 'src/js/**/*.js',									// 监听 js文件
+//	jsWatch: 'src/js/**/*.js',									// 监听 js文件
 	lessWatch: 'src/less/**/*.less'								// 监听 less文件
 };
 
@@ -29,41 +30,51 @@ var dest = {
 	all: 'app/**/*'
 };
 
+// 输出命名
+var output = {
+	jsApp: 'app.min.js',
+	jsLib: 'lib.min.js'
+};
+
 // ----------------------
 // 任务入口
 // ----------------------
-// default / watch / build 任务
 gulp.task('default', ['build']);
+var build_tasks = ['js', 'css', 'img', 'tpl', 'lib'];			// 发布任务
+var dev_tasks = ['js-dev', 'css-dev', 'img', 'tpl', 'lib'];		// 开发任务
 
 gulp.task('watch', function() {									// watch 是开发环境
+	console.log('deleting files...');
+
 	del([dest.all]).then(function() {							// 先清空
-		gulp.run('dev-tasks');									// 先构建一次
-		gulp.watch(src.jsWatch, ['js-dev']);
+		console.log('Done! Building tasks started...');
+		gulp.start(dev_tasks);									// 先构建一次
+		gulp.start('lib');										// 压缩 js 所依赖的外部框架
+		gulp.watch(src.js, ['js-dev']);
 		gulp.watch(src.lessWatch, ['css-dev']);
 		gulp.watch(src.img, ['img']);
 		gulp.watch(src.tpl, ['tpl']);
 	});
 });
 
-gulp.task('build', ['del']);									// 发布环境
-gulp.task('build-tasks', ['js', 'css', 'img', 'tpl']);			// 发布任务
-gulp.task('dev-tasks', ['js-dev', 'css-dev', 'img', 'tpl']);	// 调试任务
+gulp.task('build', function() {
+	console.log('deleting files...');
 
-// 清空旧文件再发布
-gulp.task('del', function() {
 	del([dest.all]).then(function() {							// 删除后再执行回调函数, 避免错误
-		gulp.run('build-tasks');								// 执行相应任务
+		console.log('Done! Building tasks started...');
+		gulp.start(build_tasks);
 	});
 });
 
+
 // ----------------------
-// 分任务
+// 子任务
 // ----------------------
 // js 发布环境
 gulp.task('js', function() {
 	return gulp.src(src.js)
 		.pipe(sourcemaps.init())								// 插件需要在 init 和 write 之间
-		.pipe(concat('app.min.js'))								// 合并js
+		.pipe(concat(output.jsApp))								// 合并js
 		.pipe(uglify())											// 混淆js
 		.pipe(sourcemaps.write('.'))							// 插件需要在 init 和 write 之间
 		.pipe(gulp.dest(dest.js));
@@ -73,7 +84,7 @@ gulp.task('js', function() {
 gulp.task('js-dev', function() {
 	return gulp.src(src.js)
 		.pipe(plumber())										// 出错也能继续
-		.pipe(concat('app.min.js'))								// 合并js
+		.pipe(concat(output.jsApp))								// 合并js
 		.pipe(gulp.dest(dest.js));
 });
 
@@ -105,4 +116,13 @@ gulp.task('img', function() {
 gulp.task('tpl', function() {
 	return gulp.src(src.tpl)
 		.pipe(gulp.dest(dest.tpl));
+});
+
+// lib
+gulp.task('lib', function() {
+	return gulp.src(src.lib)
+		.pipe(sourcemaps.init())
+		.pipe(concat(output.jsLib))
+		.pipe(sourcemaps.write('.'))
+		.pipe(gulp.dest(dest.js));
 });

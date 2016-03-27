@@ -31,6 +31,11 @@
 
         <!-- top navbar -->
         <header class="header">
+            <div class="container">
+                <a>
+                    <i>collapse</i>
+                </a>
+            </div>
         </header>
 
         <!-- left menu bar -->
@@ -41,15 +46,18 @@
 
         <!-- main content -->
         <section class="main-content">
-            <div style="width: 100%;height: 1000px;"></div>
+            <div style="width: 100%;height: 1000px;">
+                <div ui-view></div>
+            </div>
         </section>
 
         <!-- footer bar -->
         <footer class="footer"></footer>
     </div>
 
-<script src="lib/angular/angular.min.js"></script>
-<script src="lib/angular-ui-router/angular-ui-router.min.js"></script>
+<script src="app/js/lib.min.js"></script>
+<!--<script src="lib/angular/angular.js"></script>-->
+<!--<script src="lib/angular-ui-router/angular-ui-router.js"></script>-->
 <script src="app/js/app.min.js"></script>
 </body>
 </html>

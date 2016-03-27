@@ -50,7 +50,7 @@
     bottom: 0;
     background-color: @left-bar-bg-color;
     z-index: @z-index-main-section + 1;
-    @media @upto-desktop-lg {
+    @media @upto-desktop {
       width: @left-bar-width-collapsed;
     }
     @media @upto-mobile {
@@ -67,11 +67,12 @@
   // 主内容区域
   > .main-content {
     position: relative;
+    margin-left: @left-bar-width;
     height: 100%;
     top: @header-height;
     margin-bottom: @header-height !important; // 确保 footer 的位置
     z-index: @z-index-main-section;
-    @media @upto-desktop-lg {
+    @media @upto-desktop {
       margin-left: @left-bar-width-collapsed;
     }
     @media @upto-mobile {
@@ -82,13 +83,14 @@
   // 底部栏
   > .footer {
     position: absolute;
+    margin-left: @left-bar-width;
     left: 0;
     right: 0;
     height: @footer-height;
     border-top: 1px solid @gray-light;
     background-color: @footer-bg-color;
     z-index: @z-index-main-section;
-    @media @upto-desktop-lg {
+    @media @upto-desktop {
       left: @left-bar-width-collapsed;
     }
     @media @upto-mobile {
