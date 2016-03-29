@@ -5,6 +5,13 @@
  =========================================================*/
 
 App
+    // 应用信息
+    .constant('APP_INFO', {
+        'name':                   'haili-ng-bstrp',
+        'description':            'haili angular bootstrap admin',
+        'year':                   '2016'
+    })
+
     // 全局颜色
     .constant('APP_COLORS', {
         'primary':                '#5d9cec',
@@ -33,6 +40,11 @@ App
         'mobile':                 480
     })
 
+    // 请求响应头设置
+    .constant('APP_HEADER', {
+        'max-age':                 0
+    })
+
     // 定义依赖的模块
     .constant('APP_REQUIRES', {
         // jquery 模块
@@ -41,7 +53,6 @@ App
         // angular 模块
         modules: [
         ]
-
     })
 ;
 

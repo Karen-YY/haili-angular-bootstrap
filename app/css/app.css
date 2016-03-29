@@ -353,3 +353,11 @@ body {
 #nav {
   background-color: #337ab7;
 }
+.login-wrapper {
+  margin: 0 auto;
+  margin-top: 20px;
+}
+.login-wrapper h1 {
+  font-size: 18px;
+  line-height: 54px;
+}

@@ -83,8 +83,8 @@ gulp.task('js', function() {
 // js-dev 开发环境, 不用混淆, 利于调试
 gulp.task('js-dev', function() {
 	return gulp.src(src.js)
-		.pipe(plumber())										// 出错也能继续
 		.pipe(concat(output.jsApp))								// 合并js
+		.pipe(plumber())										// 出错也能继续
 		.pipe(gulp.dest(dest.js));
 });
 
@@ -101,8 +101,8 @@ gulp.task('css', function() {
 // 编译 less-dev 开发环境, 不用压缩, 利于调试
 gulp.task('css-dev', function() {
 	return gulp.src(src.less)
-		.pipe(plumber())										// 出错也能继续
 		.pipe(less())											// 编译less
+		.pipe(plumber())										// 出错就跳过那个文件
 		.pipe(gulp.dest(dest.css));
 });
 
