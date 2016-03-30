@@ -1,11 +1,12 @@
-<div ng-controller="LoginCtrl" class="login-wrapper container-fluid">
+<div ng-controller="LoginCtrl" class="login-wrapper">
+
     <!-- START panel-->
     <div class="panel panel-dark panel-flat">
         <div class="panel-heading text-center">
             <h1>xxxx 系统</h1>
         </div>
         <div class="panel-body">
-            <p class="text-center pv">SIGN IN TO CONTINUE.</p>
+            <p class="text-center pv">请登录.</p>
 
             <form role="form" ng-submit="login()" name="loginForm" novalidate="" class="form-validate mb-lg">
                 <div class="form-group has-feedback">
@@ -13,32 +14,32 @@
                            autocomplete="off" ng-model="account.email" required="" class="form-control"/>
                     <span class="fa fa-envelope form-control-feedback text-muted"></span>
                     <span ng-show="loginForm.account_email.$dirty &amp;&amp; loginForm.account_email.$error.required"
-                          class="text-danger">This field is required</span>
+                          class="text-danger">请填入帐号</span>
                     <span ng-show="loginForm.account_email.$dirty &amp;&amp; loginForm.account_email.$error.email"
-                          class="text-danger">This field must be a valid email address</span>
+                          class="text-danger">请输入正确的邮箱帐号</span>
                 </div>
                 <div class="form-group has-feedback">
                     <input id="exampleInputPassword1" type="password" name="account_password" placeholder="Password"
                            ng-model="account.password" required="" class="form-control"/>
                     <span class="fa fa-lock form-control-feedback text-muted"></span>
                     <span ng-show="loginForm.account_password.$dirty &amp;&amp; loginForm.account_password.$error.required"
-                          class="text-danger">This field is required</span>
+                          class="text-danger">请填入密码</span>
                 </div>
                 <div class="clearfix">
                     <div class="checkbox c-checkbox pull-left mt0">
                         <label>
                             <input type="checkbox" value="" name="account_remember" ng-model="account.remember"/>
-                            <span class="fa fa-check"></span>Remember Me</label>
+                            <span class="fa fa-check"></span>记住我</label>
                     </div>
-                    <div class="pull-right"><a ui-sref="page.recover" class="text-muted">Forgot your password?</a>
+                    <div class="pull-right"><a ui-sref="page.recover" class="text-muted">忘记密码?</a>
                     </div>
                 </div>
-                <button type="submit" class="btn btn-block btn-primary mt-lg">Login</button>
+                <button type="submit" class="btn btn-block btn-primary mt-lg">登录</button>
             </form>
             <div ng-show="authMsg" class="alert alert-danger text-center">{{authMsg}}</div>
-            <p class="pt-lg text-center">Need to Signup?</p>
+            <p class="pt-lg text-center">没有帐号?</p>
             <a ui-sref="page.register"
-               class="btn btn-block btn-default">Register Now</a>
+               class="btn btn-block btn-default">注册</a>
         </div>
     </div>
     <!-- END panel-->
@@ -50,4 +51,5 @@
         <br/>
         <span ng-bind="app.description"></span>
     </div>
+
 </div>

@@ -269,6 +269,10 @@ fieldset .form-group {
   bottom: 0;
 }
 /* ========================================================================
+   Component: media-queries.less
+   媒体查询
+ ==========================================================================*/
+/* ========================================================================
    Component: layout.less
    总体布局
  ========================================================================== */
@@ -334,30 +338,47 @@ fieldset .form-group {
 }
 @media only screen and (max-width: 991px) {
   .wrapper > .footer {
-    left: 70px;
+    margin-left: 70px;
   }
 }
 @media only screen and (max-width: 479px) {
   .wrapper > .footer {
-    left: 0;
+    margin-left: 0;
   }
 }
-@media only screen and (max-width: 479px) {
-  .wrapper > .left-bar {
-    display: none;
-  }
-}
+/* ========================================================================
+   Component: theme-blue-dark.less
+ ========================================================================== */
 body {
   background-color: #f5f7fa;
 }
 #nav {
   background-color: #337ab7;
 }
+/* ========================================================================
+   Component: login.less
+   登录页面样式
+ ==========================================================================*/
 .login-wrapper {
-  margin: 0 auto;
-  margin-top: 20px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: url("/app/img/bg2.png");
+  font-family: "微软雅黑", Helvetica, Arial, sans-serif;
 }
-.login-wrapper h1 {
+.login-wrapper > .panel {
+  width: 320px;
+  margin: 30px auto 0;
+  border: 0;
+}
+.login-wrapper > .panel .panel-heading {
+  background-color: #3a3f51;
+  color: #fff;
+}
+.login-wrapper > .panel .panel-heading h1 {
+  margin: 0;
   font-size: 18px;
-  line-height: 54px;
+  line-height: 34px;
 }

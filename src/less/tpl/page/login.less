@@ -1,20 +1,42 @@
-// ========================================================================
-//   Component: login.less
-//   登录页面样式
-// ==========================================================================
+/* ========================================================================
+   Component: login.less
+   登录页面样式
+ ==========================================================================*/
 
-// position
-@wd:            320px; // 宽度
-@mt:            20px; // margin-top
-@header-ht:     54px; // 高度
+@import "../../app/media-queries.less"; // 引入变量名
+
 
 .login-wrapper {
-  margin: 0 auto;
-  margin-top: @mt;
 
-  h1 {
-    font-size: 18px;
-    line-height: @header-ht;
+  // 局部变量
+  @pn-mt:                  30px; // panel-margin-top
+  @pn-wd:                  320px; // panel-width 宽度
+  @hdr-ht:                 34px; // header-background-color 高度
+  @hdr-bg-clr:             #3a3f51; // header-background-color 颜色
+
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: url("/app/img/bg2.png");
+  font-family: "微软雅黑", Helvetica, Arial, sans-serif;
+
+  > .panel {
+    width: @pn-wd;
+    margin: @pn-mt auto 0;
+    border: 0;
+
+    .panel-heading {
+      background-color: @hdr-bg-clr;
+      color: #fff;
+
+      h1 {
+        margin: 0;
+        font-size: 18px;
+        line-height: @hdr-ht;
+      }
+    }
   }
 
 }

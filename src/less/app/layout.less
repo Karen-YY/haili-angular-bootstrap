@@ -91,10 +91,10 @@
     background-color: @footer-bg-color;
     z-index: @z-index-main-section;
     @media @upto-desktop {
-      left: @left-bar-width-collapsed;
+      margin-left: @left-bar-width-collapsed;
     }
     @media @upto-mobile {
-      left: 0;
+      margin-left: 0;
     }
   }
 }
@@ -125,7 +125,6 @@
 
     // 左侧菜单栏
     > .left-bar {
-      display: none;
     }
 
     // 右侧菜单栏
