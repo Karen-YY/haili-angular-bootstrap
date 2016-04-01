@@ -1,0 +1,63 @@
+/* ========================================================================
+   Component: src/less/login/login.less
+   登录页面样式
+   @author: haili042
+ ==========================================================================*/
+
+@import "../app/media-queries.less"; // 引入变量名
+
+.login-wrapper {
+
+  // 局部变量
+  @pn-mt:                  30px; // panel-margin-top
+  @pn-wd:                  320px; // panel-width 宽度
+  @hdr-ht:                 34px; // header-background-color 高度
+  @hdr-bg-clr:             #3a3f51; // header-background-color 颜色
+  @margin-lg:              20px; // largely margin
+
+  // 背景图片
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  font-family: "微软雅黑", Helvetica, Arial, sans-serif;
+
+  @media @tablet {
+    background: url("/app/img/bg-blur-1.jpg") no-repeat;
+    background-size: 100% 100%;
+  }
+
+  // 公用的类
+  .m0 {
+    margin: 0;
+  }
+  .m-lg {
+    margin: @margin-lg;
+  }
+  .mt-lg {
+    margin-top: @margin-lg;
+  }
+  .mb-lg {
+    margin-bottom: @margin-lg;
+  }
+
+  > .panel {
+    width: @pn-wd;
+    margin: @pn-mt auto 0;
+    border: 0;
+
+    .panel-heading {
+      background-color: @hdr-bg-clr;
+      color: #fff;
+
+      h1 {
+        margin: 0;
+        font-size: 18px;
+        line-height: @hdr-ht;
+      }
+    }
+
+  }
+
+}

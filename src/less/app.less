@@ -42,22 +42,28 @@
 
 
 // Bootstrap 变量
-@import "bootstrap/variables";
-@import "bootstrap/mixins";
+@import "app/variables";
+@import "app/utils";
 
 // Bootstrap 样式重置
 @import "app/bootstrap-reset";
 
+// 字体图标
+@import "../../lib/fontawesome/css/font-awesome.min.css";
+
 // 全局媒体查询
 @import "app/media-queries.less";
 
+// 表单样式
+@import "app/form-element.less";
 
 // 初始化操作
-@import "app/layout";
+@import "frame/layout";
 
 // 载入主题
 @import "themes/theme-blue-dark";
 
 // 载入组件样式
-@import "tpl/tpl.less";
-
+@import "page/login.less";
+@import "frame/navbar-top";
+@import "frame/sidebar-left";

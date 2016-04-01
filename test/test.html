@@ -6,10 +6,67 @@
 
     <style>
 
+        .div {
+            width: 100px;
+            height: 100px;
+            margin: 40px 0 0 40px;
+            background: #0000f6;
+        }
+
+        .animate1 {
+            -webkit-animation: rotation 2s linear infinite;
+            -o-animation: rotation 2s linear infinite;
+            animation: rotation 2s linear infinite;
+        }
+
+        @keyframes rotation {
+            0% {transform: rotate(180deg);}
+            100% {transform: rotate(360deg);}
+        }
+
+        .animate2 {
+            -webkit-animation: translate 2s ease alternate;
+            -o-animation: translate 2s ease alternate;
+            animation: translate 2s ease alternate;
+        }
+        
+        @keyframes translate {
+            0% {transform: translate(0px, 0px);}
+            50% {transform: translate(400px, 0px);}
+            100% {transform: translate(400px, 200px);}
+        }
+
+        .animate3 {
+            position: relative;
+        }
+        .animate3:hover {
+            -webkit-animation: hover 4s ease alternate;
+            -o-animation: hover 4s ease alternate;
+            animation: hover 4s ease alternate;
+        }
+
+        @keyframes hover {
+            0% {left:0}
+            100% {left: 400px;}
+        }
+
+
 
     </style>
 </head>
 <body>
+
+    <div class="div animate1">
+
+    </div>
+
+    <div class="div animate2">
+
+    </div>
+
+    <div class="div animate3">
+
+    </div>
 
 <script>
 

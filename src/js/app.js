@@ -1,7 +1,8 @@
 /**=========================================================
- * app.js
+ * Module: src/js/app.js
  * 初始化程序
  * @author: haili042
+ * @time: 2016年4月1日 12:46:06
  =========================================================*/
 
 // 一个项目只有一个 ng-app
@@ -18,6 +19,28 @@ App.run(function ($rootScope, $state, $stateParams, $window, $templateCache, APP
 
     // 应用信息, 在 constants.js 内
     $rootScope.app = APP_INFO;
+
+    // 路由过滤器, 用来认证权限
+    $rootScope.$on('$stateChangeStart', function (event, toState, toParams, fromState, fromParams) {
+
+        // 如果是进入登录页面则允许
+        if (toState.name === 'page.login') {
+            return true;
+        }
+
+        // 如果用户不存在
+        if (!$rootScope.sessionInfo.user) {
+
+            // 取消默认的跳转
+            event.preventDefault();
+
+            // 跳转到登录页面, 其实不会发生跳转, 以防万一
+            $state.go('page.login');
+        }
+    });
+
+    // 用户登录帐号信息
+    $rootScope.sessionInfo = {};
 
 });
 

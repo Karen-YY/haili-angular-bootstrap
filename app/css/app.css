@@ -6,39 +6,302 @@
  *
  */
 /* ========================================================================
-   Component: bootstrap-reset.less
-   这个文件对 bootstrap 进行非侵入的重置
+   Component: src/less/app/utils.less
+   统一的样式和变量, 利于风格统一
+   @author: haili042
  ========================================================================== */
-.glyphicon {
-  display: inline-block;
-  font: normal normal normal 14px/1 FontAwesome;
-  font-size: inherit;
-  text-rendering: auto;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  transform: translate(0, 0);
+@import "../../lib/fontawesome/css/font-awesome.min.css";
+.wd-xxs {
+  width: 60px;
 }
-.glyphicon.pull-left {
-  margin-right: 0.3em;
+.wd-xs {
+  width: 90px;
 }
-.glyphicon.pull-right {
-  margin-left: 0.3em;
+.wd-sm {
+  width: 150px;
 }
-.glyphicon.glyphicon-chevron-left:before {
-  content: "\f053";
+.wd-sd {
+  width: 200px;
 }
-.glyphicon.glyphicon-chevron-right:before {
-  content: "\f054";
+.wd-md {
+  width: 240px;
 }
-.glyphicon.glyphicon-chevron-up:before {
-  content: "\f077";
+.wd-lg {
+  width: 280px;
 }
-.glyphicon.glyphicon-chevron-down:before {
-  content: "\f078";
+.wd-xl {
+  width: 320px;
 }
-.glyphicon.glyphicon-folder-open:before {
-  content: "\f07c";
+.wd-xxl {
+  width: 360px;
 }
+.wd-wide {
+  width: 100%;
+}
+.wd-auto {
+  width: auto;
+}
+.m0 {
+  margin: 0 !important;
+}
+.ml0 {
+  margin-left: 0 !important;
+}
+.mr0 {
+  margin-right: 0 !important;
+}
+.mt0 {
+  margin-top: 0 !important;
+}
+.mb0 {
+  margin-bottom: 0 !important;
+}
+.m {
+  margin: 10px !important;
+}
+.ml {
+  margin-left: 10px !important;
+}
+.mr {
+  margin-right: 10px !important;
+}
+.mt {
+  margin-top: 10px !important;
+}
+.mb {
+  margin-bottom: 10px !important;
+}
+.m-sm {
+  margin: 5px !important;
+}
+.ml-sm {
+  margin-left: 5px !important;
+}
+.mr-sm {
+  margin-right: 5px !important;
+}
+.mt-sm {
+  margin-top: 5px !important;
+}
+.mb-sm {
+  margin-bottom: 5px !important;
+}
+.m-lg {
+  margin: 15px !important;
+}
+.ml-lg {
+  margin-left: 15px !important;
+}
+.mr-lg {
+  margin-right: 15px !important;
+}
+.mt-lg {
+  margin-top: 15px !important;
+}
+.mb-lg {
+  margin-bottom: 15px !important;
+}
+.m-xl {
+  margin: 30px !important;
+}
+.ml-xl {
+  margin-left: 30px !important;
+}
+.mr-xl {
+  margin-right: 30px !important;
+}
+.mt-xl {
+  margin-top: 30px !important;
+}
+.mb-xl {
+  margin-bottom: 30px !important;
+}
+.mv {
+  margin-top: 10px !important;
+  margin-bottom: 10px !important;
+}
+.mh {
+  margin-left: 10px !important;
+  margin-right: 10px !important;
+}
+.mv-lg {
+  margin-top: 15px !important;
+  margin-bottom: 15px !important;
+}
+.mh-lg {
+  margin-left: 15px !important;
+  margin-right: 15px !important;
+}
+.mv-sm {
+  margin-top: 5px !important;
+  margin-bottom: 5px !important;
+}
+.mh-sm {
+  margin-left: 5px !important;
+  margin-right: 5px !important;
+}
+.p0 {
+  padding: 0 !important;
+}
+.pl0 {
+  padding-left: 0 !important;
+}
+.pr0 {
+  padding-right: 0 !important;
+}
+.pt0 {
+  padding-top: 0 !important;
+}
+.pb0 {
+  padding-bottom: 0 !important;
+}
+.pv0 {
+  padding-top: 0 !important;
+  padding-bottom: 0 !important;
+}
+.ph0 {
+  padding-left: 0 !important;
+  padding-right: 0 !important;
+}
+.p {
+  padding: 10px !important;
+}
+.pl {
+  padding-left: 10px !important;
+}
+.pr {
+  padding-right: 10px !important;
+}
+.pt {
+  padding-top: 10px !important;
+}
+.pb {
+  padding-bottom: 10px !important;
+}
+.p-sm {
+  padding: 5px !important;
+}
+.pl-sm {
+  padding-left: 5px !important;
+}
+.pr-sm {
+  padding-right: 5px !important;
+}
+.pt-sm {
+  padding-top: 5px !important;
+}
+.pb-sm {
+  padding-bottom: 5px !important;
+}
+.p-lg {
+  padding: 15px !important;
+}
+.pl-lg {
+  padding-left: 15px !important;
+}
+.pr-lg {
+  padding-right: 15px !important;
+}
+.pt-lg {
+  padding-top: 15px !important;
+}
+.pb-lg {
+  padding-bottom: 15px !important;
+}
+.p-xl {
+  padding: 30px !important;
+}
+.pl-xl {
+  padding-left: 30px !important;
+}
+.pr-xl {
+  padding-right: 30px !important;
+}
+.pt-xl {
+  padding-top: 30px !important;
+}
+.pb-xl {
+  padding-bottom: 30px !important;
+}
+.pv {
+  padding-top: 10px !important;
+  padding-bottom: 10px !important;
+}
+.ph {
+  padding-left: 10px !important;
+  padding-right: 10px !important;
+}
+.pv-xl {
+  padding-top: 30px !important;
+  padding-bottom: 30px !important;
+}
+.ph-xl {
+  padding-left: 30px !important;
+  padding-right: 30px !important;
+}
+.pv-lg {
+  padding-top: 15px !important;
+  padding-bottom: 15px !important;
+}
+.ph-lg {
+  padding-left: 15px !important;
+  padding-right: 15px !important;
+}
+.pv-sm {
+  padding-top: 5px !important;
+  padding-bottom: 5px !important;
+}
+.ph-sm {
+  padding-left: 5px !important;
+  padding-right: 5px !important;
+}
+.b0 {
+  border-width: 0 !important;
+}
+.bl0 {
+  border-left-width: 0 !important;
+}
+.br0 {
+  border-right-width: 0 !important;
+}
+.bt0 {
+  border-top-width: 0 !important;
+}
+.bb0 {
+  border-bottom-width: 0 !important;
+}
+.br {
+  border-right: 1px solid rgba(0, 0, 0, 0.12);
+}
+.bl {
+  border-left: 1px solid rgba(0, 0, 0, 0.12);
+}
+.bt {
+  border-top: 1px solid rgba(0, 0, 0, 0.12);
+}
+.bb {
+  border-bottom: 1px solid rgba(0, 0, 0, 0.12);
+}
+.b {
+  border-right: 1px solid rgba(0, 0, 0, 0.12);
+  border-left: 1px solid rgba(0, 0, 0, 0.12);
+  border-top: 1px solid rgba(0, 0, 0, 0.12);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.12);
+}
+.radius-clear {
+  border-radius: 0 !important;
+}
+.shadow-clear {
+  box-shadow: 0 0 0 #000 !important;
+}
+.text-nowrap {
+  white-space: nowrap;
+}
+/* ========================================================================
+   Component: src/less/app/bootstrap-reset.less
+   这个文件对 bootstrap 进行非侵入的重置
+   @author: haili042
+ ========================================================================== */
 [ng\:cloak],
 [ng-cloak],
 [data-ng-cloak],
@@ -269,12 +532,251 @@ fieldset .form-group {
   bottom: 0;
 }
 /* ========================================================================
-   Component: media-queries.less
+   Component: src/less/app/media-queries.less
    媒体查询
+   @author: haili042
  ==========================================================================*/
 /* ========================================================================
-   Component: layout.less
+   Component: src/less/app/form-element.less
+   @author: haili042
+   表单元素样式
+ ==========================================================================*/
+.c-checkbox,
+.c-radio {
+  margin-right: 4px;
+}
+.c-checkbox *,
+.c-radio * {
+  cursor: pointer;
+}
+.c-checkbox input,
+.c-radio input {
+  opacity: 0;
+  position: absolute;
+  margin-left: 0 !important;
+}
+.c-checkbox span,
+.c-radio span {
+  position: relative;
+  display: inline-block;
+  vertical-align: top;
+  margin-left: -20px;
+  width: 20px;
+  height: 20px;
+  border-radius: 2px;
+  border: 1px solid #ccc;
+  margin-right: 5px;
+  text-align: center;
+}
+.c-checkbox span:before,
+.c-radio span:before {
+  margin-left: 0;
+}
+.c-checkbox:hover span,
+.c-radio:hover span {
+  border-color: #5d9cec;
+}
+.form-inline .c-checkbox span,
+.form-inline .c-radio span {
+  margin-left: 0;
+}
+.c-checkbox.c-checkbox-rounded span,
+.c-radio.c-checkbox-rounded span,
+.c-checkbox.c-radio-rounded span,
+.c-radio.c-radio-rounded span {
+  border-radius: 500px;
+}
+.c-radio span {
+  border-radius: 500px;
+}
+/* the icon */
+.c-checkbox span:before,
+.c-radio span:before {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  opacity: 0;
+  text-align: center !important;
+  font-size: 12px;
+  line-height: 18px;
+  vertical-align: middle;
+}
+.c-checkbox,
+.c-radio {
+  /* override for radio */
+  /* 禁用状态 */
+  /* override for radio */
+}
+.c-checkbox input[type=checkbox]:checked + span:before,
+.c-radio input[type=checkbox]:checked + span:before,
+.c-checkbox input[type=radio]:checked + span:before,
+.c-radio input[type=radio]:checked + span:before {
+  color: #fff;
+  opacity: 1;
+  transition: color 0.3s ease-out;
+}
+.c-checkbox input[type=checkbox]:checked + span,
+.c-radio input[type=checkbox]:checked + span,
+.c-checkbox input[type=radio]:checked + span,
+.c-radio input[type=radio]:checked + span {
+  border-color: #5d9cec;
+  background-color: #5d9cec;
+}
+.c-checkbox input[type=radio]:checked + span,
+.c-radio input[type=radio]:checked + span {
+  background-color: #fff;
+}
+.c-checkbox input[type=radio]:checked + span:before,
+.c-radio input[type=radio]:checked + span:before {
+  color: #5d9cec;
+}
+.c-checkbox input[type=checkbox]:disabled + span,
+.c-radio input[type=checkbox]:disabled + span,
+.c-checkbox input[type=radio]:disabled + span,
+.c-radio input[type=radio]:disabled + span {
+  border-color: #ddd !important;
+  background-color: #ddd !important;
+}
+.c-checkbox input[type=radio]:disabled + span,
+.c-radio input[type=radio]:disabled + span {
+  background-color: #fff !important;
+}
+.c-checkbox input[type=radio]:disabled + span:before,
+.c-radio input[type=radio]:disabled + span:before {
+  color: #ddd;
+}
+.c-radio.c-radio-nofont {
+  /* override for radio */
+  /* Disable state */
+  /* override for radio */
+}
+.c-radio.c-radio-nofont span:before {
+  content: "";
+  width: 10px;
+  height: 10px;
+  top: 50%;
+  left: 50%;
+  margin-top: -5px;
+  margin-left: -5px;
+  border-radius: 500px;
+}
+.c-radio.c-radio-nofont input[type=radio]:checked + span:before {
+  color: #fff;
+  opacity: 1;
+  transition: color 0.3s ease-out;
+}
+.c-radio.c-radio-nofont input[type=radio]:checked + span {
+  border-color: #5d9cec;
+  background-color: #5d9cec;
+}
+.c-radio.c-radio-nofont input[type=radio]:checked + span {
+  background-color: #fff;
+}
+.c-radio.c-radio-nofont input[type=radio]:checked + span:before {
+  background-color: #5d9cec;
+}
+.c-radio.c-radio-nofont input[type=radio]:disabled + span {
+  border-color: #ddd !important;
+  background-color: #ddd !important;
+}
+.c-radio.c-radio-nofont input[type=radio]:disabled + span {
+  background-color: #fff !important;
+}
+.c-radio.c-radio-nofont input[type=radio]:disabled + span:before {
+  background-color: #ddd;
+}
+.form-control-rounded {
+  border-radius: 100px;
+}
+.switch .form-control {
+  padding-top: 7px;
+  margin-bottom: 0;
+}
+.switch * {
+  cursor: pointer;
+}
+.switch input {
+  opacity: 0;
+  position: absolute;
+  z-index: -1;
+}
+.switch span {
+  position: relative;
+  display: inline-block;
+  width: 40px;
+  height: 20px;
+  background-color: #fff;
+  border: 1px solid #ddd;
+  border-radius: 100px;
+  transition: all .5s;
+  box-shadow: 1px 2px 3px rgba(0, 0, 0, 0.1) inset;
+  vertical-align: middle;
+}
+.switch span:after {
+  content: "";
+  position: absolute;
+  background-color: #fff;
+  top: 0;
+  left: 0;
+  height: 18px;
+  width: 18px;
+  border: 1px solid #ddd;
+  border-radius: 400px;
+  box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.1);
+  -webkit-transition: all .2s;
+}
+.switch.switch-lg span {
+  width: 50px;
+  height: 25px;
+}
+.switch.switch-lg span:after {
+  height: 23px;
+  width: 23px;
+}
+.switch.switch-sm span {
+  width: 30px;
+  height: 15px;
+}
+.switch.switch-sm span:after {
+  height: 13px;
+  width: 13px;
+}
+.switch input:checked + span {
+  background-color: #5d9cec;
+  border-color: #5d9cec;
+  transition: all .5s;
+}
+.switch input:checked + span:after {
+  left: 50%;
+  transition: all .2s;
+}
+.form-control-feedback {
+  left: 16px;
+  right: auto;
+}
+.form-control + .form-control-feedback,
+.form-control + .parsley-errors-list + .form-control-feedback {
+  right: 0;
+  left: auto;
+  top: 10px;
+}
+.input-sm + .form-control-feedback,
+.input-sm + .parsley-errors-list + .form-control-feedback {
+  top: 0;
+}
+label + .form-control + .form-control-feedback,
+label + .form-control + .parsley-errors-list + .form-control-feedback {
+  top: 36px;
+}
+.input-md {
+  width: 260px;
+}
+/* ========================================================================
+   Component: src/less/frame/layout.less
    总体布局
+   @author: haili042
  ========================================================================== */
 .wrapper {
   position: relative;
@@ -286,17 +788,17 @@ fieldset .form-group {
   position: fixed;
   width: 100%;
   height: 56px;
-  background-color: #23b7e5;
-  z-index: 102;
+  z-index: 101;
 }
 .wrapper > .left-bar {
   position: fixed;
-  width: 220px;
+  width: 237px;
   left: 0;
   top: 56px;
   bottom: 0;
-  background-color: #3a3f51;
-  z-index: 101;
+  border-right: 1px solid;
+  overflow-y: scroll;
+  z-index: 99;
 }
 @media only screen and (max-width: 991px) {
   .wrapper > .left-bar {
@@ -332,8 +834,7 @@ fieldset .form-group {
   left: 0;
   right: 0;
   height: 60px;
-  border-top: 1px solid #e4eaec;
-  background-color: #dddddd;
+  border-top: 1px solid;
   z-index: 100;
 }
 @media only screen and (max-width: 991px) {
@@ -347,17 +848,27 @@ fieldset .form-group {
   }
 }
 /* ========================================================================
-   Component: theme-blue-dark.less
+   Component: src/less/theme/theme-blue-dark.less
+   @author: haili042
  ========================================================================== */
-body {
+.wrapper > .header {
+  background-color: #23b7e5;
+}
+.wrapper > .left-bar {
+  background-color: #384758;
+  border-right-color: rgba(0, 0, 0, 0.14902);
+}
+.wrapper > .main-content {
   background-color: #f5f7fa;
 }
-#nav {
-  background-color: #337ab7;
+.wrapper > .footer {
+  background-color: #e4eaec;
+  border-top-color: #aaaaaa;
 }
 /* ========================================================================
-   Component: login.less
+   Component: src/less/login/login.less
    登录页面样式
+   @author: haili042
  ==========================================================================*/
 .login-wrapper {
   position: fixed;
@@ -365,8 +876,25 @@ body {
   left: 0;
   right: 0;
   bottom: 0;
-  background: url("/app/img/bg2.png");
   font-family: "微软雅黑", Helvetica, Arial, sans-serif;
+}
+@media only screen and (min-width: 768px) {
+  .login-wrapper {
+    background: url("/app/img/bg-blur-1.jpg") no-repeat;
+    background-size: 100% 100%;
+  }
+}
+.login-wrapper .m0 {
+  margin: 0;
+}
+.login-wrapper .m-lg {
+  margin: 20px;
+}
+.login-wrapper .mt-lg {
+  margin-top: 20px;
+}
+.login-wrapper .mb-lg {
+  margin-bottom: 20px;
 }
 .login-wrapper > .panel {
   width: 320px;
@@ -380,5 +908,33 @@ body {
 .login-wrapper > .panel .panel-heading h1 {
   margin: 0;
   font-size: 18px;
+  line-height: 34px;
+}
+/* ========================================================================
+   Component: src/less/frame/navbar-top.less
+   @author: haili042
+ ========================================================================== */
+#navBarTop > .navbar-header .brand-logo {
+  width: 30px;
+  height: 30px;
+}
+/* ========================================================================
+   Component: src/less/frame/sidebar.less
+   @author: haili042
+ ========================================================================== */
+#sideBarLeft a {
+  color: #fff;
+}
+#sideBarLeft a:hover {
+  text-decoration: none;
+}
+#sideBarLeft ul,
+#sideBarLeft li {
+  list-style-type: none;
+}
+#sideBarLeft .ul-l1 {
+  margin-top: 20px;
+}
+#sideBarLeft .ul-l1 .li-l1 {
   line-height: 34px;
 }

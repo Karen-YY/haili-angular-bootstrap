@@ -1,15 +1,27 @@
 /**=========================================================
- * constant.js
+ * Module: src/js/module/constants.js
  * 定义全局变量, 调用的时候注入即可
  * @author: haili042
+ * @time: 2016年4月1日 12:46:17
  =========================================================*/
 
 App
     // 应用信息
     .constant('APP_INFO', {
         'name':                   'haili-ng-bstrp',
-        'description':            'haili angular bootstrap admin',
+        'title':                  'Haili042 ng Admin系统',
+        'description':            'haili042 angular bootstrap admin',
         'year':                   '2016'
+    })
+
+    // 登录权限信息
+    .constant('APP_AUTH', {
+        'loginSuccess':           'auth-login-success',
+        'loginFailed':            'auth-login-failed',
+        'logoutSuccess':          'auth-logout-success',
+        'logoutFailed':           'auth-logout-failed',
+        'sessionTimeout':         'auth-session-timeout',
+        'noAuth':                 'auth-not-auth'
     })
 
     // 全局颜色

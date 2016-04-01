@@ -1,0 +1,20 @@
+<div id="sideBarLeft" ng-controller="SideBarLeftCtrl">
+    <div>
+        <div>
+            <ul class="ul-l1" ng-repeat="d in menuDate">
+                <li class="li-l1">
+                    <a ui-sref="page.login">
+                        <i class="fa fa-cube"></i>
+                        {{d.title}}
+                    </a>
+
+                    <ul class="ul-l2" ng-repeat="dd in d.children">
+                        <li class="li-l2">
+                            <a ui-sref="app.home">{{dd.title}}1</a>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>

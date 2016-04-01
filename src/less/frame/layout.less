@@ -1,0 +1,92 @@
+/* ========================================================================
+   Component: src/less/frame/layout.less
+   总体布局
+   @author: haili042
+ ========================================================================== */
+
+
+//
+// pc 圣杯布局
+// ------------------------------
+.wrapper {
+
+  // 局部变量 size
+  @header-height:             56px;
+  @left-bar-width:            220px;
+  @left-bar-width-collapsed:  70px;
+  @right-bar-width:           200px;
+  @footer-height:             60px;
+
+  // z-index
+  @z-index-main-section:      100;
+
+  position: relative;
+  width: 100%;
+  height: auto;
+  min-height: 100%;
+
+  // 顶部导航栏
+  > .header {
+    position: fixed;
+    width: 100%;
+    height: @header-height;
+    z-index: @z-index-main-section + 1;
+  }
+
+  // 左侧菜单栏
+  > .left-bar {
+    position: fixed;
+    width: @left-bar-width + 17;
+    left: 0;
+    top: @header-height;
+    bottom: 0;
+    border-right: 1px solid;
+    overflow-y: scroll;
+    z-index: @z-index-main-section - 1;
+    @media @upto-desktop {
+      width: @left-bar-width-collapsed;
+    }
+    @media @upto-mobile {
+      display: none;
+    }
+
+  }
+
+  // 右侧菜单栏
+  > .right-bar {
+
+  }
+
+  // 主内容区域
+  > .main-content {
+    position: relative;
+    margin-left: @left-bar-width;
+    height: 100%;
+    top: @header-height;
+    margin-bottom: @header-height !important; // 确保 footer 的位置
+    z-index: @z-index-main-section;
+    @media @upto-desktop {
+      margin-left: @left-bar-width-collapsed;
+    }
+    @media @upto-mobile {
+      margin-left: 0;
+    }
+  }
+
+  // 底部栏
+  > .footer {
+    position: absolute;
+    margin-left: @left-bar-width;
+    left: 0;
+    right: 0;
+    height: @footer-height;
+    border-top: 1px solid;
+    z-index: @z-index-main-section;
+    @media @upto-desktop {
+      margin-left: @left-bar-width-collapsed;
+    }
+    @media @upto-mobile {
+      margin-left: 0;
+    }
+  }
+}

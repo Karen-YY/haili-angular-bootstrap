@@ -3,47 +3,55 @@
     <!-- START panel-->
     <div class="panel panel-dark panel-flat">
         <div class="panel-heading text-center">
-            <h1>xxxx 系统</h1>
+            <h1 ng-bind="app.title"></h1>
         </div>
+
         <div class="panel-body">
-            <p class="text-center pv">请登录.</p>
+            <p class="text-center m-lg">请登录...</p>
 
             <form role="form" ng-submit="login()" name="loginForm" novalidate="" class="form-validate mb-lg">
                 <div class="form-group has-feedback">
-                    <input id="exampleInputEmail1" type="email" name="account_email" placeholder="Enter email"
-                           autocomplete="off" ng-model="account.email" required="" class="form-control"/>
-                    <span class="fa fa-envelope form-control-feedback text-muted"></span>
-                    <span ng-show="loginForm.account_email.$dirty &amp;&amp; loginForm.account_email.$error.required"
+                    <input id="account_user" type="text" name="account_user" placeholder="请输入帐号"
+                           ng-pattern="/^1[3|4|5|7|8]\d{9}$/"
+                           autocomplete="off" ng-model="account.user" required="" class="form-control"/>
+                    <span class="fa fa-phone form-control-feedback text-muted"></span>
+                    <span ng-show="loginForm.account_user.$dirty &amp;&amp; loginForm.account_user.$error.required"
                           class="text-danger">请填入帐号</span>
-                    <span ng-show="loginForm.account_email.$dirty &amp;&amp; loginForm.account_email.$error.email"
-                          class="text-danger">请输入正确的邮箱帐号</span>
+                    <span ng-show="loginForm.account_user.$dirty &amp;&amp; loginForm.account_user.$error.pattern"
+                          class="text-danger">请输入正确的手机号</span>
                 </div>
+
                 <div class="form-group has-feedback">
-                    <input id="exampleInputPassword1" type="password" name="account_password" placeholder="Password"
-                           ng-model="account.password" required="" class="form-control"/>
+                    <input id="account_psw" type="password" name="account_psw" placeholder="请输入密码"
+                           ng-model="account.psw" required="" class="form-control"/>
                     <span class="fa fa-lock form-control-feedback text-muted"></span>
-                    <span ng-show="loginForm.account_password.$dirty &amp;&amp; loginForm.account_password.$error.required"
+                    <span ng-show="loginForm.account_psw.$dirty &amp;&amp; loginForm.account_psw.$error.required"
                           class="text-danger">请填入密码</span>
                 </div>
-                <div class="clearfix">
-                    <div class="checkbox c-checkbox pull-left mt0">
+
+                <div class="clearfix mb-lg">
+                    <div class="checkbox c-checkbox pull-left m0">
                         <label>
                             <input type="checkbox" value="" name="account_remember" ng-model="account.remember"/>
-                            <span class="fa fa-check"></span>记住我</label>
+                            <span class="fa fa-check"></span>记住我
+                        </label>
                     </div>
-                    <div class="pull-right"><a ui-sref="page.recover" class="text-muted">忘记密码?</a>
+                    <div class="pull-right">
+                        <a ui-sref="page.recover" class="text-muted">忘记密码?</a>
                     </div>
                 </div>
-                <button type="submit" class="btn btn-block btn-primary mt-lg">登录</button>
+
+                <button type="submit" class="btn btn-block btn-primary">登录</button>
             </form>
+
             <div ng-show="authMsg" class="alert alert-danger text-center">{{authMsg}}</div>
-            <p class="pt-lg text-center">没有帐号?</p>
-            <a ui-sref="page.register"
-               class="btn btn-block btn-default">注册</a>
+            <p class="text-center">没有帐号?</p>
+            <a ui-sref="page.register" class="btn btn-block btn-default">注册</a>
         </div>
     </div>
     <!-- END panel-->
-    <div class="p-lg text-center">
+
+    <div class="text-center m-lg">
         <span>&copy;</span>
         <span ng-bind="app.year"></span>
         <span>-</span>

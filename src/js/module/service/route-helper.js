@@ -1,7 +1,8 @@
 /**=========================================================
- * Module: service/route-helpers.js
+ * Module: src/js/module/service/route-helper.js:4
  * 检测路由是否存在, 以及方便注入依赖
  * @author: haili042
+ * @time: 2016年4月1日 12:43:51
  =========================================================*/
 
 App.provider('RouteHelper', ['APP_REQUIRES', function(appRequire) {

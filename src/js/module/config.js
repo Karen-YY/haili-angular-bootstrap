@@ -1,7 +1,8 @@
 /**=========================================================
- * Module: config.js
+ * Module: src/js/module/config.js
  * 配置路由
  * @author: haili042
+ * @time: 2016年4月1日 12:45:24
  =========================================================*/
 
 App
@@ -23,7 +24,7 @@ App
             .state('app', {
                 url: '/app',
                 abstract: true, // 表明此状态不能被显性激活，只能被子状态隐性激活(子状态激活同时, 父状态也激活)
-                templateUrl: 'app/tpl/page/layout.html' // 布局
+                templateUrl: 'app/tpl/frame/layout.html' // 布局
             })
 
             // 子路由, 点标记法(推荐)
@@ -51,12 +52,16 @@ App
             .state('page', {
                 url: '/page',
                 abstract: true,
-                templateUrl: 'app/tpl/page/page.html'
+                templateUrl: 'app/tpl/page/page-holder.html'
             })
             .state('page.login', {
                 url: '/login',
                 title: "Login",
                 templateUrl: 'app/tpl/page/login.html'
+            })
+            .state('page.register', {
+                url: '/register',
+                templateUrl: 'app/tpl/page/register.html'
             })
             .state('page.404', {
                 url: '/404',
