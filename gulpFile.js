@@ -101,7 +101,12 @@ gulp.task('css', function() {
 // 编译 less-dev 开发环境, 不用压缩, 利于调试
 gulp.task('css-dev', function() {
 	return gulp.src(src.less)
-		.pipe(plumber())											// 出错就跳过那个文件
+		//.pipe(plumber({
+		//	errorHandler: function() {
+		//		console.log('文件编译出错了...');
+		//	}
+		//}))											// 出错就跳过那个文件
+		.pipe(plumber())
 		.pipe(less())												// 编译less
 		.pipe(gulp.dest(dest.css));
 });

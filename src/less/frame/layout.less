@@ -16,6 +16,7 @@
   @left-bar-width-collapsed:  70px;
   @right-bar-width:           200px;
   @footer-height:             60px;
+  @scroller-width:            17px; // 为了不显示滚动条
 
   // z-index
   @z-index-main-section:      100;
@@ -36,7 +37,7 @@
   // 左侧菜单栏
   > .left-bar {
     position: fixed;
-    width: @left-bar-width + 17;
+    width: @left-bar-width + @scroller-width;
     left: 0;
     top: @header-height;
     bottom: 0;
@@ -44,7 +45,7 @@
     overflow-y: scroll;
     z-index: @z-index-main-section - 1;
     @media @upto-desktop {
-      width: @left-bar-width-collapsed;
+      width: @left-bar-width-collapsed + @scroller-width;
     }
     @media @upto-mobile {
       display: none;

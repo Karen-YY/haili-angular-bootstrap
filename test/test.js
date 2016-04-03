@@ -69,8 +69,56 @@ $stateProvider
     */
 
 
+var arr = [
+        [0,0,8,0,0],
+        [0,0,0,9,0],
+        [0,7,0,0,0],
+        [0,0,6,0,0]
+    ],
+    len1 = arr.length,
+    len2 = arr[0].length,
+    max = 0,
+    res = 0;
+
+function test(arr) {
+
+    var i, len = arr.length,
+        j, len2 = arr[0].length,
+        min = 0;
 
 
+    for (j = 0; j < len2; j++) {
+        for (i = 0; i < len; i++) {
 
+            min += arr[i][j];
+        }
+    }
+    return '';
+}
 
+function walk(i, j) {
+    if (i >= len1 || j >= len2) {
+        return false;
+    }
 
+    console.log('(' + i + ', ' + j + ') =' + arr[i][j]);
+    max += arr[i][j];
+    if (i == len1-1 && j == len2-1) {
+        console.log('total = ' + max + '\n');
+        if (res < max) {
+            res = max;
+        }
+        max = 0;
+    }
+
+    if (!arguments.callee(i+1, j)) {
+        if (!arguments.callee(i, j+1)) {
+            return false;
+        }
+    }
+
+    return true;
+}
+
+walk(0, 0);
+console.log(res);

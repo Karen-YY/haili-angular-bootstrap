@@ -802,7 +802,7 @@ label + .form-control + .parsley-errors-list + .form-control-feedback {
 }
 @media only screen and (max-width: 991px) {
   .wrapper > .left-bar {
-    width: 70px;
+    width: 87px;
   }
 }
 @media only screen and (max-width: 479px) {
@@ -915,8 +915,10 @@ label + .form-control + .parsley-errors-list + .form-control-feedback {
    @author: haili042
  ========================================================================== */
 #navBarTop > .navbar-header .brand-logo {
-  width: 30px;
-  height: 30px;
+  background-color: #fff;
+}
+#navBarTop > .navbar-header .brand-logo img {
+  height: 56px;
 }
 /* ========================================================================
    Component: src/less/frame/sidebar.less
@@ -936,5 +938,10 @@ label + .form-control + .parsley-errors-list + .form-control-feedback {
   margin-top: 20px;
 }
 #sideBarLeft .ul-l1 .li-l1 {
+  position: relative;
   line-height: 34px;
+}
+#sideBarLeft .ul-l1 .li-l1 .ul-l2 {
+  position: absolute;
+  z-index: 101px;
 }

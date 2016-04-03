@@ -31,10 +31,10 @@ App.run(function ($rootScope, $state, $stateParams, $window, $templateCache, APP
         // 如果用户不存在
         if (!$rootScope.sessionInfo.user) {
 
-            // 取消默认的跳转
+            // 取消跳转
             event.preventDefault();
 
-            // 跳转到登录页面, 其实不会发生跳转, 以防万一
+            // 跳转到登录页面
             $state.go('page.login');
         }
     });
