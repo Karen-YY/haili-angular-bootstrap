@@ -4,22 +4,21 @@
    @author: haili042
  ========================================================================== */
 
+// 变量
+@header-height:             56px;
+@left-bar-width:            220px;
+@left-bar-width-collapsed:  70px;
+@right-bar-width:           200px;
+@footer-height:             60px;
+
+// z-index
+@z-index-main-section:      100;
 
 //
 // pc 圣杯布局
 // ------------------------------
 .wrapper {
 
-  // 局部变量 size
-  @header-height:             56px;
-  @left-bar-width:            220px;
-  @left-bar-width-collapsed:  70px;
-  @right-bar-width:           200px;
-  @footer-height:             60px;
-  @scroller-width:            17px; // 为了不显示滚动条
-
-  // z-index
-  @z-index-main-section:      100;
 
   position: relative;
   width: 100%;
@@ -31,21 +30,21 @@
     position: fixed;
     width: 100%;
     height: @header-height;
-    z-index: @z-index-main-section + 1;
+    z-index: @z-index-main-section + 20;
   }
 
   // 左侧菜单栏
   > .left-bar {
     position: fixed;
-    width: @left-bar-width + @scroller-width;
+    width: @left-bar-width;
     left: 0;
     top: @header-height;
     bottom: 0;
     border-right: 1px solid;
-    overflow-y: scroll;
-    z-index: @z-index-main-section - 1;
+
+    z-index: @z-index-main-section + 10;
     @media @upto-desktop {
-      width: @left-bar-width-collapsed + @scroller-width;
+      width: @left-bar-width-collapsed;
     }
     @media @upto-mobile {
       display: none;

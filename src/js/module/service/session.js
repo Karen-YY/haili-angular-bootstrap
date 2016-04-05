@@ -5,19 +5,40 @@
  * @time: 2016年4月1日 12:43:51
  =========================================================*/
 
-App.service('sessionService', function() {
+App.factory('sessionService', function() {
 
+    'use strict';
+    var id,
+        userId,
+        userRole;
+    
     // 创建 session
-    this.create = function (sessionId, userId, userRole) {
-        this.id = sessionId;
-        this.userId = userId;
-        this.userRole = userRole;
-    };
+    function createSession(sid, uid, ur) {
+        id = sid;
+        userId = uid;
+        userRole = ur;
+    }
 
     // 注销session
-    this.destroy = function() {
-        this.id = null;
-        this.userId = null;
-        this.userRole = null;
+    function destroySession() {
+        id = null;
+        userId = null;
+        userRole = null;
+    }
+
+    // 获取session
+    function getSession() {
+        return {
+            id: id,
+            userId: userId,
+            userRole: userRole
+        };
+    }
+    
+    return {
+        createSession: createSession,
+        destroySession: destroySession,
+        getSession: getSession
     };
-});
+})
+;

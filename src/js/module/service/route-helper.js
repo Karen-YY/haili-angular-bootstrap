@@ -5,7 +5,7 @@
  * @time: 2016年4月1日 12:43:51
  =========================================================*/
 
-App.provider('routeHelper', ['APP_REQUIRES', function(APP_REQUIRES) {
+App.provider('routeHelper', ['APP_REQUIRE', function(APP_REQUIRE) {
     'use strict';
 
     this.basepath = function (uri) {

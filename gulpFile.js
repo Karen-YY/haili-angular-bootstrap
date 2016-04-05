@@ -5,7 +5,9 @@
 	uglify 			= 			require('gulp-uglify'),				// 压缩 js
 	cssnano 		= 			require('gulp-cssnano'),			// 压缩 css
 	plumber 		= 			require('gulp-plumber'),			// pipe出错后跳过任务
-	del 			= 			require('del');						// 删除文件/文件夹
+	connect 		= 			require('gulp-connect'),			// server
+	del 			= 			require('del'),						// node 的删除文件库
+	q 				= 			require('q');						// node 的异步处理库
 
 // ----------------------
 // 路径变量
@@ -16,6 +18,7 @@ var src = {
 	tpl				: 			'src/tpl/**/*.html',				// 模版
 	lib				: 			require('./lib/lib.json'),			// 所依赖的外部框架
 	img				:			'src/img/**',						// 图片文件
+	all				:			'src/**/*',							// 所有文件
 	less			: 			'src/less/*.less',					// less文件
 //	jsWatch: 'src/js/**/*.js',										// 监听 js文件
 	lessWatch		: 			'src/less/**/*.less'				// 监听 less文件
@@ -43,17 +46,19 @@ gulp.task('default', ['build']);
 var build_tasks 	= 	['js', 'css', 'img', 'tpl', 'lib'];			// 发布任务
 var dev_tasks 		= 	['js-dev', 'css-dev', 'img', 'tpl', 'lib'];	// 开发任务
 
-gulp.task('watch', function() {										// watch 是开发环境
+gulp.task('watch', ['connect'], function() {						// watch 是开发环境
 	console.log('deleting files...');
 
 	del([dest.all]).then(function() {								// 先清空
 		console.log('Done! Building tasks started...');
+
 		gulp.start(dev_tasks);										// 先构建一次
 		gulp.start('lib');											// 压缩 js 所依赖的外部框架
-		gulp.watch(src.js, ['js-dev']);
-		gulp.watch(src.lessWatch, ['css-dev']);
-		gulp.watch(src.img, ['img']);
-		gulp.watch(src.tpl, ['tpl']);
+
+		gulp.watch(src.js, ['js-dev', 'reload']);		// 同步执行 js-dev 后才执行 reload
+		gulp.watch(src.lessWatch, ['css-dev', 'reload']);
+		gulp.watch(src.img, ['img', 'reload']);
+		gulp.watch(src.tpl, ['tpl', 'reload']);
 	});
 });
 
@@ -72,7 +77,7 @@ gulp.task('build', function() {
 // ----------------------
 // js 发布环境
 gulp.task('js', function() {
-	return gulp.src(src.js)
+	return gulp.src(src.js)											// 返回 gulp 流对象
 		.pipe(sourcemaps.init())									// 插件需要在 init 和 write 之间
 		.pipe(concat(output.jsApp))									// 合并js
 		.pipe(uglify())												// 混淆js
@@ -82,10 +87,15 @@ gulp.task('js', function() {
 
 // js-dev 开发环境, 不用混淆, 利于调试
 gulp.task('js-dev', function() {
-	return gulp.src(src.js)
+	var deferred = q.defer();
+
+	gulp.src(src.js)
 		.pipe(plumber())											// 出错就跳过那个文件
 		.pipe(concat(output.jsApp))									// 合并js
 		.pipe(gulp.dest(dest.js));
+
+	deferred.resolve();
+	return deferred.promise;										// 返回一个promise对象
 });
 
 // 编译 less
@@ -100,7 +110,8 @@ gulp.task('css', function() {
 
 // 编译 less-dev 开发环境, 不用压缩, 利于调试
 gulp.task('css-dev', function() {
-	return gulp.src(src.less)
+	var deferred = q.defer();
+	gulp.src(src.less)
 		//.pipe(plumber({
 		//	errorHandler: function() {
 		//		console.log('文件编译出错了...');
@@ -109,6 +120,9 @@ gulp.task('css-dev', function() {
 		.pipe(plumber())
 		.pipe(less())												// 编译less
 		.pipe(gulp.dest(dest.css));
+
+	deferred.resolve();
+	return deferred.promise;										// 返回一个promise对象
 });
 
 // img
@@ -130,4 +144,26 @@ gulp.task('lib', function() {
 		.pipe(concat(output.jsLib))
 		.pipe(sourcemaps.write('.'))
 		.pipe(gulp.dest(dest.js));
+});
+
+// server
+gulp.task('connect', function () {
+	connect.server({
+		port: 8008,
+		livereload: true											// 自动刷新
+	});
+});
+
+gulp.task('reload', function() {
+	var deferred = q.defer();
+
+	setTimeout(function() {
+		gulp.src('./index.html')									// 注意是当前路径
+			.pipe(connect.reload());
+		deferred.resolve();
+
+	}, 100);
+
+	return deferred.promise;										// 返回一个promise对象
+
 });

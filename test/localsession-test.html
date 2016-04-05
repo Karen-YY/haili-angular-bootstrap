@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html ng-app="app">
+
+<head>
+    <script src="/lib/angular/angular.js"></script>
+    <script src="/lib/angular-ngStorage/ngStorage.min.js"></script>
+    <script src="/lib/angular-ui-router/angular-ui-router.js"></script>
+
+    <script>
+        angular
+
+                .module('app', [
+                    'ngStorage',
+                    'ui.router'
+                ])
+
+                .config(['$stateProvider', '$urlRouterProvider', function ($stateProvider, $urlRouterProvider) {
+                    'use strict';
+
+                    $urlRouterProvider.otherwise('test');
+
+                    $stateProvider
+                            .state('test', {
+                                url: 'test',
+                                templateUrl: 'test.html'
+                            })
+                            .state('test2', {
+                                url: 'test2',
+                                templateUrl: 'test2.html'
+                            })
+                    ;
+                }])
+
+                .run(function ($rootScope, $state, $stateParams) {
+
+                    $rootScope.$state = $state;
+                    $rootScope.$stateParams = $stateParams;
+
+
+                    console.log($rootScope.info);
+
+                    // 路由过滤器, 用来认证权限
+                    $rootScope.$on('$stateChangeStart', function (event, toState, toParams, fromState, fromParams) {
+
+                        console.log($rootScope.info);
+
+                    });
+                })
+
+                .controller('Ctrl', function ($state, $rootScope, $sessionStorage) {
+                    $rootScope.info = $sessionStorage;
+
+                    $rootScope.addJunk = function () {
+                        $sessionStorage.junk = {
+                            string: 'I\'m a string!',
+                            number: 123e-5,
+                            float: 1.23456789 - (1.23456789 % 0.2),
+                            boolean: true,
+                            object: {
+                                array: [
+                                    [0],
+                                    ['1', '2']
+                                ]
+                            },
+                            null: null,
+                            infinity: Infinity,
+                            nan: NaN,
+                            undefined: undefined,
+                            function: function () {
+                                return false;
+                            }
+                        };
+                    };
+
+
+                    // read / write
+                    $rootScope.$storage = $sessionStorage.$default({
+                        x: 42
+                    });
+
+                    // delete
+                    // delete $scope.$storage.x;
+
+                    // delete all
+                    // reset()
+
+                });
+
+
+    </script>
+</head>
+
+<body ng-controller="Ctrl">
+<button ng-click="addJunk()">Add Junk</button>
+<div>{{info.junk}}</div>
+
+<div ui-view=""></div>
+<button ui-sref="test">test</button>
+<div>{{$storage.x}}</div>
+
+<button ui-sref="test2">test1</button>
+<div>{{$storage.x}}</div>
+
+</body>
+
+</html>

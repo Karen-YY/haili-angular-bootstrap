@@ -9,7 +9,7 @@
  * 依赖 HttpService service
  */
 App
-    .service('authService', ['$rootScope', 'httpBuffer', function($rootScope, httpBuffer) {
+    .service('authService', ['$rootScope', 'httpBuffer', 'sessionService', function($rootScope, httpBuffer, sessionService) {
         'use strict';
 
         /**
@@ -38,5 +38,6 @@ App
             httpBuffer.rejectAll(reason);
             $rootScope.$broadcast('event:auth-loginCancelled', data);
         };
+
     }])
 ;

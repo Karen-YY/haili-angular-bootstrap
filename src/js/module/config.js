@@ -83,15 +83,4 @@ App
         $httpProvider.defaults.headers.get['Cache-Control'] = max_age;
     }])
 
-    // 拦截器设置
-    .config(['$httpProvider', function($httpProvider) {
-
-        $httpProvider.interceptors.push('authInterceptor');
-        //$httpProvider.interceptors.push([
-        //    '$injector',
-        //    function ($injector) {
-        //        return $injector.get('authInterceptor'); // 延迟注入, 否则注入不进来...
-        //    }
-        //]);
-    }])
 ;

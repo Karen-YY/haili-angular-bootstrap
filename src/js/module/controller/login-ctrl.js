@@ -5,8 +5,8 @@
  * @time: 2016年4月1日 12:45:09
  =========================================================*/
 
-App.controller('LoginCtrl', ['$http', '$state', '$scope', '$rootScope', 'APP_AUTH_EVENT',
-    function($http, $state, $scope, $rootScope, APP_AUTH_EVENT) {
+App.controller('LoginCtrl', ['$http', '$state', '$scope', '$rootScope', '$localStorage', 'APP_AUTH_EVENT',
+    function($http, $state, $scope, $rootScope, $sessionStorage, APP_AUTH_EVENT) {
 
         $scope.name = '';
 
@@ -25,13 +25,20 @@ App.controller('LoginCtrl', ['$http', '$state', '$scope', '$rootScope', 'APP_AUT
 
             if ($scope.loginForm.$valid) { // 校验表单
 
-                $rootScope.sessionInfo.user = $scope.account.user;
-                $rootScope.sessionInfo.token = new Date().getTime(); // 这个也是后台获取
+                $rootScope.$storage = $sessionStorage.$default({
+                    user: $scope.account.user,
+                    token: new Date().getTime()
+                });
+
+                //$rootScope.sessionInfo.user = $scope.account.user;
+                //$rootScope.sessionInfo.token = new Date().getTime(); // 这个也是后台获取
 
                 $state.go('app.home');
+
                 $http.post(url, params)
                     .then(function (res) {
                         // TODO ...
+                        $rootScope.$broadcast(APP_AUTH_EVENT.loginSuccess);
                     }, function () {
                         // 失败了..
                         // TODO ...
@@ -43,5 +50,5 @@ App.controller('LoginCtrl', ['$http', '$state', '$scope', '$rootScope', 'APP_AUT
                 $scope.loginForm.account_psw.$dirty = true;
             }
 
-    };
+        };
 }]);

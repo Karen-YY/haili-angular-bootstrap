@@ -25,8 +25,16 @@ App
         'forbidden':              'event:auth-forbidden'        // 403 服务器拒绝
     })
 
+    // 角色权限
+    .constant('APP_USER_ROLE', {
+        all:                      '*',
+        admin:                    'admin',
+        editor:                   'editor',
+        guest:                    'guest'
+    })
+
     // 全局颜色
-    .constant('APP_COLORS', {
+    .constant('APP_COLOR', {
         'primary':                '#5d9cec',
         'success':                '#27c24c',
         'info':                   '#23b7e5',
@@ -59,7 +67,7 @@ App
     })
 
     // 定义依赖的模块
-    .constant('APP_REQUIRES', {
+    .constant('APP_REQUIRE', {
         // jquery 模块
         // ...
 

@@ -788,21 +788,20 @@ label + .form-control + .parsley-errors-list + .form-control-feedback {
   position: fixed;
   width: 100%;
   height: 56px;
-  z-index: 101;
+  z-index: 120;
 }
 .wrapper > .left-bar {
   position: fixed;
-  width: 237px;
+  width: 220px;
   left: 0;
   top: 56px;
   bottom: 0;
   border-right: 1px solid;
-  overflow-y: scroll;
-  z-index: 99;
+  z-index: 110;
 }
 @media only screen and (max-width: 991px) {
   .wrapper > .left-bar {
-    width: 87px;
+    width: 70px;
   }
 }
 @media only screen and (max-width: 479px) {
@@ -924,6 +923,9 @@ label + .form-control + .parsley-errors-list + .form-control-feedback {
    Component: src/less/frame/sidebar.less
    @author: haili042
  ========================================================================== */
+#sideBarLeft {
+  height: 100%;
+}
 #sideBarLeft a {
   color: #fff;
 }
@@ -934,14 +936,20 @@ label + .form-control + .parsley-errors-list + .form-control-feedback {
 #sideBarLeft li {
   list-style-type: none;
 }
-#sideBarLeft .ul-l1 {
+#sideBarLeft > .sbl-scroll {
+  height: 100%;
+  overflow-y: scroll;
+}
+#sideBarLeft > .sbl-scroll > .sbl-mask {
+  height: 100%;
+}
+#sideBarLeft > .sbl-scroll > .sbl-mask .ul-l1 {
   margin-top: 20px;
 }
-#sideBarLeft .ul-l1 .li-l1 {
-  position: relative;
+#sideBarLeft > .sbl-scroll > .sbl-mask .ul-l1 .li-l1 {
   line-height: 34px;
 }
-#sideBarLeft .ul-l1 .li-l1 .ul-l2 {
-  position: absolute;
-  z-index: 101px;
+#sideBarLeft > .sbl-scroll > .sbl-mask .ul-l1 .li-l1 .ul-l2 {
+  overflow-y: auto;
+  background-color: #009998;
 }

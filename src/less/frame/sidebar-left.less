@@ -2,8 +2,12 @@
    Component: src/less/frame/sidebar.less
    @author: haili042
  ========================================================================== */
+
+
 @h-l1:        34px;
 @h-l2:        26px;
+@scroller-width:            17px; // 为了不显示滚动条
+
 
 #sideBarLeft {
   a {
@@ -17,18 +21,34 @@
     list-style-type: none;
   }
 
-  .ul-l1 {
-    margin-top: 20px;
+  height: 100%;
 
-    .li-l1 {
-      position: relative;
-      line-height: @h-l1;
+  > .sbl-scroll {
+    height: 100%;
+    overflow-y: scroll;
 
-      .ul-l2 {
-        position: absolute;
-        z-index: 101px;
+
+    > .sbl-mask {
+      height: 100%;
+      //position: fixed;
+
+      .ul-l1 {
+        margin-top: 20px;
+
+        .li-l1 {
+          line-height: @h-l1;
+
+          .ul-l2 {
+            //position: absolute;
+            //margin-left: 200px;
+            overflow-y: auto;
+            background-color: #009998;
+            //width: 200px;
+          }
+        }
       }
     }
   }
+
 
 }

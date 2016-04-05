@@ -37,8 +37,7 @@ App
              * 请求之前执行
              * */
             request: function(config) {
-                config.headers['TOKEN'] = $rootScope.sessionInfo.token;
-                console.log(config);
+                //config.headers['TOKEN'] = $rootScope.sessionInfo.token;
                 return config; // 必须返回 promise 对象或 config 对象
             },
 
