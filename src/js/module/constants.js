@@ -14,14 +14,15 @@ App
         'year':                   '2016'
     })
 
-    // 登录权限信息
-    .constant('APP_AUTH', {
-        'loginSuccess':           'auth-login-success',
-        'loginFailed':            'auth-login-failed',
-        'logoutSuccess':          'auth-logout-success',
-        'logoutFailed':           'auth-logout-failed',
-        'sessionTimeout':         'auth-session-timeout',
-        'noAuth':                 'auth-not-auth'
+    // 登录权限事件
+    .constant('APP_AUTH_EVENT', {
+        'loginSuccess':           'event:auth-login-success',
+        'loginFailed':            'event:auth-login-failed',
+        'logoutSuccess':          'event:auth-logout-success',
+        'logoutFailed':           'event:auth-logout-failed',
+        'sessionTimeout':         'event:auth-session-timeout',
+        'noAuth':                 'event:auth-no-auth',         // 401 没有权限
+        'forbidden':              'event:auth-forbidden'        // 403 服务器拒绝
     })
 
     // 全局颜色

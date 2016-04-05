@@ -5,8 +5,8 @@
  * @time: 2016年4月1日 12:45:09
  =========================================================*/
 
-App.controller('LoginCtrl', ['$http', '$state', '$scope', '$rootScope', 'APP_AUTH',
-    function($http, $state, $scope, $rootScope, APP_AUTH) {
+App.controller('LoginCtrl', ['$http', '$state', '$scope', '$rootScope', 'APP_AUTH_EVENT',
+    function($http, $state, $scope, $rootScope, APP_AUTH_EVENT) {
 
         $scope.name = '';
 
@@ -26,6 +26,7 @@ App.controller('LoginCtrl', ['$http', '$state', '$scope', '$rootScope', 'APP_AUT
             if ($scope.loginForm.$valid) { // 校验表单
 
                 $rootScope.sessionInfo.user = $scope.account.user;
+                $rootScope.sessionInfo.token = new Date().getTime(); // 这个也是后台获取
 
                 $state.go('app.home');
                 $http.post(url, params)
@@ -35,7 +36,7 @@ App.controller('LoginCtrl', ['$http', '$state', '$scope', '$rootScope', 'APP_AUT
                         // 失败了..
                         // TODO ...
                         // 身份认证会影响整个应用, 所以需要广播事件
-                        $rootScope.$broadcast(APP_AUTH.loginFailed);
+                        $rootScope.$broadcast(APP_AUTH_EVENT.loginFailed);
                     });
             } else {
                 $scope.loginForm.account_user.$dirty = true;

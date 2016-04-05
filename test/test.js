@@ -67,7 +67,7 @@ $stateProvider
         }
     });
     */
-
+/*
 
 var arr = [
         [0,0,8,0,0],
@@ -122,3 +122,7 @@ function walk(i, j) {
 
 walk(0, 0);
 console.log(res);
+*/
+
+
+

@@ -5,7 +5,7 @@
  * @time: 2016年4月1日 12:43:51
  =========================================================*/
 
-App.service('SessionService', function() {
+App.service('sessionService', function() {
 
     // 创建 session
     this.create = function (sessionId, userId, userRole) {
