@@ -4,9 +4,9 @@
  ========================================================================== */
 
 
-@h-l1:        34px;
-@h-l2:        26px;
-@scroller-width:            17px; // 为了不显示滚动条
+@l1-ht:        34px;
+@l2-ht:        26px;
+@scroller-wd:            17px; // 滚动条宽度
 
 
 #sideBarLeft {
@@ -22,21 +22,26 @@
   }
 
   height: 100%;
+  overflow-x: hidden;
+  overflow-y: scroll;
+  -webkit-overflow-scrolling: touch;
 
   > .sbl-scroll {
     height: 100%;
-    overflow-y: scroll;
-
+    position: relative;
+    padding-right: @scroller-wd;
 
     > .sbl-mask {
       height: 100%;
       //position: fixed;
+      //margin-right: -@scroller-width;
+      z-index: @z-index-base + 11;
 
       .ul-l1 {
         margin-top: 20px;
 
         .li-l1 {
-          line-height: @h-l1;
+          line-height: @l1-ht;
 
           .ul-l2 {
             //position: absolute;

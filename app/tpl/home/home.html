@@ -1,13 +1,27 @@
-<div>home page</div>
-<div>
-    <a ui-sref="page.login">去登录</a>
+<!-- 标题 -->
+<div class="page-header">
+    <h1>
+        <small class="ml-lg">页面标题</small>
+    </h1>
 </div>
 
-<div>
-    <a ui-sref="app.content({page: 'login'})">更换内容</a>
+<!-- 主要内容 -->
+<div class="container-fluid">
+    <div>home page</div>
+    <div>
+        <a ui-sref="page.login">去登录</a>
+    </div>
+    <div>
+        <a ui-sref="app.example-form">params</a>
+    </div>
+    <div>
+        <a ui-sref="app.test({tpl: '404'})">404</a>
+    </div>
+
+    <div>
+        user: {{$storage.user}}
+    </div>
+
+
 </div>
 
-<div>
-    user: {{$storage.user}}
-</div>
-12321

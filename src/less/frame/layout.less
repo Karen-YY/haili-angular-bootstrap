@@ -5,14 +5,19 @@
  ========================================================================== */
 
 // 变量
-@header-height:             56px;
-@left-bar-width:            220px;
-@left-bar-width-collapsed:  70px;
-@right-bar-width:           200px;
-@footer-height:             60px;
+@header-ht:               56px;
+@left-bar-wd:             220px;
+@left-bar-wd-collapsed:   70px;
+@right-bar-wd:            200px;
+@footer-ht:               60px;
 
 // z-index
-@z-index-main-section:      100;
+@z-index-base:            100;
+
+html, body {
+  font-family: 'Hiragino Sans GB', 'Microsoft YaHei', 微软雅黑, Arial, sans-serif;
+}
+
 
 //
 // pc 圣杯布局
@@ -28,23 +33,24 @@
   // 顶部导航栏
   > .header {
     position: fixed;
+    top: 0;
     width: 100%;
-    height: @header-height;
-    z-index: @z-index-main-section + 20;
+    height: @header-ht;
+    z-index: @z-index-base + 20;
   }
 
   // 左侧菜单栏
   > .left-bar {
     position: fixed;
-    width: @left-bar-width;
+    width: @left-bar-wd;
     left: 0;
-    top: @header-height;
+    top: @header-ht;
     bottom: 0;
     border-right: 1px solid;
 
-    z-index: @z-index-main-section + 10;
+    z-index: @z-index-base + 10;
     @media @upto-desktop {
-      width: @left-bar-width-collapsed;
+      width: @left-bar-wd-collapsed;
     }
     @media @upto-mobile {
       display: none;
@@ -60,13 +66,13 @@
   // 主内容区域
   > .main-content {
     position: relative;
-    margin-left: @left-bar-width;
+    margin-left: @left-bar-wd;
     height: 100%;
-    top: @header-height;
-    margin-bottom: @header-height !important; // 确保 footer 的位置
-    z-index: @z-index-main-section;
+    margin-top: @header-ht;
+    margin-bottom: @header-ht !important; // 确保 footer 的位置
+    z-index: @z-index-base;
     @media @upto-desktop {
-      margin-left: @left-bar-width-collapsed;
+      margin-left: @left-bar-wd-collapsed;
     }
     @media @upto-mobile {
       margin-left: 0;
@@ -76,14 +82,14 @@
   // 底部栏
   > .footer {
     position: absolute;
-    margin-left: @left-bar-width;
+    margin-left: @left-bar-wd;
     left: 0;
     right: 0;
-    height: @footer-height;
+    height: @footer-ht;
     border-top: 1px solid;
-    z-index: @z-index-main-section;
+    z-index: @z-index-base;
     @media @upto-desktop {
-      margin-left: @left-bar-width-collapsed;
+      margin-left: @left-bar-wd-collapsed;
     }
     @media @upto-mobile {
       margin-left: 0;

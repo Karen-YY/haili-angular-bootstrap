@@ -778,6 +778,10 @@ label + .form-control + .parsley-errors-list + .form-control-feedback {
    总体布局
    @author: haili042
  ========================================================================== */
+html,
+body {
+  font-family: "微软雅黑", Helvetica, Arial, sans-serif;
+}
 .wrapper {
   position: relative;
   width: 100%;
@@ -786,6 +790,7 @@ label + .form-control + .parsley-errors-list + .form-control-feedback {
 }
 .wrapper > .header {
   position: fixed;
+  top: 0;
   width: 100%;
   height: 56px;
   z-index: 120;
@@ -813,7 +818,7 @@ label + .form-control + .parsley-errors-list + .form-control-feedback {
   position: relative;
   margin-left: 220px;
   height: 100%;
-  top: 56px;
+  margin-top: 56px;
   margin-bottom: 56px !important;
   z-index: 100;
 }
@@ -875,7 +880,6 @@ label + .form-control + .parsley-errors-list + .form-control-feedback {
   left: 0;
   right: 0;
   bottom: 0;
-  font-family: "微软雅黑", Helvetica, Arial, sans-serif;
 }
 @media only screen and (min-width: 768px) {
   .login-wrapper {
@@ -925,6 +929,9 @@ label + .form-control + .parsley-errors-list + .form-control-feedback {
  ========================================================================== */
 #sideBarLeft {
   height: 100%;
+  overflow-x: hidden;
+  overflow-y: scroll;
+  -webkit-overflow-scrolling: touch;
 }
 #sideBarLeft a {
   color: #fff;
@@ -938,10 +945,12 @@ label + .form-control + .parsley-errors-list + .form-control-feedback {
 }
 #sideBarLeft > .sbl-scroll {
   height: 100%;
-  overflow-y: scroll;
+  position: relative;
+  padding-right: 17px;
 }
 #sideBarLeft > .sbl-scroll > .sbl-mask {
   height: 100%;
+  z-index: 111;
 }
 #sideBarLeft > .sbl-scroll > .sbl-mask .ul-l1 {
   margin-top: 20px;

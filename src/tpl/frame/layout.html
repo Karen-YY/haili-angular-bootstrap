@@ -12,11 +12,9 @@
 
     <!-- main content -->
     <section class="main-content">
-        <div style="width: 100%;height: 1000px;">
-            <div ui-view=""></div>
-        </div>
+        <div ui-view=""></div>
     </section>
 
     <!-- footer bar -->
-    <footer class="footer"></footer>
+    <footer class="footer" ng-include="'app/tpl/frame/frame-footer.html'"></footer>
 </div>

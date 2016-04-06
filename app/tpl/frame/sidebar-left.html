@@ -3,14 +3,14 @@
         <div class="sbl-mask">
             <ul class="ul-l1">
                 <li class="li-l1" ng-repeat="d in menuDate">
-                    <a ui-sref="page.login">
+                    <a ui-sref="app.home">
                         <i class="fa fa-cube"></i>
                         {{d.title}}
                     </a>
 
                     <ul class="ul-l2">
                         <li class="li-l2" ng-repeat="dd in d.children">
-                            <a ui-sref="app.home">{{dd.title}}1</a>
+                            <a ui-sref="dd.url">{{dd.title}}</a>
                         </li>
                     </ul>
                 </li>

@@ -5,19 +5,19 @@
     "url": "",
     "id": "",
     "children": [{
-      "title": "l21-title1",
+      "title": "主页",
       "icon": "",
-      "url": "",
+      "url": "app.home",
       "id": ""
     }, {
-      "title": "l2-title2",
+      "title": "表单",
       "icon": "",
-      "url": "",
+      "url": "app.example-form",
       "id": ""
     },{
-        "title": "l2-title3",
+        "title": "登录",
         "icon": "",
-        "url": "",
+        "url": "page.login",
         "id": ""
     }]
   },
@@ -71,14 +71,14 @@
     "url": "",
     "id": "",
     "children": [{
-      "title": "l21-title1",
+      "title": "主页",
       "icon": "",
-      "url": "",
+      "url": "app.home",
       "id": ""
     }, {
-      "title": "l2-title2",
+      "title": "表单",
       "icon": "",
-      "url": "",
+      "url": "app",
       "id": ""
     },{
         "title": "l2-title3",
