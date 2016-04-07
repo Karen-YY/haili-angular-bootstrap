@@ -8,8 +8,8 @@
 	connect 		= 			require('gulp-connect'),			// server
 	del 			= 			require('del'),						// node 的删除文件库
 	q 				= 			require('q'),						// node 的异步处理库
-	jshint			= 			require('gulp-jshint'),				// jshint 代码检测
-	mocha			= 			require('gulp-mocha')				// jshint 代码检测
+	jshint			= 			require('gulp-jshint')				// jshint 代码检测
+	//karma			= 			require('karma')					// karma 测试驱动, 让测试在浏览器里运行
 ;
 
 // ----------------------
