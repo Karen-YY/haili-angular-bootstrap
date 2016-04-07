@@ -42,7 +42,7 @@ App.service('httpBuffer', ['$injector', function($injector) {
         return buffer.push({
             config: config,
             deferred: deferred
-        })
+        });
     };
 
     /**
@@ -73,7 +73,7 @@ App.service('httpBuffer', ['$injector', function($injector) {
             cfg = updater(buffer[i].config);
 
             if (cfg !== false) {
-                retryHttpRequest(cfg, buffer[i].deferred)
+                retryHttpRequest(cfg, buffer[i].deferred);
             }
         }
 

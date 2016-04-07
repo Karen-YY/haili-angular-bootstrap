@@ -16,7 +16,7 @@ App.provider('routeHelper', ['APP_REQUIRE', function(APP_REQUIRE) {
         var args = arguments;
         return {
             deps: ['$ocLazyLoad', '$q', function ($oLL, $q) {
-                var promise = $q.when(1)
+                var promise = $q.when(1);
             }]
         };
     };

@@ -7,7 +7,10 @@
 	plumber 		= 			require('gulp-plumber'),			// pipe出错后跳过任务
 	connect 		= 			require('gulp-connect'),			// server
 	del 			= 			require('del'),						// node 的删除文件库
-	q 				= 			require('q');						// node 的异步处理库
+	q 				= 			require('q'),						// node 的异步处理库
+	jshint			= 			require('gulp-jshint'),				// jshint 代码检测
+	mocha			= 			require('gulp-mocha')				// jshint 代码检测
+;
 
 // ----------------------
 // 路径变量
@@ -43,8 +46,8 @@ var output = {
 // 任务入口
 // ----------------------
 gulp.task('default', ['build']);
-var build_tasks 	= 	['js', 'css', 'img', 'tpl', 'lib'];			// 发布任务
-var dev_tasks 		= 	['js-dev', 'css-dev', 'img', 'tpl', 'lib'];	// 开发任务
+var build_tasks = ['js', 'css', 'img', 'tpl', 'lib'];				// 发布任务
+var dev_tasks = ['js-dev', 'css-dev', 'img', 'tpl', 'lib'];			// 开发任务
 
 gulp.task('watch', ['connect'], function() {						// watch 是开发环境
 	console.log('deleting files...');
@@ -79,6 +82,8 @@ gulp.task('build', function() {
 gulp.task('js', function() {
 	return gulp.src(src.js)											// 返回 gulp 流对象
 		.pipe(sourcemaps.init())									// 插件需要在 init 和 write 之间
+		.pipe(jshint())
+		.pipe(jshint.reporter('default'))							// 默认规则
 		.pipe(concat(output.jsApp))									// 合并js
 		.pipe(uglify())												// 混淆js
 		.pipe(sourcemaps.write('.'))								// 插件需要在 init 和 write 之间
@@ -91,6 +96,8 @@ gulp.task('js-dev', function() {
 
 	gulp.src(src.js)
 		.pipe(plumber())											// 出错就跳过那个文件
+		.pipe(jshint())
+		.pipe(jshint.reporter('default'))							// 默认规则
 		.pipe(concat(output.jsApp))									// 合并js
 		.pipe(gulp.dest(dest.js));
 
@@ -112,11 +119,6 @@ gulp.task('css', function() {
 gulp.task('css-dev', function() {
 	var deferred = q.defer();
 	gulp.src(src.less)
-		//.pipe(plumber({
-		//	errorHandler: function() {
-		//		console.log('文件编译出错了...');
-		//	}
-		//}))											// 出错就跳过那个文件
 		.pipe(plumber())
 		.pipe(less())												// 编译less
 		.pipe(gulp.dest(dest.css));

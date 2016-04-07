@@ -123,6 +123,21 @@ function walk(i, j) {
 walk(0, 0);
 console.log(res);
 */
+var assert = require('assert');
+
+// describe块称为"测试套件"（test suite）
+describe('Array 测试', function() {
+
+    // 测试脚本里面应该包括一个或多个describe块，每个describe块应该包括一个或多个it块。
+    describe('#indexOf() 方法测试', function () {
+
+        // it块称为"测试用例"（test case）
+        it('should return -1 when the value is not present', function () {
+            assert.equal(-1, [1,2,3].indexOf(5));
+            assert.equal(-1, [1,2,3].indexOf(0));
+        });
+    });
+});
 
 
 
