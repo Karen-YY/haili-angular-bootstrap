@@ -8,7 +8,8 @@
 	connect 		= 			require('gulp-connect'),			// server
 	del 			= 			require('del'),						// node 的删除文件库
 	q 				= 			require('q'),						// node 的异步处理库
-	jshint			= 			require('gulp-jshint')				// jshint 代码检测
+	jshint			= 			require('gulp-jshint'),				// jshint 代码检测
+	htmlhint		= 			require('gulp-htmlhint')			// html 代码检测
 	//karma			= 			require('karma')					// karma 测试驱动, 让测试在浏览器里运行
 ;
 
@@ -169,4 +170,14 @@ gulp.task('reload', function() {
 
 	return deferred.promise;										// 返回一个promise对象
 
+});
+
+// check
+gulp.task('check', function() {
+	gulp.src(src.js)
+		.pipe(jshint());
+
+	gulp.src(src.tpl)
+		.pipe(htmlhint())
+	;
 });

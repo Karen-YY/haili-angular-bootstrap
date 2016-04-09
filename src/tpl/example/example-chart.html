@@ -8,7 +8,7 @@
 <!-- 主要内容 -->
 <div class="container-fluid" ng-controller="ChartCtrl">
 
-  <div class="row ml0 mr0">
+  <div class="row m0">
     <div class="panel panel-default">
       <div class="panel-heading">
         <h4>
@@ -18,7 +18,7 @@
       </div>
       <div class="panel-body table-responsive">
         <div class="table">
-          <chart class="col-xs-12" chartconfig="barChart"></chart>
+          <chart class="col-xs-12 max-wd" chartconfig="barChart"></chart>
         </div>
       </div>
       <div class="panel-footer">
@@ -38,11 +38,8 @@
         </div>
         <div class="panel-body table-responsive">
           <div class="table">
-            <chart class="col-xs-12" chartconfig="lineChart"></chart>
+            <chart class="col-xs-12" chartconfig="verticalBarChart"></chart>
           </div>
-        </div>
-        <div class="panel-footer">
-          <button type="submit" class="btn btn-primary center-block">submit</button>
         </div>
       </div>
     </div>
@@ -60,12 +57,24 @@
             <chart class="col-xs-12" chartconfig="ovalChart"></chart>
           </div>
         </div>
-        <div class="panel-footer">
-          <button type="submit" class="btn btn-primary center-block">submit</button>
-        </div>
       </div>
     </div>
   </div>
 
+  <div class="row m0">
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h4>
+          柱状图
+        </h4>
+        <hr class="m0"/>
+      </div>
+      <div class="panel-body table-responsive">
+        <div class="table">
+          <chart class="col-xs-12 max-wd" chartconfig="lineChart"></chart>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
 

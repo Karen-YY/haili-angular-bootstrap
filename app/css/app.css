@@ -3534,6 +3534,32 @@ fieldset .form-group {
    媒体查询
    @author: haili042
  ==========================================================================*/
+.min-wd {
+  width: 100%;
+}
+.max-wd {
+  width: 100%;
+}
+@media only screen and (min-width: 768px) {
+  .min-wd {
+    width: 768px;
+  }
+}
+@media only screen and (min-width: 480px) {
+  .min-wd {
+    width: 480px;
+  }
+}
+@media only screen and (max-width: 767px) {
+  .max-wd {
+    width: 1199px;
+  }
+}
+@media only screen and (max-width: 479px) {
+  .max-wd {
+    width: 991px;
+  }
+}
 /* ========================================================================
    Component: src/less/app/form-element.less
    @author: haili042

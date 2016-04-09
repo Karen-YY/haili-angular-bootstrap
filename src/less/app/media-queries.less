@@ -35,3 +35,34 @@
 @upto-mobile:                             ~"only screen and (max-width: @{mq-up-to-mobile})";
 
 @landscape:                               ~"(max-device-width: @{mq-tablet}) and (orientation:landscape)";
+
+// 少于一定宽度的最小宽度
+.min-wd {
+  width: 100%;
+}
+.max-wd {
+  width: 100%;
+}
+
+@media @tablet {
+  .min-wd {
+    width: @screen-sm-min;
+  }
+}
+@media @mobile {
+  .min-wd {
+    width: @screen-phone;
+  }
+}
+
+@media @upto-tablet {
+  .max-wd {
+    width: @mq-up-to-desktop-lg;
+  }
+}
+@media @upto-mobile {
+  .max-wd {
+    width: @mq-up-to-desktop;
+  }
+}
+  
