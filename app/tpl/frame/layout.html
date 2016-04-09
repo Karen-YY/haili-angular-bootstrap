@@ -1,20 +1,13 @@
-<div class="wrapper">
-
-    <!-- top navbar -->
-    <header class="header" ng-include="'app/tpl/frame/navbar-top.html'">
-    </header>
-
-    <!-- left menu bar -->
-    <aside class="left-bar" ng-include="'app/tpl/frame/sidebar-left.html'"></aside>
-
-    <!-- right config bar -->
-    <aside id="right-bar"></aside>
-
-    <!-- main content -->
-    <section class="main-content">
-        <div ui-view=""></div>
-    </section>
-
-    <!-- footer bar -->
-    <footer class="footer" ng-include="'app/tpl/frame/frame-footer.html'"></footer>
-</div>
+<!-- top navbar-->
+<header ng-include="'app/tpl/frame/navbar-top.html'" class="topnavbar-wrapper"></header>
+<!-- sidebar-->
+<aside ng-include="'app/tpl/frame/sidebar-left.html'" ng-controller="SideBarLeftCtrl" class="aside"></aside>
+<!-- offsidebar-->
+<aside ng-include="" class="offsidebar"></aside>
+<!-- Main section-->
+<section>
+  <!-- Page content-->
+  <div ui-view="" autoscroll="false" ng-class="app.viewAnimation" class="content-wrapper"></div>
+</section>
+<!-- Page footer-->
+<footer ng-include="'app/tpl/frame/frame-footer.html'"></footer>

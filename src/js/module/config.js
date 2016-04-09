@@ -33,17 +33,17 @@ App
                 templateUrl: 'app/tpl/home/home.html'
             })
 
-
-            //
-            // example
+            // examples
             // -----------------------------------
             .state('app.example-form', {
                 url: '/example-form',
                 templateUrl: 'app/tpl/example/example-form.html'
             })
 
-
-
+            .state('app.example-chart', {
+                url: '/example-chart',
+                templateUrl: 'app/tpl/example/example-chart.html'
+            })
 
             //.state('app.example', {
             //    //url: '/{tpl: [0-9]{1,4}}', // 匹配数字
@@ -59,7 +59,6 @@ App
             //    }
             //})
 
-            //
             // 单页路由
             // -----------------------------------
             .state('page', {

@@ -144,6 +144,7 @@ gulp.task('lib', function() {
 	return gulp.src(src.lib)
 		.pipe(sourcemaps.init())
 		.pipe(concat(output.jsLib))
+		.pipe(uglify())
 		.pipe(sourcemaps.write('.'))
 		.pipe(gulp.dest(dest.js));
 });

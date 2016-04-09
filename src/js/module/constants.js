@@ -6,13 +6,6 @@
  =========================================================*/
 
 App
-    // 应用信息
-    .constant('APP_INFO', {
-        'name':                   'haili-ng-bstrp',
-        'title':                  'Haili042 ng Admin系统',
-        'description':            'haili042 angular bootstrap admin',
-        'year':                   '2016'
-    })
 
     // 登录权限事件
     .constant('APP_AUTH_EVENT', {

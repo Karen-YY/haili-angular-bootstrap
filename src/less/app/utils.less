@@ -41,6 +41,11 @@
 
 @border-color:          rgba(0,0,0,.12);
 
+// font
+@font-size-base:        14px;
+@text-sm:               @font-size-base * .85;
+@text-md:               @font-size-base * 1.9;
+@text-lg:               @font-size-base * 3;
 
 //
 // 统一宽度
@@ -177,7 +182,19 @@
 //
 // 文本样式
 // --------------------
+// Text size
+.text-sm { font-size: @text-sm; }
+.text-md { font-size: @text-md; }
+.text-lg { font-size: @text-lg; }
+
+// Text weight
+.text-thin   { font-weight: 100 !important; }
+.text-normal { font-weight: normal !important; }
+.text-bold   { font-weight: bold !important; }
+
+// Text others
 .text-nowrap { white-space: nowrap; }
+
 
 
 
@@ -403,4 +420,16 @@
   -moz-user-select: @select;
   -ms-user-select: @select; // IE10+
   user-select: @select;
+}
+
+// 清除伪元素
+.clearfix() {
+  &:before,
+  &:after {
+    content: " "; // 1
+    display: table; // 2
+  }
+  &:after {
+    clear: both;
+  }
 }

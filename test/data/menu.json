@@ -1,112 +1,122 @@
 [
   {
     "title": "l1-title1",
-    "icon": "",
-    "url": "",
+    "icon": "fa fa-home",
+    "url": "#",
     "id": "",
-    "children": [{
-      "title": "主页",
-      "icon": "",
-      "url": "app.home",
-      "id": ""
-    }, {
-      "title": "表单",
-      "icon": "",
-      "url": "app.example-form",
-      "id": ""
-    },{
+    "submenu": [
+      {
+        "title": "主页",
+        "url": "app.home",
+        "id": ""
+      },
+      {
+        "title": "表单",
+        "url": "app.example-form",
+        "id": ""
+      },
+      {
         "title": "登录",
-        "icon": "",
         "url": "page.login",
         "id": ""
-    }]
+      },
+      {
+        "title": "404",
+        "url": "page.404"
+      }
+    ]
   },
   {
-    "title": "l1-title1",
-    "icon": "",
-    "url": "",
-    "id": "",
-    "children": [{
-      "title": "l21-title1",
-      "icon": "",
-      "url": "",
-      "id": ""
-    }, {
-      "title": "l2-title2",
-      "icon": "",
-      "url": "",
-      "id": ""
-    },{
-        "title": "l2-title3",
-        "icon": "",
-        "url": "",
-        "id": ""
-    }]
+    "title": "Forms",
+    "url": "#",
+    "icon": "fa fa-desktop",
+    "submenu": [
+      {
+        "title": "Standard",
+        "url": "app.form-standard",
+        "translate": "sidebar.nav.form.STANDARD"
+      },
+      {
+        "title": "Extended",
+        "url": "app.form-extended",
+        "translate": "sidebar.nav.form.EXTENDED"
+      },
+      {
+        "title": "uiSelect",
+        "url": "app.form-uiselect"
+      }
+    ],
+    "translate": "sidebar.nav.form.FORM"
   },
   {
-    "title": "l1-title1",
-    "icon": "",
-    "url": "",
-    "id": "",
-    "children": [{
-      "title": "l21-title1",
-      "icon": "",
-      "url": "",
-      "id": ""
-    }, {
-      "title": "l2-title2",
-      "icon": "",
-      "url": "",
-      "id": ""
-    },{
-        "title": "l2-title3",
-        "icon": "",
-        "url": "",
-        "id": ""
-    }]
+    "title": "Charts",
+    "url": "#",
+    "icon": "fa fa-bar-chart",
+    "submenu": [
+      {
+        "title": "chart",
+        "url": "app.example-chart"
+      }
+    ],
+    "translate": "sidebar.nav.chart.CHART"
   },
   {
-    "title": "l1-title1",
-    "icon": "",
-    "url": "",
-    "id": "",
-    "children": [{
-      "title": "主页",
-      "icon": "",
-      "url": "app.home",
-      "id": ""
-    }, {
-      "title": "表单",
-      "icon": "",
-      "url": "app",
-      "id": ""
-    },{
-        "title": "l2-title3",
-        "icon": "",
-        "url": "",
-        "id": ""
-    }]
+    "title": "Tables",
+    "url": "#",
+    "icon": "fa fa-table",
+    "submenu": [
+      {
+        "title": "Extended",
+        "url": "app.table-extended",
+        "translate": "sidebar.nav.table.EXTENDED"
+      },
+      {
+        "title": "uiGrid",
+        "url": "app.table-uigrid"
+      },
+      {
+        "title": "Angular Grid",
+        "url": "app.table-angulargrid"
+      }
+    ],
+    "translate": "sidebar.nav.table.TABLE"
   },
   {
-    "title": "l1-title1",
-    "icon": "",
-    "url": "",
-    "id": "",
-    "children": [{
-      "title": "l21-title1",
-      "icon": "",
-      "url": "",
-      "id": ""
-    }, {
-      "title": "l2-title2",
-      "icon": "",
-      "url": "",
-      "id": ""
-    },{
-        "title": "l2-title3",
-        "icon": "",
-        "url": "",
-        "id": ""
-    }]
+    "title": "Multilevel",
+    "icon": "fa fa-folder-open-o",
+    "url": "app.multilevel",
+    "submenu": [
+      {
+        "title": "Level 1",
+        "url": "app.multilevel.level1",
+        "icon": "fa fa-folder",
+        "submenu": [
+          {
+            "title": "Level1 Item",
+            "url": "app.multilevel.level1.item",
+            "icon": "fa fa-file"
+          },
+          {
+            "title": "Level 2",
+            "url": "app.multilevel.level1.level2",
+            "icon": "fa fa-folder",
+            "submenu": [
+              {
+                "title": "Level 3",
+                "icon": "fa fa-folder",
+                "url": "app.multilevel.level1.level2.level3",
+                "submenu": [
+                  {
+                    "title": "Level3 Item",
+                    "url": "app.multilevel.level1.level2.level3.item",
+                    "icon": "fa fa-file-o"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ]
   }
 ]

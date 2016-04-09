@@ -1,20 +1,30 @@
-<div id="sideBarLeft" ng-controller="SideBarLeftCtrl">
-    <div class="sbl-scroll">
-        <div class="sbl-mask">
-            <ul class="ul-l1">
-                <li class="li-l1" ng-repeat="d in menuDate">
-                    <a ui-sref="app.home">
-                        <i class="fa fa-cube"></i>
-                        {{d.title}}
-                    </a>
+<div class="aside-inner">
+  <nav class="sidebar">
+    <!-- START sidebar nav-->
+    <ul class="nav">
 
-                    <ul class="ul-l2">
-                        <li class="li-l2" ng-repeat="dd in d.children">
-                            <a ui-sref="dd.url">{{dd.title}}</a>
-                        </li>
-                    </ul>
-                </li>
-            </ul>
-        </div>
-    </div>
+      <li ng-repeat="i in menuItems" ng-class="getMenuItemPropClasses(i)"
+          ng-click="toggleCollapse(pIndex, true)" ng-init="pIndex = $index">
+
+        <a ui-sref="#">
+          <em ng-if="i.icon" class="{{i.icon}}"></em>
+
+          <div ng-if="i.alert" ng-class="i.label || 'label label-success'" class="pull-right">{{i.alert}}</div>
+
+          <span>{{i.title}}</span>
+        </a>
+
+        <ul ng-if="i.submenu" class="nav sidebar-subnav" collapse="isCollapse(pIndex)" ng-init="addCollapse(pIndex, item)">
+          <li class="sidebar-subnav-header">{{i.title}}</li>
+          <li ng-class="getMenuItemPropClasses(ii)" ng-repeat="ii in i.submenu" ng-click="toggleCollapse(pIndex)"
+              ng-init="pIndex=(pIndex+'-'+$index); inSubmenu = true">
+            <a ng-href="{{$state.href(ii.url)}}">{{ii.title}}</a>
+          </li>
+        </ul>
+
+      </li>
+
+    </ul>
+    <!-- END sidebar nav-->
+  </nav>
 </div>
