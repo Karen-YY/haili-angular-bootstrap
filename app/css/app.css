@@ -42,6 +42,36 @@
 .wd-auto {
   width: auto;
 }
+.ht-xxs {
+  height: 20px;
+}
+.ht-xs {
+  height: 40px;
+}
+.ht-sm {
+  height: 60px;
+}
+.ht-sd {
+  height: 100px;
+}
+.ht-md {
+  height: 160px;
+}
+.ht-lg {
+  height: 200px;
+}
+.ht-xl {
+  height: 240px;
+}
+.ht-xxl {
+  height: 320px;
+}
+.ht-wide {
+  height: 100%;
+}
+.ht-auto {
+  height: auto;
+}
 .m0 {
   margin: 0 !important;
 }
@@ -4129,6 +4159,9 @@ body {
    Component: src/less/theme/theme-blue-dark.less
    @author: haili042
  ========================================================================== */
+.bg-clr-nav {
+  background-color: #23b7e5;
+}
 .wrapper > .header {
   background-color: #23b7e5;
 }

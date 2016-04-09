@@ -1,12 +1,7 @@
-<!-- 标题 -->
-<div class="page-header mt0">
-    <h1 class="m0">
-        <small class="ml-lg">主页</small>
-    </h1>
-</div>
+<div class="container-fluid" ng-controller="HomeCtrl">
+    <h3 class="m0">主页</h3>
+    <hr/>
 
-<!-- 主要内容 -->
-<div class="container-fluid">
     <div>home page</div>
     <div>
         <a ui-sref="page.login">login</a>
@@ -22,6 +17,12 @@
     </div>
     <div>
         user: {{$storage.user}}
+    </div>
+
+    <div class="row">
+        <div class="col-md-4 col-sm-6 p-lg">
+            <rowmessager data="rowMessagerData"></rowmessager>
+        </div>
     </div>
 
 </div>
