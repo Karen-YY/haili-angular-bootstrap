@@ -6,36 +6,14 @@
  =========================================================*/
 
 App
-    .directive('widgetFormElement', function () {
-
-        return {
-            restrict: "EC",
-            scope: {
-                config: "=" // 注意要小写, 因为 html 不识别大小写
-            },
-            controller: function ($scope) {
-
-                // 默认参数
-                var defaultConfig = {},
-
-                    newConfig = $scope.config // 传进来的参数
-                    ;
-
-                // jquery 深拷贝
-                $scope.config = $.extend(true, {}, defaultConfig, newConfig);
-
-            },
-            link: function (scope, elem, attrs) {
-            }
-        };
-
-    })
 
     // 单选框
     .directive('widgetCheckbox', function () {
         return {
             restrict: 'EC',
-            scope: {},
+            scope: {
+                checked: '='
+            },
             replace: true,
             templateUrl: '/app/tpl/widget/form-checkbox.html',
 
@@ -44,8 +22,13 @@ App
                 var checkboxEle = elem.find('input[type=checkbox]');
 
                 // 表单元素必备
-                attr.id && checkboxEle.attr('id', attr.id);
-                attr.name &&　checkboxEle.attr('name', attr.name);
+                ['name', 'checked'].forEach(function (k, v) {
+                    if (attr[k]) {
+                        checkboxEle.attr(k, attr[k]);
+                        elem.removeAttr(k);
+                    }
+                });
+
             }
         };
     })
@@ -65,8 +48,37 @@ App
                 var checkboxEle = elem.find('input[type=checkbox]');
 
                 // 表单元素必备
-                attr.id && checkboxEle.attr('id', attr.id);
-                attr.name &&　checkboxEle.attr('name', attr.name);
+                ['name', 'checked'].forEach(function (k, v) {
+                    if (attr[k]) {
+                        checkboxEle.attr(k, attr[k]);
+                        elem.removeAttr(k);
+                    }
+                });
+            }
+        };
+    })
+
+    // 复选框
+    .directive('widgetRadio', function () {
+        return {
+            restrict: 'EC',
+            scope: {
+                checked: '='
+            },
+            replace: true,
+            templateUrl: '/app/tpl/widget/form-radio.html',
+
+            link: function (scope, elem, attr) {
+
+                var checkboxEle = elem.find('input[type=radio]');
+
+                // 表单元素必备
+                ['name', 'checked'].forEach(function (k, v) {
+                    if (attr[k]) {
+                        checkboxEle.attr(k, attr[k]);
+                        elem.removeAttr(k);
+                    }
+                });
             }
         };
     })

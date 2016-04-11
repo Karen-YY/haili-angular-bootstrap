@@ -7,6 +7,23 @@
 
 App.controller('TableCtrl', ['$http', '$scope', '$state', '$rootScope',
     function ($http, $scope, $state, $rootScope) {
-        $scope.asd = '123';
 
-    }]);
+        $scope.tableConfig = {
+            checkbox: true,
+            title: 'test table',
+            url: '/test/data/table.json',
+            columns: [
+                {field:'productid',title:'Code',width:100},
+                {field:'productname',title:'Name',width:100},
+                {field:'unitcost',title:'Name',width:100},
+                {field:'status',title:'Name',width:100},
+                {field:'listprice',title:'Name',width:100},
+                {field:'attr1',title:'Name',width:100},
+                {field:'itemid',title:'Price',width:100,align:'right'}
+            ],
+            success: function () {
+                console.log('success');
+            }
+        }
+    }])
+;

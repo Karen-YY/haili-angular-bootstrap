@@ -13,7 +13,7 @@ App.directive('widgetRowMessager', function () {
     return {
         restrict: 'EA',
         scope: {
-            data: '='
+            config: '='
         },
         templateUrl: '/app/tpl/widget/row-messager.html',
         controller: function ($scope) {
@@ -31,11 +31,11 @@ App.directive('widgetRowMessager', function () {
                     }
                 },
 
-                newConfig = $scope.data // 传进来的参数
+                newConfig = $scope.config // 传进来的参数
                 ;
 
             // jquery 深拷贝
-            $scope.data = $.extend(true, {}, defaultConfig, newConfig);
+            $scope.config = $.extend(true, {}, defaultConfig, newConfig);
 
         },
         link: function ($scope, $elem, $attr) {

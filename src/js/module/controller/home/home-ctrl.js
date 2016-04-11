@@ -7,14 +7,14 @@
 
 App.controller('HomeCtrl', ['$http', '$scope', '$state', '$rootScope', '$timeout', 'Utils',
     function ($http, $scope, $state, $rootScope, $timeout, Utils) {
-        $scope.rowMessagerData = {
+        $scope.rowMessagerConfig = {
             rightBlock: {
                 title: '2048',
                 msg: '新增工单数量'
             }
         };
         // 修改了样式
-        $scope.rowMessagerData2 = {
+        $scope.rowMessagerConfig2 = {
             leftBlock: {
                 icon: 'fa fa-book',
                 style: {
@@ -31,7 +31,7 @@ App.controller('HomeCtrl', ['$http', '$scope', '$state', '$rootScope', '$timeout
             }
         };
         // 使用了默认参数
-        $scope.rowMessagerData3 = {
+        $scope.rowMessagerConfig3 = {
             leftBlock: {
                 icon: 'fa fa-desktop'
             },
