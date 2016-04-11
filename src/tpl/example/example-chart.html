@@ -1,75 +1,42 @@
 <!-- 主要内容 -->
 <div class="container-fluid" ng-controller="ChartCtrl">
-  <h3 class="m0">chart example, 使用了jquery 的highchart</h3>
+  <h3 class="m0">chart demo, 使用了jquery 的highchart</h3>
   <hr/>
 
-  <div class="row m0">
-    <div class="panel panel-default">
-      <div class="panel-heading">
-        <h4>
-          柱状图
-        </h4>
-        <hr class="m0"/>
-      </div>
-      <div class="panel-body table-responsive">
-        <div class="table">
-          <chart class="col-xs-12 max-wd" chartconfig="barChart"></chart>
-        </div>
-      </div>
-      <div class="panel-footer">
-        <button type="submit" class="btn btn-primary center-block">submit</button>
-      </div>
+  <div class="row">
+    <div class="col-xs-12">
+      <widget-panel title="柱状图" minable="true">
+        <widget-chart class="col-xs-12 max-wd-sm" chartconfig="barChart"></widget-chart>
+
+        <widget-panel-footer class="text-center">
+          <button class="btn btn-primary">comfirm</button>
+          <button class="btn btn-default">cancle</button>
+        </widget-panel-footer>
+      </widget-panel>
     </div>
   </div>
 
   <div class="row">
     <div class="col-md-6">
-      <div class="panel panel-default">
-        <div class="panel-heading">
-          <h4>
-            折线图
-          </h4>
-          <hr class="m0"/>
-        </div>
-        <div class="panel-body table-responsive">
-          <div class="table">
-            <chart class="col-xs-12" chartconfig="verticalBarChart"></chart>
-          </div>
-        </div>
-      </div>
+      <widget-panel title="折线图" minable="true">
+        <widget-chart class="col-xs-12" chartconfig="verticalBarChart"></widget-chart>
+      </widget-panel>
     </div>
 
     <div class="col-md-6">
-      <div class="panel panel-default">
-        <div class="panel-heading">
-          <h4>
-            饼图
-          </h4>
-          <hr class="m0"/>
-        </div>
-        <div class="panel-body table-responsive">
-          <div class="table">
-            <chart class="col-xs-12" chartconfig="ovalChart"></chart>
-          </div>
-        </div>
-      </div>
+      <widget-panel title="饼图" minable="false">
+        <widget-chart class="col-xs-12" chartconfig="ovalChart"></widget-chart>
+      </widget-panel>
     </div>
   </div>
 
-  <div class="row m0">
-    <div class="panel panel-default">
-      <div class="panel-heading">
-        <h4>
-          柱状图
-        </h4>
-        <hr class="m0"/>
-      </div>
-      <div class="panel-body table-responsive">
-        <div class="table">
-          <chart class="col-xs-12 max-wd" chartconfig="lineChart"></chart>
-        </div>
-      </div>
+  <div class="row">
+    <div class="col-xs-12">
+      <widget-panel title="折线图" minable="true">
+        <widget-chart class="col-xs-12 max-wd-sm" chartconfig="lineChart"></widget-chart>
+      </widget-panel>
     </div>
   </div>
+
 </div>
 

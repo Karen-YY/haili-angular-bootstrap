@@ -1,29 +1,20 @@
 <!-- 主要内容 -->
-<div ng-controller="UIGridController" class="container-fluid">
-  <h1>
-    表格example
-  </h1>
+<div class="container-fluid" ng-controller="TableCtrl" >
+  <h3 class="m0">table demo 使用了ui-grid</h3>
   <hr/>
 
-  <h4 class="page-header mt0">Basic</h4>
+  <div class="row">
+    <div class="col-xs-12">
+      <widget-panel title="表格1" minable="true">
 
-  <div ui-grid="gridOptions" class="table-uigrid"></div>
-  <h4 class="page-header clearfix">
-    <div class="pull-left">Filter and Footer</div>
-    <div class="pull-right">
-      <button id="footerButton"
-              ng-click="gridOptionsComplex.showGridFooter = !gridOptionsComplex.showGridFooter; $scope.gridApi.core.notifyDataChange(uiGridConstants.dataChange.OPTIONS);"
-              class="btn btn-xs btn-success">Toggle Grid Footer
-      </button>
-      <button ng-click="gridOptionsComplex.showColumnFooter = !gridOptionsComplex.showColumnFooter; $scope.gridApi.core.notifyDataChange(uiGridConstants.dataChange.OPTIONS);"
-              class="btn btn-xs btn-success">Toggle Column Footer
-      </button>
+        <widget-panel-footer class="text-center">
+          <button class="btn btn-primary">comfirm</button>
+          <button class="btn btn-default">cancle</button>
+        </widget-panel-footer>
+      </widget-panel>
     </div>
-  </h4>
-  <div id="uigrid-demo" ui-grid="gridOptionsComplex" class="table-uigrid"></div>
-  <h4 class="page-header">Pagination</h4>
+  </div>
 
-  <div ui-grid="gridOptions1" ui-grid-pagination="" class="table-uigrid"></div>
 </div>
 
 

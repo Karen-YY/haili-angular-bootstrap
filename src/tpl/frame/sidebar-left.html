@@ -6,7 +6,7 @@
       <li ng-repeat="i in menuItems" ng-class="getMenuItemPropClasses(i)"
           ng-click="toggleCollapse(pIndex, true)" ng-init="pIndex = $index">
 
-        <a ui-sref="#">
+        <a>
           <em ng-if="i.icon" class="{{i.icon}}"></em>
 
           <div ng-if="i.alert" ng-class="i.label || 'label label-success'" class="pull-right">{{i.alert}}</div>

@@ -222,6 +222,17 @@
 .text-nowrap { white-space: nowrap; }
 
 
+// 清除伪元素
+.clearfix() {
+  &:before,
+  &:after {
+    content: " "; // 1
+    display: table; // 2
+  }
+  &:after {
+    clear: both;
+  }
+}
 
 
 
@@ -448,14 +459,3 @@
   user-select: @select;
 }
 
-// 清除伪元素
-.clearfix() {
-  &:before,
-  &:after {
-    content: " "; // 1
-    display: table; // 2
-  }
-  &:after {
-    clear: both;
-  }
-}

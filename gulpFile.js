@@ -174,10 +174,7 @@ gulp.task('reload', function() {
 
 // check
 gulp.task('check', function() {
-	gulp.src(src.js)
+	return gulp.src(src.lib)
 		.pipe(jshint());
 
-	gulp.src(src.tpl)
-		.pipe(htmlhint())
-	;
 });

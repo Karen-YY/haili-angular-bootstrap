@@ -32,16 +32,6 @@
     "icon": "fa fa-desktop",
     "submenu": [
       {
-        "title": "Standard",
-        "url": "app.form-standard",
-        "translate": "sidebar.nav.form.STANDARD"
-      },
-      {
-        "title": "Extended",
-        "url": "app.form-extended",
-        "translate": "sidebar.nav.form.EXTENDED"
-      },
-      {
         "title": "uiSelect",
         "url": "app.form-uiselect"
       }
@@ -66,13 +56,8 @@
     "icon": "fa fa-table",
     "submenu": [
       {
-        "title": "Extended",
-        "url": "app.table-extended",
-        "translate": "sidebar.nav.table.EXTENDED"
-      },
-      {
-        "title": "uiGrid",
-        "url": "app.table-uigrid"
+        "title": "普通表格",
+        "url": "app.example-table"
       },
       {
         "title": "Angular Grid",

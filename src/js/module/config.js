@@ -45,6 +45,11 @@ App
                 templateUrl: 'app/tpl/example/example-chart.html'
             })
 
+            .state('app.example-table', {
+                url: '/example-table',
+                templateUrl: 'app/tpl/example/example-table.html'
+            })
+
             //.state('app.example', {
             //    //url: '/{tpl: [0-9]{1,4}}', // 匹配数字
             //    url: '/{tpl: [a-zA-Z0-9_$]*}', // 匹配变量名

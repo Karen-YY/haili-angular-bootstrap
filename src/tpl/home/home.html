@@ -2,7 +2,6 @@
     <h3 class="m0">主页</h3>
     <hr/>
 
-    <div>home page</div>
     <div>
         <a ui-sref="page.login">login</a>
     </div>
@@ -21,9 +20,22 @@
 
     <div class="row">
         <div class="col-md-4 col-sm-6 p-lg">
-            <rowmessager data="rowMessagerData"></rowmessager>
+            <widget-row-messager data="rowMessagerData"></widget-row-messager>
+        </div>
+        <div class="col-md-4 col-sm-6 p-lg">
+            <widget-row-messager data="rowMessagerData2"></widget-row-messager>
+        </div>
+        <div class="col-md-4 col-sm-6 p-lg">
+            <widget-row-messager data="rowMessagerData3"></widget-row-messager>
         </div>
     </div>
 
+    <div class="row">
+        <div class="col-xs-12">
+            <widget-panel title="面板1" minable="true">
+                <widget-chart class="col-xs-12 max-wd-sm" chartconfig="chartconfig"></widget-chart>
+            </widget-panel>
+        </div>
+    </div>
 </div>
 

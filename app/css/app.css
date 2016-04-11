@@ -3564,31 +3564,29 @@ fieldset .form-group {
    媒体查询
    @author: haili042
  ==========================================================================*/
-.min-wd {
-  width: 100%;
+.min-wd-lg {
+  min-width: 1200px;
 }
-.max-wd {
-  width: 100%;
+.min-wd-md {
+  min-width: 992px;
 }
-@media only screen and (min-width: 768px) {
-  .min-wd {
-    width: 768px;
-  }
+.min-wd-sm {
+  min-width: 768px;
 }
-@media only screen and (min-width: 480px) {
-  .min-wd {
-    width: 480px;
-  }
+.min-wd-xs {
+  min-width: 480px;
 }
-@media only screen and (max-width: 767px) {
-  .max-wd {
-    width: 1199px;
-  }
+.max-wd-lg {
+  min-width: 1199px;
 }
-@media only screen and (max-width: 479px) {
-  .max-wd {
-    width: 991px;
-  }
+.max-wd-md {
+  min-width: 991px;
+}
+.max-wd-sm {
+  min-width: 767px;
+}
+.max-wd-xs {
+  min-width: only screen and (max-width: 479px);
 }
 /* ========================================================================
    Component: src/less/app/form-element.less
@@ -4721,4 +4719,39 @@ body {
   top: 10px;
   right: 5px;
   text-indent: 0;
+}
+/* ========================================================================
+   Component: src/less/widget/row-messager.less
+   提示器组件
+   @author: haili042
+   @2016年4月9日 21:51:05
+ ========================================================================== */
+.widget-row-messager .row {
+  overflow: hidden;
+  height: 100px;
+  color: #fff;
+}
+.widget-row-messager .row .row-messager-head {
+  height: 100%;
+  background-color: #0b97c4;
+  line-height: 70px;
+  padding: 15px;
+  text-align: center;
+  font-size: 46px;
+  border-top-left-radius: 4px;
+  border-bottom-left-radius: 4px;
+}
+.widget-row-messager .row .row-messager-body {
+  height: 100%;
+  padding: 15px;
+  background-color: #00d4b4;
+  border-top-right-radius: 4px;
+  border-bottom-right-radius: 4px;
+}
+.widget-row-messager .row .row-messager-body h5 {
+  margin: 0;
+  font-size: 32px;
+}
+.widget-row-messager .row .row-messager-body p {
+  margin-top: 8px;
 }

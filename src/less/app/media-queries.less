@@ -36,33 +36,13 @@
 
 @landscape:                               ~"(max-device-width: @{mq-tablet}) and (orientation:landscape)";
 
-// 少于一定宽度的最小宽度
-.min-wd {
-  width: 100%;
-}
-.max-wd {
-  width: 100%;
-}
 
-@media @tablet {
-  .min-wd {
-    width: @screen-sm-min;
-  }
-}
-@media @mobile {
-  .min-wd {
-    width: @screen-phone;
-  }
-}
-
-@media @upto-tablet {
-  .max-wd {
-    width: @mq-up-to-desktop-lg;
-  }
-}
-@media @upto-mobile {
-  .max-wd {
-    width: @mq-up-to-desktop;
-  }
-}
-  
+// 少于一定宽度的才出现的类, 适合做最小宽度
+.min-wd-lg {  min-width: @mq-desktop-lg;  }
+.min-wd-md {  min-width: @mq-desktop;  }
+.min-wd-sm {  min-width: @mq-tablet;  }
+.min-wd-xs {  min-width: @mq-mobile;  }
+.max-wd-lg {  min-width: @mq-up-to-desktop-lg;  }
+.max-wd-md {  min-width: @mq-up-to-desktop;  }
+.max-wd-sm {  min-width: @mq-up-to-tablet;  }
+.max-wd-xs {  min-width: @upto-mobile;  }
