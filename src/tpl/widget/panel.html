@@ -1,14 +1,17 @@
 <!-- 面板组件 -->
 <div class="panel panel-default widget-panel">
   <div class="panel-heading">
-    <h4>
+    <h4 class="pull-left">
       {{title}}
-      <i ng-click="toggle()" class="{{icon}} pull-right" ng-show="minable"></i>
     </h4>
-    <hr class="m0"/>
+    <div class="pull-right">
+      <i ng-click="toggle()" class="{{icon}}" ng-show="minable"></i>
+      <i ng-click="close()" class="fa fa-close" ng-show="closeable"></i>
+    </div>
+    <hr/>
   </div>
   <div class="panel-body table-responsive" ng-hide="isHide">
     <!-- ng-transclude 即把写在 widget-panel 里的元素放到这个标签内, 如果需要多个transclude, 则不要加 -->
-    <div class="table transclude-body"></div>
+    <div class="table transclude-body" ng-transclude=""></div>
   </div>
 </div>

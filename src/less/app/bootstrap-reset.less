@@ -2,28 +2,30 @@
    Component: src/less/app/bootstrap-reset.less
    这个文件对 bootstrap 进行非侵入的重置
    @author: haili042
+   @time: 2016年4月01日 11:17:32
  ========================================================================== */
 
 
-[ng\:cloak], 
-[ng-cloak], 
-[data-ng-cloak], 
-[x-ng-cloak], 
-.ng-cloak, 
+// 目录
+// 1 - element style
+// 2 - lsit style
+// 3 - panel style
+// 4 - button style
+// 5 - form style
+// 6 - table style
+// 7 - drop menu style
+
+
+// 1 - element style
+// ---------------------------
+[ng\:cloak],
+[ng-cloak],
+[data-ng-cloak],
+[x-ng-cloak],
+.ng-cloak,
 .x-ng-cloak {
   display: none !important;
 }
-
-
-//
-// 依赖3个文件
-//        @import "bootstrap/variables";
-//        @import "bootstrap/mixins";
-//        @import "app/bootstrap-reset";
-// Normalize.css vs CSS reset
-//        Normalize.css是一种现代的、为HTML5准备的优质替代方案
-//        Reset通过为几乎所有的元素施加默认样式，强行使得元素有相同的视觉效果
-// --------------------------------------------------
 
 *:focus {
   outline: 0 !important;
@@ -46,17 +48,9 @@ hr {
   border-top: 1px solid @gray-light;
 }
 
-// custom element
-now {
-  display: inline-block;
-}
 
-.navbar-toggle {
-  .icon-bar {
-    background-color: #fff;
-  }
-}
-
+// 2 - list style
+// ---------------------------
 .list-group {
   line-height: 1.3;
   .list-group-item {
@@ -65,9 +59,11 @@ now {
       border-top: 0;
     }
   }
-
 }
 
+
+// 3 - panel style
+// ---------------------------
 .page-header {
   border-bottom-color: @gray-light;
 }
@@ -85,49 +81,9 @@ now {
   }
 }
 
-.well {
-  border: 1px solid @gray;
-}
 
-.jumbotron {
-  border: 1px solid @gray;
-  @media @tablet {
-    padding: @jumbotron-padding (@jumbotron-padding/2);
-  }
-}
-
-.nav-tabs > li > a {
-  font-weight: bold;
-  color: @text-color;
-  background-color: @gray-lighter;
-  margin: 0;
-  border: 1px solid @gray;
-  border-radius: 0;
-  padding: 10px 20px;
-}
-
-.nav-tabs > li.active > a {
-  &, &:hover, &:focus {
-    color: inherit;
-    border-bottom-color: #fff;
-  }
-}
-.tab-content {
-  padding: 10px 20px;
-  border-style: solid;
-  border-width: 0 1px 1px 1px;
-  border-color: @gray;
-  .nav-pills + & {
-    border: 0;
-    padding: 0;
-  }
-  // quick reset padding using tabset.p0
-  .p0 & {
-    padding: 0 !important;
-  }
-}
-
-
+// 4 - button style
+// ---------------------------
 .btn {
   border-radius: 3px;
   font-size: 13px;
@@ -151,10 +107,14 @@ now {
   }
 }
 
-// FORMS
-
+// 5 - form style
+// ---------------------------
 .form-control {
   box-shadow: 0 0 0 #000 !important;
+}
+
+.form-group {
+  margin-top: 10px;
 }
 
 .input-sm,
@@ -163,9 +123,9 @@ select.input-sm {
 }
 
 fieldset {
-  padding-bottom: 20px;
+  padding-bottom: 10px;
   border-bottom: 1px dashed #eee;
-  margin-bottom: 20px;
+  margin-bottom: 10px;
   &.last-child,
   &:last-child {
     border-bottom: 0;
@@ -182,16 +142,18 @@ fieldset {
   }
 }
 
-// TABLES
-
+// 6 - table style
+// ---------------------------
 .table {
 
-  // Bottom align for column headings
+  .table {
+    background-color: #fff;
+  }
+
   > thead > tr > th {
     border-bottom-width: 1px;
   }
 
-  // Account for multiple tbody instances
   > tbody + tbody {
     border-bottom-width: 1px;
   }
@@ -208,40 +170,8 @@ fieldset {
 }
 
 
-.progress {
-  .box-shadow(0 0 0 #000);
-  border-radius: @border-radius-small;
-  border: 1px solid @progress-bg;
-  background-color: #fff;
-  .progress-bar {
-    .box-shadow(0 0 0 #000);
-  }
-}
-
-// Popover
-// --------------------------------------------------
-
-.popover {
-  box-shadow: 0 0 0 #000;
-  border-color: #eee;
-  border-bottom: 2px solid @gray-light;
-  border-radius: @border-radius-small;
-  .popover-title {
-    border: 0;
-  }
-}
-
-
-// NAV
-.nav {
-  &.nav-pills {
-    .active > a {
-      background-color: @brand-primary;
-    }
-  }
-}
-
-// DROPDOWN
+// 7 - drop menu style
+// ---------------------------
 .dropdown-menu {
   border-radius: @border-radius-small;
 }
@@ -250,68 +180,3 @@ fieldset {
   color: #a1a2a3;
 }
 
-.navbar-top .navbar-nav > .active > a {
-  color: #999;
-  &:hover, &:focus {
-    color: #d1d2d3;
-  }
-}
-
-
-.navbar-default .navbar-nav .open .dropdown-menu > li > a {
-  color: #666;
-  &:hover, &:focus {
-    color: #222;
-  }
-}
-
-// CAROUSEL
-
-.carousel {
-  .carousel-indicators {
-    bottom: 0;
-  }
-  .carousel-control {
-    &.left,
-    &.right {
-      background-image: none;
-    }
-    // Add support for font awesome
-    em {
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      z-index: 5;
-      display: inline-block;
-      width: 20px;
-      height: 20px;
-      margin-top: -10px;
-      margin-left: -10px;
-    }
-  }
-}
-
-// Angular UI.Bootstrap
-.nav, .pagination, .carousel, .panel-title a { cursor: pointer; }
-
-.nav-tabs.nav-justified > .active > a, .nav-tabs.nav-justified > .active > a:hover, .nav-tabs.nav-justified > .active > a:focus {
-  border-bottom: 0;
-}
-
-// allow font awesome to be placed instead of glyphicon in slider
-.glyphicon:extend(.fa all) {
-  &.glyphicon-chevron-right:extend(.fa-chevron-right all) {};
-  &.glyphicon-chevron-left:extend(.fa-chevron-left all) {};
-  &.glyphicon-chevron-up:extend(.fa-chevron-up all) {};
-  &.glyphicon-chevron-down:extend(.fa-chevron-down all) {};
-  &.glyphicon-folder-open:extend(.fa-folder-open all) {};
-
-}
-
-
-// fix modal backdrop to work with bootstrap ui
-// standard BS js uses a calculated height
-.modal-backdrop {
-  position: fixed;
-  bottom: 0;
-}

@@ -1,6 +1,6 @@
 <!-- 主要内容 -->
 <div class="container-fluid">
-  <h1 class="m0">表单提交example</h1>
+  <h3 class="m0">表单提交example</h3>
   <hr/>
 
   <div class="row">
@@ -11,7 +11,7 @@
         <widget-panel title="双排表单" minable="true">
 
           <fieldset>
-            <div class="form-group mt col-md-6 col-sm-12">
+            <div class="form-group col-md-6 col-sm-12">
               <label class="col-md-4 control-label" for="exampleInputEmail3">Email</label>
 
               <div class="col-md-8">
@@ -19,7 +19,7 @@
               </div>
             </div>
 
-            <div class="form-group mt col-md-6 col-sm-12">
+            <div class="form-group col-md-6 col-sm-12">
               <label class="col-md-4 control-label" for="exampleInputEmail1">number</label>
 
               <div class="col-md-8">
@@ -29,7 +29,7 @@
           </fieldset>
 
           <fieldset>
-            <div class="form-group mt col-md-6 col-sm-12">
+            <div class="form-group col-md-6 col-sm-12">
               <label class="col-md-4 control-label" for="exampleInputEmail2">password</label>
 
               <div class="col-md-8">
@@ -37,7 +37,7 @@
               </div>
             </div>
 
-            <div class="form-group mt col-md-6 col-sm-12">
+            <div class="form-group col-md-6 col-sm-12">
               <label class="col-md-4 control-label" for="exampleInputEmail4">date</label>
 
               <div class="col-md-8">
@@ -45,7 +45,7 @@
               </div>
             </div>
 
-            <div class="form-group mt col-md-6 col-sm-12">
+            <div class="form-group col-md-6 col-sm-12">
               <label class="col-md-4 control-label" for="exampleInputEmail5">datetime</label>
 
               <div class="col-md-4 col-sm-4">
@@ -56,7 +56,7 @@
               </div>
             </div>
 
-            <div class="form-group mt col-md-6 col-sm-12">
+            <div class="form-group col-md-6 col-sm-12">
               <label class="col-md-4 control-label" for="exampleInputEmail6">tel</label>
 
               <div class="col-md-8">
@@ -80,7 +80,7 @@
         <widget-panel title="单排表单" minable="true">
 
           <fieldset>
-            <div class="form-group mt col-sm-12">
+            <div class="form-group col-sm-12">
               <label class="col-md-2 control-label" for="exampleInputEmail7">Email</label>
 
               <div class="col-md-6">
@@ -92,7 +92,7 @@
               </div>
             </div>
 
-            <div class="form-group mt col-sm-12">
+            <div class="form-group col-sm-12">
               <label class="col-md-2 control-label" for="exampleInputEmail8">Email</label>
 
               <div class="col-md-6">
@@ -104,7 +104,7 @@
               </div>
             </div>
 
-            <div class="form-group mt col-sm-12">
+            <div class="form-group col-sm-12">
               <label class="col-md-2 control-label" for="exampleInputEmail9">disabled</label>
 
               <div class="col-md-6">
@@ -115,7 +115,7 @@
               </div>
             </div>
 
-            <div class="form-group mt col-sm-12">
+            <div class="form-group col-sm-12">
               <label class="col-md-2 control-label" for="exampleInputEmail10">action input</label>
 
               <div class="col-md-6 input-group pl-lg pr-lg">
@@ -129,7 +129,7 @@
               </div>
             </div>
 
-            <div class="form-group mt col-sm-12">
+            <div class="form-group col-sm-12">
               <label class="col-md-2 control-label" for="exampleInputEmail11">file</label>
               <input type="file" class="form-control" id="exampleInputEmail11"
                      style="position: absolute; clip: rect(0,0,0,0)">
@@ -164,7 +164,7 @@
         <widget-panel title="选择表单" minable="true">
 
           <fieldset>
-            <div class="form-group mt col-xs-12">
+            <div class="form-group col-xs-12">
               <div class="radio c-radio">
                 <label>
                   <input type="radio" name="radio"/>
@@ -190,28 +190,17 @@
       <form class="form-horizontal">
         <widget-panel title="选择表单" minable="true">
           <fieldset>
-            <div class="form-group mt col-md-12">
+            <div class="form-group col-md-12">
               <label class="col-xs-4 control-label" for="c1">单选框</label>
-
-              <div class="checkbox col-md-6 c-checkbox">
-                <label>
-                  <input type="checkbox" id="c1"/>
-                  <span class="fa fa-check"></span>
-                </label>
-              </div>
+              <input class="widget-checkbox col-xs-8" type="checkbox" id="c1" name="c1">
             </div>
           </fieldset>
 
           <fieldset>
-            <div class="form-group mt col-md-12">
+            <div class="form-group col-md-12">
               <label class="col-xs-4 control-label" for="c2">switch</label>
 
-              <div class="col-md-6">
-                <label class="switch">
-                  <input type="checkbox" id="c2" checked="checked"/>
-                  <span></span>
-                </label>
-              </div>
+              <input class="widget-switch col-xs-8" type="checkbox" id="c2" checked="checked"/>
             </div>
           </fieldset>
 
@@ -220,7 +209,6 @@
           </widget-panel-footer>
         </widget-panel>
       </form>
-
 
     </div>
   </div>

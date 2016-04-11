@@ -1,16 +1,88 @@
 <!-- 主要内容 -->
-<div class="container-fluid" ng-controller="TableCtrl" >
+<div class="container-fluid" ng-controller="TableCtrl">
   <h3 class="m0">table demo 使用了ui-grid</h3>
   <hr/>
 
   <div class="row">
     <div class="col-xs-12">
-      <widget-panel title="表格1" minable="true">
+      <widget-panel title="表格1" minable="true" closeable="true">
 
-        <widget-panel-footer class="text-center">
+        <form class="form-horizontal" id="form">
+          <fieldset>
+            <div class="form-group col-xs-4">
+              <label for="i1" class="col-xs-4 control-label">condtion1</label>
+              <div class="col-xs-8">
+                <input type="text" class="form-control input-sm" id="i1">
+              </div>
+            </div>
+            <div class="form-group col-xs-4">
+              <label for="i2" class="col-xs-4 control-label">condtion1</label>
+              <div class="col-xs-8">
+                <input type="text" class="form-control input-sm" id="i2">
+              </div>
+            </div>
+            <div class="form-group col-xs-4">
+              <label for="i3" class="col-xs-4 control-label">condtion1</label>
+              <div class="col-xs-8">
+                <input type="text" class="form-control input-sm" id="i3">
+              </div>
+            </div>
+          </fieldset>
+
+        </form>
+
+        <table class="table table-striped table-responsive">
+          <caption>精简表格布局</caption>
+          <thead>
+          <tr>
+            <th>
+              <input class="widget-checkbox" type="checkbox">
+            </th>
+            <th>名称</th>
+            <th>城市</th>
+            <th>密码</th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr>
+            <th>
+              <input class="widget-checkbox" type="checkbox">
+            </th>
+            <td>Tanmay</td>
+            <td>Bangalore</td>
+            <td>560001</td>
+          </tr>
+          <tr>
+            <th>
+              <input class="widget-checkbox" type="checkbox">
+            </th>
+            <td>Sachin</td>
+            <td>Mumbai</td>
+            <td>400003</td>
+          </tr>
+          <tr>
+            <th>
+              <input class="widget-checkbox" type="checkbox">
+            </th>
+            <td>Uma</td>
+            <td>Pune</td>
+            <td>411027</td>
+          </tr>
+          <tr>
+            <th>
+              <input class="widget-checkbox" type="checkbox">
+            </th>
+            <td>Uma</td>
+            <td>Pune</td>
+            <td>411027</td>
+          </tr>
+          </tbody>
+        </table>
+
+        <div class="widget-panel-footer text-center">
           <button class="btn btn-primary">comfirm</button>
           <button class="btn btn-default">cancle</button>
-        </widget-panel-footer>
+        </div>
       </widget-panel>
     </div>
   </div>
