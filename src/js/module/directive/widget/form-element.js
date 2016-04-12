@@ -29,8 +29,12 @@ App
                     }
                 });
 
-                $scope.$on('event:selectAll', function () {
-                    console.log($elem[0]);
+                checkboxEle.on('click', function (e) {
+                    e.stopPropagation();
+
+                    console.log('checkbox checked...');
+                    $scope.checked = !$scope.checked;
+                    $scope.$emit('widget-checkbox:checked', $scope.checked);
                 });
 
             }
@@ -58,6 +62,7 @@ App
                         $elem.removeAttr(k);
                     }
                 });
+
             }
         };
     })

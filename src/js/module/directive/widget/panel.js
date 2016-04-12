@@ -73,10 +73,10 @@ App
             template: '<div class="panel-footer" ng-transclude=""></div>',
 
             // 只有依赖了父指令, 才有 superCtrl 参数
-            link: function (scope, element, attrs, superCtrl) {
+            link: function ($scope, $elem, $attrs, $superCtrl) {
 
                 // 调用父指令控制器
-                superCtrl.addFooter(element);
+                $superCtrl.addFooter($elem);
             }
         };
     })

@@ -171,17 +171,9 @@
 
 }
 
-//
-// Form Rounded
-//
-
-.form-control-rounded {
-  border-radius: 100px;
-}
 
 //
 // Form SWITCH
-// Supports radio and checkbox
 //
 
 @switch-wd: 40px;
@@ -261,32 +253,3 @@
   }
 }
 
-// form feedback variants
-
-.form-control-feedback {
-  // top: 10px;
-  left: 16px;
-  right: auto;
-
-  .form-control + &,
-  .form-control + .parsley-errors-list + & {
-    right: 0;
-    left: auto;
-    top: 10px;
-  }
-
-  .input-sm + &,
-  .input-sm + .parsley-errors-list + & {
-    top: 0;
-  }
-
-  label + .form-control + &,
-  label + .form-control + .parsley-errors-list + & {
-    top: 36px;
-  }
-
-}
-
-.input-md {
-  width: 260px;
-}

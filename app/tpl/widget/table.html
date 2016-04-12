@@ -4,18 +4,20 @@
   <caption>{{config.title}}</caption>
   <thead>
   <tr>
-    <th>
-      <input widget-checkbox type="checkbox" ng-show="config.checkbox" ng-click="selectAll()">
+    <th ng-show="config.checkbox">
+      <input widget-checkbox type="checkbox" ng-click="selectAll()">
     </th>
     <th ng-repeat="column in config.columns">{{column.title}}</th>
   </tr>
   </thead>
   <tbody>
-  <tr ng-repeat="row in config.data.rows">
-    <th>
-      <input widget-checkbox type="checkbox" ng-show="config.checkbox">
+  <tr widget-table-row index="$index" ng-repeat="row in config.data.rows" ng-class="{'row-selected': rowSelected}">
+    <th ng-show="config.checkbox">
+      <input widget-checkbox type="checkbox">
     </th>
-    <td ng-repeat="column in config.columns">{{row[column.field]}}</td>
+    <td ng-repeat="column in config.columns" class="active2">
+      {{row[column.field]}}
+    </td>
   </tr>
   </tbody>
   <tfoot ng-show="config.pagination">

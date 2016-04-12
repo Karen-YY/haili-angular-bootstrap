@@ -7,8 +7,28 @@
 
 .widget-table {
   @tool-ht: 33px;
+
+  .row-selected {
+    background-color: #e3f5ff !important;
+  }
+
   > caption {
     text-align: center;
+  }
+
+  > tbody {
+    tr {
+      tr {}
+      td {
+        input {
+          width: 100%;
+          height: 100%;
+          padding: 0 4px;
+          background-color: inherit;
+          border: none;
+        }
+      }
+    }
   }
 
   > tfoot {

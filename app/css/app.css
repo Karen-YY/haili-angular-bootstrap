@@ -4527,9 +4527,6 @@ body {
 .c-radio.c-radio-nofont input[type=radio]:disabled + span:before {
   background-color: #ddd;
 }
-.form-control-rounded {
-  border-radius: 100px;
-}
 .switch .form-control {
   padding-top: 7px;
   margin-bottom: 0;
@@ -4592,27 +4589,6 @@ body {
   left: 50%;
   transition: all .2s;
 }
-.form-control-feedback {
-  left: 16px;
-  right: auto;
-}
-.form-control + .form-control-feedback,
-.form-control + .parsley-errors-list + .form-control-feedback {
-  right: 0;
-  left: auto;
-  top: 10px;
-}
-.input-sm + .form-control-feedback,
-.input-sm + .parsley-errors-list + .form-control-feedback {
-  top: 0;
-}
-label + .form-control + .form-control-feedback,
-label + .form-control + .parsley-errors-list + .form-control-feedback {
-  top: 36px;
-}
-.input-md {
-  width: 260px;
-}
 /* ========================================================================
    Component: src/less/widget/panel.less
    panel 面板组件
@@ -4636,8 +4612,18 @@ label + .form-control + .parsley-errors-list + .form-control-feedback {
    @author: haili042
    @time: 2016年4月12日 16:20:16
  ========================================================================== */
+.widget-table .row-selected {
+  background-color: #e3f5ff !important;
+}
 .widget-table > caption {
   text-align: center;
+}
+.widget-table > tbody tr td input {
+  width: 100%;
+  height: 100%;
+  padding: 0 4px;
+  background-color: inherit;
+  border: none;
 }
 .widget-table > tfoot .page-input {
   width: 60px;
