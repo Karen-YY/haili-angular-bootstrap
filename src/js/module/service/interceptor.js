@@ -63,7 +63,7 @@ App
                             // 只有一个的情况, 即当前请求
                             if (bufferLength === 1) {
                                 // 广播没有权限事件
-                                $rootScope.$broadcast(APP_AUTH_EVENT['noAuth'], response);
+                                $rootScope.$broadcast(APP_AUTH_EVENT.noAuth, response);
                             }
                             return deferred.promise;
 
@@ -72,7 +72,7 @@ App
                          * */
                         case 403:
                             // 广播事件
-                            $rootScope.$broadcast(APP_AUTH_EVENT['forbidden'], response);
+                            $rootScope.$broadcast(APP_AUTH_EVENT.forbidden, response);
                             break;
                     }
                 }

@@ -123,6 +123,7 @@ function walk(i, j) {
 walk(0, 0);
 console.log(res);
 */
+
 var assert = require('assert');
 
 // describe块称为"测试套件"（test suite）
@@ -138,6 +139,4 @@ describe('Array 测试', function() {
         });
     });
 });
-
-
 

@@ -16,7 +16,12 @@ App.directive('widgetRowMessager', function () {
             config: '='
         },
         templateUrl: '/app/tpl/widget/row-messager.html',
-        controller: function ($scope) {
+        link: function ($scope, $elem, $attr) {
+            /**
+             * controller 最先执行, 适用于指令之间的交互, 为其他指令提供API
+             * compile 和 link 同时存在, 则执行 compile , 不执行 link, 建议使用 link
+             * link中 进行 dom 事件绑定, 数据绑定
+             * */
 
             // 默认参数
             var defaultConfig = {
@@ -34,15 +39,9 @@ App.directive('widgetRowMessager', function () {
                 newConfig = $scope.config // 传进来的参数
                 ;
 
+
             // jquery 深拷贝
             $scope.config = $.extend(true, {}, defaultConfig, newConfig);
-
-        },
-        link: function ($scope, $elem, $attr) {
-            /**
-             * controller 最先执行
-             * compile 和 link 同时存在, 则执行 compile , 不执行 link, 建议使用 link
-             * */
         }
     };
 });

@@ -57,12 +57,18 @@ gulp.task('watch', ['connect'], function() {						// watch 是开发环境
 		console.log('Done! Building tasks started...');
 
 		gulp.start(dev_tasks);										// 先构建一次
-		gulp.start('lib');											// 压缩 js 所依赖的外部框架
 
-		gulp.watch(src.js, ['js-dev', 'reload']);		// 同步执行 js-dev 后才执行 reload
-		gulp.watch(src.lessWatch, ['css-dev', 'reload']);
-		gulp.watch(src.img, ['img', 'reload']);
-		gulp.watch(src.tpl, ['tpl', 'reload']);
+		gulp.watch(src.js, ['js-dev', 'js-reload']);
+		gulp.watch(src.lessWatch, ['css-dev', 'css-reload']);
+		gulp.watch(src.img, ['img', 'img-reload']);
+		gulp.watch(src.tpl, ['tpl', 'tpl-reload']);
+
+		gulp.watch(src.all, function(event) {
+			var path = event.path,
+				file = path.substr(path.indexOf('src'));
+			console.log('-----------------------------------------');
+			console.log('File ' + file + ' was ' + event.type);
+		});
 	});
 });
 
@@ -83,27 +89,21 @@ gulp.task('build', function() {
 gulp.task('js', function() {
 	return gulp.src(src.js)											// 返回 gulp 流对象
 		.pipe(sourcemaps.init())									// 插件需要在 init 和 write 之间
-		.pipe(jshint())
-		.pipe(jshint.reporter('default'))							// 默认规则
 		.pipe(concat(output.jsApp))									// 合并js
 		.pipe(uglify())												// 混淆js
 		.pipe(sourcemaps.write('.'))								// 插件需要在 init 和 write 之间
-		.pipe(gulp.dest(dest.js));
+		.pipe(gulp.dest(dest.js))
+        ;
 });
 
 // js-dev 开发环境, 不用混淆, 利于调试
 gulp.task('js-dev', function() {
-	var deferred = q.defer();
 
-	gulp.src(src.js)
+	return gulp.src(src.js)
 		.pipe(plumber())											// 出错就跳过那个文件
-		.pipe(jshint())
-		.pipe(jshint.reporter('default'))							// 默认规则
 		.pipe(concat(output.jsApp))									// 合并js
-		.pipe(gulp.dest(dest.js));
-
-	deferred.resolve();
-	return deferred.promise;										// 返回一个promise对象
+		.pipe(gulp.dest(dest.js))
+        ;
 });
 
 // 编译 less
@@ -113,31 +113,31 @@ gulp.task('css', function() {
 		.pipe(sourcemaps.init())
 		.pipe(cssnano())											// 压缩css
 		.pipe(sourcemaps.write('.'))
-		.pipe(gulp.dest(dest.css));
+		.pipe(gulp.dest(dest.css))
+        ;
 });
 
 // 编译 less-dev 开发环境, 不用压缩, 利于调试
 gulp.task('css-dev', function() {
-	var deferred = q.defer();
-	gulp.src(src.less)
+	return gulp.src(src.less)
 		.pipe(plumber())
 		.pipe(less())												// 编译less
-		.pipe(gulp.dest(dest.css));
-
-	deferred.resolve();
-	return deferred.promise;										// 返回一个promise对象
+		.pipe(gulp.dest(dest.css))
+        ;
 });
 
 // img
 gulp.task('img', function() {
 	return gulp.src(src.img)
-		.pipe(gulp.dest(dest.img));
+		.pipe(gulp.dest(dest.img))
+        ;
 });
 
 // tpl
 gulp.task('tpl', function() {
 	return gulp.src(src.tpl)
-		.pipe(gulp.dest(dest.tpl));
+		.pipe(gulp.dest(dest.tpl))
+        ;
 });
 
 // lib
@@ -147,7 +147,8 @@ gulp.task('lib', function() {
 		.pipe(concat(output.jsLib))
 		.pipe(uglify())
 		.pipe(sourcemaps.write('.'))
-		.pipe(gulp.dest(dest.js));
+		.pipe(gulp.dest(dest.js))
+        ;
 });
 
 // server
@@ -158,23 +159,30 @@ gulp.task('connect', function () {
 	});
 });
 
-gulp.task('reload', function() {
-	var deferred = q.defer();
+gulp.task('js-reload', ['js-dev'], reload);							// 为了确保顺序执行
+gulp.task('css-reload', ['css-dev'], reload);
+gulp.task('img-reload', ['img-dev'], reload);
+gulp.task('tpl-reload', ['tpl'], reload);
 
-	setTimeout(function() {
-		gulp.src('./index.html')									// 注意是当前路径
-			.pipe(connect.reload());
-		deferred.resolve();
-
-	}, 100);
-
-	return deferred.promise;										// 返回一个promise对象
-
-});
+function reload() {
+	return gulp.src('./index.html')									// 注意是当前路径
+		.pipe(connect.reload())
+        ;
+}
 
 // check
-gulp.task('check', function() {
-	return gulp.src(src.lib)
-		.pipe(jshint());
+gulp.task('check', ['js-check', 'html-check']);
 
+gulp.task('js-check', function() {
+	return gulp.src(src.js)
+		.pipe(jshint())
+		.pipe(jshint.reporter('default'))
+        ;
+});
+
+gulp.task('html-check', ['js-check'], function() {
+    return gulp.src(src.tpl)
+        .pipe(htmlhint())
+        .pipe(htmlhint.reporter())
+        ;
 });

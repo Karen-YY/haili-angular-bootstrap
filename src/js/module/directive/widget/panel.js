@@ -20,17 +20,11 @@ App
             templateUrl: '/app/tpl/widget/panel.html',
 
             controller: function ($scope, $element, $attrs, $transclude) {
-                // 定义组件的默认行为
-                // -----------------------
-                $scope.isHide = false;
-                $scope.icon = 'fa fa-minus';
-                $scope.toggle = function () {
-                    $scope.isHide = !$scope.isHide;
-                    $scope.icon = $scope.isHide ? 'fa fa-plus' : 'fa fa-minus';
-                };
-                $scope.close = function () {
-                    $element.remove();
-                };
+                /**
+                 * controller 最先执行, 适用于指令之间的交互, 为其他指令提供API
+                 * compile 和 link 同时存在, 则执行 compile , 不执行 link, 建议使用 link
+                 * link中 进行 dom 事件绑定, 数据绑定
+                 * */
 
                 // 供子指令调用
                 this.addFooter = function (element) {
@@ -53,7 +47,18 @@ App
                 //    });
                 //});
             },
-            link: function (scope, elem, attrs) {
+            link: function ($scope, $elem, $attrs) {
+                // 定义组件的默认行为
+                // -----------------------
+                $scope.isHide = false;
+                $scope.icon = 'fa fa-minus';
+                $scope.toggle = function () {
+                    $scope.isHide = !$scope.isHide;
+                    $scope.icon = $scope.isHide ? 'fa fa-plus' : 'fa fa-minus';
+                };
+                $scope.close = function () {
+                    $elem.remove();
+                };
 
             }
         };

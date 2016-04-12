@@ -33,11 +33,18 @@ App.controller('HomeCtrl', ['$http', '$scope', '$state', '$rootScope', '$timeout
         // 使用了默认参数
         $scope.rowMessagerConfig3 = {
             leftBlock: {
-                icon: 'fa fa-desktop'
+                icon: 'fa fa-desktop',
+                style: {
+                    'background-color': '#339822'
+                }
             },
             rightBlock: {
                 title: '20481',
-                msg: '新增工单数量'
+                msg: '新增工单数量',
+                style: {
+                    'background-color': '#543562',
+                    'font-size': '16px'
+                }
             }
         };
 

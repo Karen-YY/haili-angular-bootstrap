@@ -11,7 +11,12 @@ App.controller('TableCtrl', ['$http', '$scope', '$state', '$rootScope',
         $scope.tableConfig = {
             checkbox: true,
             title: 'test table',
+            border: true,
             url: '/test/data/table.json',
+            queryParams: {
+                name: 'xiaoming',
+                age: '25'
+            },
             columns: [
                 {field:'productid',title:'Code',width:100},
                 {field:'productname',title:'Name',width:100},
@@ -24,6 +29,6 @@ App.controller('TableCtrl', ['$http', '$scope', '$state', '$rootScope',
             success: function () {
                 console.log('success');
             }
-        }
+        };
     }])
 ;

@@ -17,16 +17,20 @@ App
             replace: true,
             templateUrl: '/app/tpl/widget/form-checkbox.html',
 
-            link: function (scope, elem, attr) {
+            link: function ($scope, $elem, $attr) {
 
-                var checkboxEle = elem.find('input[type=checkbox]');
+                var checkboxEle = $elem.find('input[type=checkbox]');
 
                 // 表单元素必备
                 ['name', 'checked'].forEach(function (k, v) {
-                    if (attr[k]) {
-                        checkboxEle.attr(k, attr[k]);
-                        elem.removeAttr(k);
+                    if ($attr[k]) {
+                        checkboxEle.attr(k, $attr[k]);
+                        $elem.removeAttr(k);
                     }
+                });
+
+                $scope.$on('event:selectAll', function () {
+                    console.log($elem[0]);
                 });
 
             }
@@ -43,15 +47,15 @@ App
             replace: true,
             templateUrl: '/app/tpl/widget/form-switch.html',
 
-            link: function (scope, elem, attr) {
+            link: function ($scope, $elem, $attr) {
 
-                var checkboxEle = elem.find('input[type=checkbox]');
+                var checkboxEle = $elem.find('input[type=checkbox]');
 
                 // 表单元素必备
                 ['name', 'checked'].forEach(function (k, v) {
-                    if (attr[k]) {
-                        checkboxEle.attr(k, attr[k]);
-                        elem.removeAttr(k);
+                    if ($attr[k]) {
+                        checkboxEle.attr(k, $attr[k]);
+                        $elem.removeAttr(k);
                     }
                 });
             }
@@ -68,15 +72,15 @@ App
             replace: true,
             templateUrl: '/app/tpl/widget/form-radio.html',
 
-            link: function (scope, elem, attr) {
+            link: function ($scope, $elem, $attr) {
 
-                var checkboxEle = elem.find('input[type=radio]');
+                var checkboxEle = $elem.find('input[type=radio]');
 
                 // 表单元素必备
                 ['name', 'checked'].forEach(function (k, v) {
-                    if (attr[k]) {
-                        checkboxEle.attr(k, attr[k]);
-                        elem.removeAttr(k);
+                    if ($attr[k]) {
+                        checkboxEle.attr(k, $attr[k]);
+                        $elem.removeAttr(k);
                     }
                 });
             }

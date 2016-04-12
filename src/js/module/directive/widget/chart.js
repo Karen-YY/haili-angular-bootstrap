@@ -12,9 +12,8 @@ App.directive('widgetChart', function () {
         scope: {
             config: "=" // 注意要小写, 因为 html 不识别大小写
         },
-        controller: function($scope) {
+        link: function ($scope, $elem, $attrs) {
 
-            // 默认参数
             var defaultConfig = {
                     chart: {
                         animation: true
@@ -23,7 +22,7 @@ App.directive('widgetChart', function () {
                         enabled: true,
                         text: 'haili angular bootstrap admin'
                     }
-                },
+                }, // 默认参数
 
                 newConfig = $scope.config // 传进来的参数
                 ;
@@ -31,10 +30,8 @@ App.directive('widgetChart', function () {
             // jquery 深拷贝
             $scope.config = $.extend(true, {}, defaultConfig, newConfig);
 
-        },
-        link: function (scope, elem, attrs) {
             try {
-                elem.highcharts(scope.config);
+                $elem.highcharts($scope.config);
             } catch (e) {
                 console.log("error in creating chart :" + e);
             }
