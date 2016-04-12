@@ -4631,6 +4631,25 @@ label + .form-control + .parsley-errors-list + .form-control-feedback {
   margin: 10px 4px;
 }
 /* ========================================================================
+   Component: src/less/widget/table.less
+   table 组件
+   @author: haili042
+   @time: 2016年4月12日 16:20:16
+ ========================================================================== */
+.widget-table > caption {
+  text-align: center;
+}
+.widget-table > tfoot .page-input {
+  width: 60px;
+  margin: 0;
+  padding: 6px;
+  border: none;
+  text-align: right;
+}
+.widget-table > tfoot .page-info {
+  line-height: 33px;
+}
+/* ========================================================================
    Component: src/less/widget/row-messager.less
    提示器组件
    @author: haili042

@@ -8,10 +8,11 @@
 App
     .directive('widgetTable', ['$q', '$http', function ($q, $http) {
         return {
-            restrict: 'EC',
+            restrict: 'EA',
             scope: {
                 config: '='
             },
+            replace: true,
             transclude: true,
             templateUrl: '/app/tpl/widget/table.html',
             link: function ($scope, $elem, $attr) {
@@ -20,6 +21,7 @@ App
                 var defaultConfig = {
                         checkbox: true,
                         border: false,
+                        pagination: false, // 默认不展示
                         pageNumber: 1,
                         pageSize: 20,
                         pageList: [10,20,30,40],
@@ -29,18 +31,26 @@ App
 
                     newConfig = $scope.config, // 传进来的参数
                     deferred = $q.defer(),
-                    promise = deferred.promise
+                    promise = deferred.promise,
+                    queryParams = {}
                     ;
 
                 // jquery 深拷贝
                 $scope.config = $.extend(true, {}, defaultConfig, newConfig);
+                queryParams = $scope.config.queryParams;
+                queryParams.pageNumber = $scope.config.pageNumber;
+                queryParams.pageSize = $scope.config.pageSize;
+                queryParams.sortName = $scope.config.sortName;
+                queryParams.sortOrder = $scope.config.sortOrder;
+
 
                 // 发送请求
                 $http({
                     method: 'get',
                     url: newConfig.url,
                     //data: {} // post 请求使用, 数据放在, 消息体中
-                    params: $scope.config.queryParams // 参数转成字符串放在 url 后面
+                    data: queryParams,
+                    params: queryParams // 参数转成字符串放在 url 后面
                 }).success(function (data, status, headers, config) {
                     deferred.resolve(data);
                 }).error(function (data, status, headers, config) {
@@ -64,4 +74,15 @@ App
             }
         };
     }])
+
+    .directive('widgetTablePagination', function () {
+        return {
+            restrict: 'EA',
+            require: '^WidgetTable',
+
+            link: function ($scope, $elem, $attr) {
+
+            }
+        };
+    })
 ;

@@ -68,7 +68,7 @@ App
     .directive('widgetPanelFooter', function () {
         return {
             require: '^widgetPanel', // 依赖父控制器
-            restrict: 'EC',
+            restrict: 'EA',
             transclude: true,
             template: '<div class="panel-footer" ng-transclude=""></div>',
 

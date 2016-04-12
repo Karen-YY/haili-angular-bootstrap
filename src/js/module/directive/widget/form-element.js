@@ -10,7 +10,7 @@ App
     // 单选框
     .directive('widgetCheckbox', function () {
         return {
-            restrict: 'EC',
+            restrict: 'EA',
             scope: {
                 checked: '='
             },
@@ -40,7 +40,7 @@ App
     // 开关
     .directive('widgetSwitch', function () {
         return {
-            restrict: 'EC',
+            restrict: 'EA',
             scope: {
                 checked: '='
             },
@@ -65,7 +65,7 @@ App
     // 复选框
     .directive('widgetRadio', function () {
         return {
-            restrict: 'EC',
+            restrict: 'EA',
             scope: {
                 checked: '='
             },
