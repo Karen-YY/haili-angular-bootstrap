@@ -14,11 +14,26 @@ App
             scope: {
                 config: '='
             },
-            replace: true,
+            //template:
+            //    '<select ng-model="seleted" ng-options="a.text for a in config.data" class="widget-select">' +
+            //        '<option value="">--请选择--</option>' +
+            //    '</select>',
+
+            // 小的组件就直接写在js代码里算了...发请求也要占资源的...
             template:
-                '<select ng-model="seleted" ng-options="a.text for a in config.data" class="widget-select">' +
-                    '<option value="">--请选择--</option>' +
-                '</select>',
+            '<div class="input-group dropdown widget-select">' +
+                '<input class="form-control" type="text" /> ' +
+                '<div class="input-group-btn">' +
+                    '<button class="btn btn-default">' +
+                        '<span class="caret"></span>' +
+                    '</button>' +
+                    '<ul class="dropdown-menu" aria-labelledby="dropdownMenu1">' +
+                    '<li>' +
+                    '<a href="">Action</a></li><li><a href="#">Another action</a>' +
+                    '</li>' +
+                    '</ul>' +
+                '</div>' +
+            '</div>',
 
             link: function ($scope, $elem, $attr) {
 
