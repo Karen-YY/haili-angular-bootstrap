@@ -19,24 +19,40 @@ App
 
             link: function ($scope, $elem, $attr) {
 
-                var checkboxEle = $elem.find('input[type=checkbox]');
+                //var checkboxEle = $elem.find('input[type=checkbox]');
+                //
+                //// 表单元素必备
+                //['name', 'checked'].forEach(function (k, v) {
+                //    if ($attr[k]) {
+                //        checkboxEle.attr(k, $attr[k]);
+                //        $elem.removeAttr(k);
+                //    }
+                //});
 
-                // 表单元素必备
-                ['name', 'checked'].forEach(function (k, v) {
-                    if ($attr[k]) {
-                        checkboxEle.attr(k, $attr[k]);
-                        $elem.removeAttr(k);
-                    }
+                //checkboxEle.on('click', function (e) {
+                //    e.stopPropagation();
+                //
+                //    $scope.checked = !$scope.checked;
+                //    $scope.$emit('widget-checkbox:checked', $scope.checked);
+                //});
+
+                $elem.on('change', function (e) {
+
+                    $scope.$apply(function () {
+                        $scope.checked = !$scope.checked;
+
+                    });
                 });
 
-                checkboxEle.on('click', function (e) {
-                    e.stopPropagation();
-
-                    console.log('checkbox checked...');
-                    $scope.checked = !$scope.checked;
-                    $scope.$emit('widget-checkbox:checked', $scope.checked);
-                });
-
+                //$scope.$on('widget-checkbox:checking', function(event, data) {
+                //    $scope.checked = data;
+                //});
+                //
+                //$scope.$watch('checked', function (oldVal, newVal) {
+                //    //console.log(oldVal + ', ' + newVal);
+                //    $scope.$emit('widget-checkbox:checked', $scope.checked);
+                //
+                //});
             }
         };
     })

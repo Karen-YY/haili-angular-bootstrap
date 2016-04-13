@@ -11,7 +11,7 @@
   </tr>
   </thead>
   <tbody>
-  <tr widget-table-row index="$index" ng-repeat="row in config.data.rows" ng-class="{'row-selected': rowSelected}">
+  <tr widget-table-row ng-repeat="row in config.data.rows" index="$index" >
     <th ng-show="config.checkbox">
       <input widget-checkbox type="checkbox">
     </th>
@@ -61,4 +61,5 @@
     </td>
   </tr>
   </tfoot>
+
 </table>

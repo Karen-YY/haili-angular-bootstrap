@@ -1,0 +1,47 @@
+<!-- 主要内容 -->
+<div class="container-fluid" ng-controller="SelectCtrl">
+  <h3 class="m0">下拉框</h3>
+  <hr/>
+
+  <div class="row">
+    <div class="col-xs-6">
+      <widget-panel title="普通下拉框" minable="true">
+
+        <widget-select config="config1"></widget-select>
+
+      </widget-panel>
+    </div>
+
+    <div class="col-xs-6">
+      <widget-panel title="联动下拉框" minable="true">
+
+        <div>
+          <select ng-model="seleted" ng-options="a.name for a in animals">
+            <option value="">请选择你的萌宠</option>
+          </select>
+        </div>
+
+        <div>
+          <select ng-model="seleted" ng-options="(a.name + '爱吃' + a.food) for a in animals">
+            <option value="">请选择你的萌宠</option>
+          </select>
+        </div>
+
+        <div>
+          <select ng-model="seleted" ng-options="(a.name + '的爱好是' + a.favor) group by a.sex for a in animals">
+            <option value="">请选择你的萌宠</option>
+          </select>
+        </div>
+
+        <div>
+          <select ng-model="seletedId" ng-options="a.id as a.name for a in animals">
+            <option value="">请选择你的萌宠</option>
+          </select>
+        </div>
+
+      </widget-panel>
+    </div>
+  </div>
+
+</div>
+

@@ -40,6 +40,16 @@ App
                 templateUrl: 'app/tpl/example/example-form.html'
             })
 
+            .state('app.example-form-masonry', {
+                url: '/example-form-masonry',
+                templateUrl: 'app/tpl/example/example-form-masonry.html'
+            })
+
+            .state('app.example-form-select', {
+                url: '/example-form-select',
+                templateUrl: 'app/tpl/example/example-form-select.html'
+            })
+
             .state('app.example-chart', {
                 url: '/example-chart',
                 templateUrl: 'app/tpl/example/example-chart.html'
@@ -48,6 +58,11 @@ App
             .state('app.example-table', {
                 url: '/example-table',
                 templateUrl: 'app/tpl/example/example-table.html'
+            })
+
+            .state('app.example-tree', {
+                url: '/example-tree',
+                templateUrl: 'app/tpl/example/example-tree.html'
             })
 
             //.state('app.example', {

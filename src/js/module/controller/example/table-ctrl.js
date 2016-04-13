@@ -29,5 +29,6 @@ App
                 {field:'itemid',title:'Price',width:100,align:'right'}
             ]
         };
+
     }])
 ;

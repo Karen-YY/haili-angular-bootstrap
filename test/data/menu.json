@@ -1,6 +1,6 @@
 [
   {
-    "title": "l1-title1",
+    "title": "页面",
     "icon": "fa fa-home",
     "url": "#",
     "id": "",
@@ -8,11 +8,6 @@
       {
         "title": "主页",
         "url": "app.home",
-        "id": ""
-      },
-      {
-        "title": "表单",
-        "url": "app.example-form",
         "id": ""
       },
       {
@@ -27,31 +22,41 @@
     ]
   },
   {
-    "title": "Forms",
+    "title": "表单",
     "url": "#",
     "icon": "fa fa-desktop",
     "submenu": [
       {
-        "title": "uiSelect",
-        "url": "app.form-uiselect"
+        "title": "表单",
+        "url": "app.example-form",
+        "id": ""
+      },
+      {
+        "title": "瀑布流布局",
+        "url": "app.example-form-masonry",
+        "id": ""
+      },
+      {
+        "title": "下拉框",
+        "url": "app.example-form-select"
       }
     ],
     "translate": "sidebar.nav.form.FORM"
   },
   {
-    "title": "Charts",
+    "title": "图表",
     "url": "#",
     "icon": "fa fa-bar-chart",
     "submenu": [
       {
-        "title": "chart",
+        "title": "图表",
         "url": "app.example-chart"
       }
     ],
     "translate": "sidebar.nav.chart.CHART"
   },
   {
-    "title": "Tables",
+    "title": "表格",
     "url": "#",
     "icon": "fa fa-table",
     "submenu": [
@@ -60,8 +65,8 @@
         "url": "app.example-table"
       },
       {
-        "title": "Angular Grid",
-        "url": "app.table-angulargrid"
+        "title": "树",
+        "url": "app.example-tree"
       }
     ],
     "translate": "sidebar.nav.table.TABLE"

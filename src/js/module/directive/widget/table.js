@@ -6,7 +6,7 @@
  =========================================================*/
 
 App
-    .directive('widgetTable', ['$q', '$http', function ($q, $http) {
+    .directive('widgetTable', ['widgetGetData', function (widgetGetData) {
         return {
             restrict: 'EA',
             scope: {
@@ -15,8 +15,7 @@ App
             replace: true,
             transclude: true,
             templateUrl: '/app/tpl/widget/table.html',
-            controller: function ($scope) {
-
+            controller: function ($scope, $rootScope) {
 
             },
             link: function ($scope, $elem, $attr) {
@@ -28,14 +27,11 @@ App
                         pagination: false, // 默认不展示
                         pageNumber: 1,
                         pageSize: 20,
-                        pageList: [10,20,30,40],
+                        pageList: [10, 20, 30, 40],
                         sortName: 'id',
                         sortOrder: 'asc'
                     },
-
                     newConfig = $scope.config, // 传进来的参数
-                    deferred = $q.defer(),
-                    promise = deferred.promise,
                     queryParams = {}
                     ;
 
@@ -47,42 +43,40 @@ App
                 queryParams.sortName = $scope.config.sortName;
                 queryParams.sortOrder = $scope.config.sortOrder;
 
-
-                // 发送请求
-                if ($scope.config.url) {
-
-                    $http({
-                        method: 'get',
-                        url: newConfig.url,
-                        //data: {} // post 请求使用, 数据放在, 消息体中
-                        params: queryParams // 参数转成字符串放在 url 后面
-                    }).success(function (data, status, headers, config) {
-                        deferred.resolve(data);
-                    }).error(function (data, status, headers, config) {
-                        deferred.reject(data);
-                    });
-                }
-
                 // 等待请求返回的数据
-                promise.then(function (data) {
-                    $scope.config.data = data;
-                }, function (data) {
-
-                });
+                widgetGetData
+                    .setConfig(defaultConfig, newConfig)
+                    .getPromise()
+                    .then(function (data) {
+                        $scope.config.data = data;
+                    });
 
 
                 // 事件绑定
                 // --------------------
-                $scope.selectAll = function () {
-                    $scope.$broadcast('event:selectAll');
+                $scope.allChecked = false;
+                $scope.selectAll = function (e) {
+                    $scope.allChecked = !$scope.allChecked;
+                    $scope.$broadcast('widget-table:checkAll', $scope.allChecked);
                 };
 
-                $scope.$on('widget-checkbox:checked', function (event, data) {
-                    console.log('root scope');
-                    console.log($scope);
 
+                var checkedRows = {};
+
+                $scope.$on('widget-table-row:checked', function (event, data) {
+
+                    var index = data.index,
+                        checkedRow = {
+                            data: $scope.config.data.rows[index],
+                            index: index
+                        };
+                    if (data.checked) {
+                        checkedRows[index] = checkedRow;
+                    } else {
+                        delete checkedRows[index];
+                    }
+                    console.log(checkedRows);
                 });
-
             }
         };
     }])
@@ -94,21 +88,35 @@ App
             scope: {
                 index: '='
             },
+            replace: true,
+            transclude: true,
+            template: '<tr ng-transclude=""></tr>',
             link: function ($scope, $elem, $attr, $superCtrl) {
-                $elem.on('click', function (e) {
 
-                    console.log('row ' + $scope.index + ' checked...');
-                    console.log($scope);
+                $scope.checked = false;
 
-                });
-                $scope.rowSelected = true;
-
+                // 接收checkbox 事件
                 $scope.$on('widget-checkbox:checked', function (event, data) {
-                    console.log('row scope');
+                    event.stopPropagation(); // 停止传播
+
+                    $scope.checked = data;
+
+                    // 向上发送事件
+                    $scope.$emit('widget-table-row:checked', {
+                        index: $scope.index,
+                        checked: data
+                    });
                 });
-                $scope.$on('widget-checkbox:unchecked', function (event, data) {
-                    console.log($scope.index + ' check"' + data);
+
+                // 接收全选事件
+                $scope.$on('widget-table:checkAll', function (event, data) {
+                    $scope.$broadcast('widget-checkbox:checking', data);
                 });
+
+                $elem.on('click', function (e) {
+                    $scope.$broadcast('widget-checkbox:checking', $scope.checked);
+                });
+
             }
         };
     })
@@ -123,4 +131,5 @@ App
             }
         };
     })
+
 ;

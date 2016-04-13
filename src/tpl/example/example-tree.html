@@ -1,0 +1,20 @@
+<!-- 主要内容 -->
+<div class="container-fluid" ng-controller="TreeCtrl">
+  <h3 class="m0">tree demo</h3>
+  <hr/>
+
+  <div class="row">
+    <div class="col-xs-12">
+      <widget-tree tree-data="demo.tree"
+                   text-field="name"
+                   value-field="id"
+                   item-clicked="demo.itemClicked($item)"
+                   item-checked-changed="demo.itemCheckedChanged($item)"
+                   config="tableConfig"
+                   can-checked="true">
+
+      </widget-tree>
+    </div>
+  </div>
+</div>
+
