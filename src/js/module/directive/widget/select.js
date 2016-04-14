@@ -8,33 +8,28 @@
 App
 
     // 复选框
-    .directive('widgetSelect', ['$q', '$http', 'widgetGetData', function ($q, $http, widgetGetData) {
+    .directive('widgetSelect', ['$q', '$http', 'widgetService', function ($q, $http, widgetService) {
         return {
             restrict: 'EA',
             scope: {
                 config: '='
             },
-            //template:
-            //    '<select ng-model="seleted" ng-options="a.text for a in config.data" class="widget-select">' +
-            //        '<option value="">--请选择--</option>' +
-            //    '</select>',
 
-            // 小的组件就直接写在js代码里算了...发请求也要占资源的...
-            template:
-            '<div class="input-group dropdown widget-select">' +
-                '<input class="form-control" type="text" /> ' +
-                '<div class="input-group-btn">' +
-                    '<button class="btn btn-default">' +
-                        '<span class="caret"></span>' +
-                    '</button>' +
-                    '<ul class="dropdown-menu" aria-labelledby="dropdownMenu1">' +
-                    '<li>' +
-                    '<a href="">Action</a></li><li><a href="#">Another action</a>' +
-                    '</li>' +
-                    '</ul>' +
-                '</div>' +
-            '</div>',
+            templateUrl: '/app/tpl/widget/form-select.html',
 
+            controller: function ($scope) {
+
+                // 选中一条
+                this.addSelectedItem = function (item) {
+
+                    if (item.selected) {
+                        $scope.selectedItems[item.index] = item;
+                    } else {
+                        delete $scope.selectedItems[item.index];
+                    }
+                };
+
+            },
             link: function ($scope, $elem, $attr) {
 
                 // 默认参数
@@ -42,15 +37,66 @@ App
                     newConfig = $scope.config // 传进来的参数
                     ;
 
+                // 所选的项
+                $scope.selectedItems = {};
+
                 // 等待请求返回的数据
-                widgetGetData
+                widgetService
                     .setConfig(defaultConfig, newConfig)
-                    .getPromise()
-                    .then(function (data) {
+                    .getData(function (data) {
                         $scope.config.data = data;
                     });
 
+                // 打开, 关闭
+                $scope.toggle = function () {
+                    $scope.open = !$scope.open;
+                };
+
+                // 全选
+                $scope.selectAll = function(data) {
+                    $scope.$broadcast('widget-select:selectAll', data);
+                };
             }
-        }
+        };
     }])
+
+    .directive('widgetSelectItem', function () {
+        return {
+            restrict: 'EA',
+            require: '^widgetSelect',
+            scope: {
+                index: '=',
+                selected: '=',
+                data: '='
+            },
+            template:
+            '<li>' +
+                '<a>' +
+                    '<span>{{data.text}}</span>' +
+                    '<i class="fa" ng-class="{\'fa-check\': selected}"></i>' +
+                '</a>' +
+            '</li>',
+
+            link: function ($scope, $elem, $attr, $superCtrl) {
+
+                $elem.on('click', function (e) {
+                    var item;
+                    $scope.$apply(function () {
+                        $scope.selected = !$scope.selected;
+                    });
+
+                    item = {
+                        index: $scope.index,
+                        selected: $scope.selected
+                    };
+                    $superCtrl.addSelectedItem(item);
+                });
+
+                $scope.$on('widget-select:selectAll', function(event, data) {
+                    $scope.selected = data;
+                });
+
+            }
+        };
+    })
 ;

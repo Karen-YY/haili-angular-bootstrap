@@ -263,10 +263,51 @@
 // widget select style
 // ------------------------
 .widget-select {
+  @hoverColor:              #23b7e5;
+  @drop-wd:                 200px;
+  @drop-max-ht:             300px;
 
-  //overflow: hidden;
-  .dropdown-menu {
-    display: block;
+  >.dropdown {
+
+    >.dropdown-menu {
+      width: @drop-wd;
+      max-height: @drop-max-ht;
+      overflow-y: auto;
+
+
+      >.actionbox {
+        button {
+          width: 50%;
+        }
+      }
+
+      >ul {
+        padding: 0;
+        >li {
+          position: relative;
+          list-style: none;
+
+          a {
+            display: block;
+            color: #333;
+            font-weight: 400;
+            padding: 3px 20px;
+            white-space: nowrap;
+
+            &:hover {
+              color: #ffffff;
+              background-color: @hoverColor;
+            }
+
+            i {
+              float: right;
+              line-height: 20px;
+            }
+          }
+        }
+      }
+    }
   }
+
 
 }

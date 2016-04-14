@@ -6,13 +6,12 @@
  =========================================================*/
 
 App
-    .directive('widgetTable', ['widgetGetData', function (widgetGetData) {
+    .directive('widgetTable', ['widgetService', function (widgetService) {
         return {
             restrict: 'EA',
             scope: {
                 config: '='
             },
-            replace: true,
             transclude: true,
             templateUrl: '/app/tpl/widget/table.html',
             controller: function ($scope, $rootScope) {
@@ -43,11 +42,14 @@ App
                 queryParams.sortName = $scope.config.sortName;
                 queryParams.sortOrder = $scope.config.sortOrder;
 
+
+                // 转移指令属性到目标元素
+                widgetService.transferAttr($elem, $elem.find('table.widget-table'), $attr, 'class');
+
                 // 等待请求返回的数据
-                widgetGetData
+                widgetService
                     .setConfig(defaultConfig, newConfig)
-                    .getPromise()
-                    .then(function (data) {
+                    .getData(function (data) {
                         $scope.config.data = data;
                     });
 

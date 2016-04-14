@@ -11,7 +11,6 @@
    统一的样式和变量, 利于风格统一
    @author: haili042
  ========================================================================== */
-@import "../../lib/fontawesome/css/font-awesome.min.css";
 .wd-xxs {
   width: 60px;
 }
@@ -3349,6 +3348,9 @@ a.text-muted:hover,
 a.text-muted:focus {
   color: #748690;
 }
+a:hover {
+  cursor: pointer;
+}
 [ng-click],
 [data-ng-click] {
   cursor: pointer;
@@ -5768,8 +5770,35 @@ body {
   left: 50%;
   transition: all .2s;
 }
-.widget-select .dropdown-menu {
+.widget-select > .dropdown > .dropdown-menu {
+  width: 200px;
+  max-height: 300px;
+  overflow-y: auto;
+}
+.widget-select > .dropdown > .dropdown-menu > .actionbox button {
+  width: 50%;
+}
+.widget-select > .dropdown > .dropdown-menu > ul {
+  padding: 0;
+}
+.widget-select > .dropdown > .dropdown-menu > ul > li {
+  position: relative;
+  list-style: none;
+}
+.widget-select > .dropdown > .dropdown-menu > ul > li a {
   display: block;
+  color: #333;
+  font-weight: 400;
+  padding: 3px 20px;
+  white-space: nowrap;
+}
+.widget-select > .dropdown > .dropdown-menu > ul > li a:hover {
+  color: #ffffff;
+  background-color: #23b7e5;
+}
+.widget-select > .dropdown > .dropdown-menu > ul > li a i {
+  float: right;
+  line-height: 20px;
 }
 /* ========================================================================
    Component: src/less/widget/panel.less

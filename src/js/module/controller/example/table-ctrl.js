@@ -27,7 +27,9 @@ App
                 {field:'listprice',title:'Name',width:100},
                 {field:'attr1',title:'Name',width:100},
                 {field:'itemid',title:'Price',width:100,align:'right'}
-            ]
+            ],
+            onLoadSuccess: function(data) {
+            }
         };
 
     }])

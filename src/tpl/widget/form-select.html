@@ -1,0 +1,36 @@
+<div class="widget-select">
+  <div class="dropdown" ng-class="{'open': open}">
+
+    <button class="btn btn-default" ng-click="toggle()">
+      <i class="fa fa-caret-down pl-lg"></i>
+    </button>
+
+    <div class="dropdown-menu p-sm" ng-class="{'open': open}">
+
+      <div class="input-group input-group-sm">
+        <input type="text" class="form-control"/>
+        <span class="input-group-btn">
+          <button class="btn btn-default" type="button">
+            <i class="fa fa-search text-muted"></i>
+          </button>
+        </span>
+      </div>
+      <div class="actionbox mt-sm">
+        <div class="btn-group btn-group-sm btn-block text-center">
+          <button class="btn btn-default" ng-click="selectAll(true)">全选</button>
+          <button class="btn btn-default" ng-click="selectAll(false)">反选</button>
+        </div>
+      </div>
+
+      <ul>
+        <li ng-repeat="item in config.data"
+            widget-select-item
+            data="item"
+            index="$index"
+            selected="selectedItems[$index]">
+        </li>
+      </ul>
+    </div>
+
+  </div>
+</div>
