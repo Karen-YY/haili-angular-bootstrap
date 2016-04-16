@@ -269,8 +269,13 @@
 
   >.dropdown {
 
+    .selector {
+      background: #fff;
+    }
+
     >.dropdown-menu {
-      width: @drop-wd;
+      min-width: @drop-wd;
+      max-width: @drop-max-ht;
       max-height: @drop-max-ht;
       overflow-y: auto;
 
@@ -287,6 +292,11 @@
           position: relative;
           list-style: none;
 
+          .selected {
+            color: #ffffff;
+            background-color: @hoverColor;
+          }
+
           a {
             display: block;
             color: #333;
@@ -295,8 +305,7 @@
             white-space: nowrap;
 
             &:hover {
-              color: #ffffff;
-              background-color: @hoverColor;
+              .selected
             }
 
             i {

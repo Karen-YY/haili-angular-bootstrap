@@ -18,15 +18,10 @@ App
             ;
 
         // 获取配置
-        this.getConfig = function () {
-            return config;
-        };
-
-        // 设置配置
-        this.setConfig = function (defConf, newConf) {
+        this.concatConfig = function (defConf, newConf) {
             // jquery 深拷贝
-            config = $.extend(true, {}, defConf, newConf);
-            return that;
+            config = $.extend(true, newConf, defConf, newConf);
+            return config;
         };
 
         // 转移指令到指定元素上
@@ -41,7 +36,7 @@ App
         };
 
         // 获取 promise 对象
-        this.getPromise = function () {
+        this.getPromise = function (config) {
 
             var http = httpService(config);
             http && http.success(function (data, status, headers, conf) {
@@ -54,7 +49,7 @@ App
         };
 
         // 获取数据
-        this.getData = function (callback, errorCallback) {
+        this.getData = function (config, callback, errorCallback) {
 
             var http = httpService(config);
             http && http.success(function (data, status, headers, conf) {
@@ -62,7 +57,7 @@ App
             }).error(function (data, status, headers, conf) {
                 errorCallback && errorCallback(data, status, headers, conf);
             });
-
+            return that;
         };
 
         // 请求公用方法

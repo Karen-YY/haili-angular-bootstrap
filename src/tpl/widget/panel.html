@@ -6,11 +6,13 @@
     </h4>
 
     <div class="pull-right">
-      <i ng-click="toggle()" class="{{icon}}" ng-show="minable"></i>
+      <i ng-click="toggle()" class="fa"
+         ng-class="{false: 'fa-minus', true: 'fa-plus'}[isHide]" ng-show="minable"></i>
       <i ng-click="close()" class="fa fa-close" ng-show="closeable"></i>
     </div>
     <hr/>
   </div>
-  <div class="panel-body table" ng-hide="isHide" ng-transclude="">
+  <div class="panel-body table" ng-hide="isHide">
+    <div ng-transclude="" ng-class="{'table-responsive': responsive}"></div>
   </div>
 </div>

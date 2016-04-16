@@ -12,10 +12,6 @@ App.directive('widgetChart', function () {
         scope: {
             config: "=" // 注意要小写, 因为 html 不识别大小写
         },
-        template:
-            '<div class="table-responsive">' +
-                '<div class="widget-chart"></div>' +
-            '</div>',
         link: function ($scope, $elem, $attrs) {
 
             var defaultConfig = {
@@ -35,10 +31,7 @@ App.directive('widgetChart', function () {
             $scope.config = $.extend(true, {}, defaultConfig, newConfig);
 
             try {
-                var chart = $elem.find('div.widget-chart');
-                $elem.removeClass($attrs.class);
-                chart.addClass($attrs.class);
-                chart.highcharts($scope.config);
+                $elem.highcharts($scope.config);
             } catch (e) {
                 console.log("error in creating chart :" + e);
             }

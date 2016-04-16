@@ -12,6 +12,7 @@ App
             scope: {
                 config: '='
             },
+            replace: true,
             transclude: true,
             templateUrl: '/app/tpl/widget/table.html',
             controller: function ($scope, $rootScope) {
@@ -43,13 +44,12 @@ App
                 queryParams.sortOrder = $scope.config.sortOrder;
 
 
-                // 转移指令属性到目标元素
-                widgetService.transferAttr($elem, $elem.find('table.widget-table'), $attr, 'class');
+
+                $scope.config = widgetService.concatConfig(defaultConfig, newConfig);
 
                 // 等待请求返回的数据
-                widgetService
-                    .setConfig(defaultConfig, newConfig)
-                    .getData(function (data) {
+                widgetService.getData($scope.config,
+                    function (data) {
                         $scope.config.data = data;
                     });
 

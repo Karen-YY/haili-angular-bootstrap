@@ -10,8 +10,11 @@ App
         function ($http, $scope, $state, $rootScope) {
 
             $scope.config1 = {
-                url: '/test/data/select.json'
+                url: '/test/data/select.json',
                 //data: $scope.data
+                onSelect: function(index, selected, data) {
+                    console.log($scope.config1.selectedItems);
+                }
             };
 
 

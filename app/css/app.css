@@ -5770,8 +5770,12 @@ body {
   left: 50%;
   transition: all .2s;
 }
+.widget-select > .dropdown .selector {
+  background: #fff;
+}
 .widget-select > .dropdown > .dropdown-menu {
-  width: 200px;
+  min-width: 200px;
+  max-width: 300px;
   max-height: 300px;
   overflow-y: auto;
 }
@@ -5784,6 +5788,10 @@ body {
 .widget-select > .dropdown > .dropdown-menu > ul > li {
   position: relative;
   list-style: none;
+}
+.widget-select > .dropdown > .dropdown-menu > ul > li .selected {
+  color: #ffffff;
+  background-color: #23b7e5;
 }
 .widget-select > .dropdown > .dropdown-menu > ul > li a {
   display: block;

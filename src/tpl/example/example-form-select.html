@@ -5,9 +5,9 @@
 
   <div class="row">
     <div class="col-xs-6">
-      <widget-panel title="普通下拉框" minable="true">
+      <widget-panel title="普通下拉框" minable="true" >
 
-        <widget-select config="config1"></widget-select>
+        <widget-select config="config1" class=""></widget-select>
 
       </widget-panel>
     </div>
@@ -17,25 +17,25 @@
 
 
         <div>
-          <select ng-model="seleted" ng-options="a.name for a in animals">
+          <select ng-model="seleted" class="form-control" ng-options="a.name for a in animals">
             <option value="">请选择你的萌宠</option>
           </select>
         </div>
 
         <div>
-          <select ng-model="seleted" ng-options="(a.name + '爱吃' + a.food) for a in animals">
+          <select ng-model="seleted" class="form-control" ng-options="(a.name + '爱吃' + a.food) for a in animals">
             <option value="">请选择你的萌宠</option>
           </select>
         </div>
 
         <div>
-          <select ng-model="seleted" ng-options="(a.name + '的爱好是' + a.favor) group by a.sex for a in animals">
+          <select ng-model="seleted" class="form-control" ng-options="(a.name + '的爱好是' + a.favor) group by a.sex for a in animals">
             <option value="">请选择你的萌宠</option>
           </select>
         </div>
 
         <div>
-          <select ng-model="seletedId" ng-options="a.id as a.name for a in animals">
+          <select ng-model="seletedId" class="form-control" ng-options="a.id as a.name for a in animals">
             <option value="">请选择你的萌宠</option>
           </select>
         </div>

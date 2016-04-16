@@ -4,16 +4,21 @@
   <hr/>
 
   <div class="row">
-    <div class="col-xs-12">
-      <widget-tree tree-data="demo.tree"
-                   text-field="name"
-                   value-field="id"
-                   item-clicked="demo.itemClicked($item)"
-                   item-checked-changed="demo.itemCheckedChanged($item)"
-                   config="tableConfig"
-                   can-checked="true">
+    <div class="col-xs-2">
 
-      </widget-tree>
+      <widget-panel title="基本树">
+        <widget-tree tree-data="demo.tree"
+                     text-field="name"
+                     value-field="id"
+                     item-clicked="demo.itemClicked($item)"
+                     item-checked-changed="demo.itemCheckedChanged($item)"
+                     config="tableConfig"
+                     can-checked="true">
+
+        </widget-tree>
+
+      </widget-panel>
+
     </div>
   </div>
 </div>

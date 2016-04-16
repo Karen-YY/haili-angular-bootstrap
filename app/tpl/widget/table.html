@@ -1,68 +1,66 @@
-<div class="table-responsive">
-  <table class="table table-striped table-responsive widget-table"
-         ng-class="{
+<table class="table table-striped table-responsive widget-table"
+       ng-class="{
             'table-bordered': config.border
          }">
-    <caption>{{config.title}}</caption>
-    <thead>
-    <tr>
-      <th ng-show="config.checkbox">
-        <input widget-checkbox type="checkbox" ng-click="selectAll()">
-      </th>
-      <th ng-repeat="column in config.columns">{{column.title}}</th>
-    </tr>
-    </thead>
-    <tbody>
-    <tr widget-table-row ng-repeat="row in config.data.rows" index="$index">
-      <th ng-show="config.checkbox">
-        <input widget-checkbox type="checkbox">
-      </th>
-      <td ng-repeat="column in config.columns" class="active2">
-        {{row[column.field]}}
-      </td>
-    </tr>
-    </tbody>
-    <tfoot ng-show="config.pagination">
-    <tr>
-      <td colspan="{{config.columns.length + config.checkbox}}">
-        <ul class="pagination pull-left m0">
-          <li>
-            <a>
-              <i class="fa fa-angle-double-left"></i>
-            </a>
-          </li>
-          <li>
-            <a>
-              <i class="fa fa-angle-left"></i>
-            </a>
-          </li>
-          <li>
-            <a class="p0">
-              <input type="text" class="page-input" ng-model="config.pageNumber">
-            </a>
-          </li>
-          <li>
-            <a>
-              <i class="fa fa-angle-right"></i>
-            </a>
-          </li>
-          <li>
-            <a>
-              <i class="fa fa-angle-double-right"></i>
-            </a>
-          </li>
-          <li>
-            <a>
-              <i class="fa fa-refresh"></i>
-            </a>
-          </li>
-        </ul>
-        <div class="pull-right page-info">
-          <span>{{config.data.total}}条记录</span>
-        </div>
-      </td>
-    </tr>
-    </tfoot>
+  <caption>{{config.title}}</caption>
+  <thead>
+  <tr>
+    <th ng-show="config.checkbox">
+      <input widget-checkbox type="checkbox" ng-click="selectAll()">
+    </th>
+    <th ng-repeat="column in config.columns">{{column.title}}</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr widget-table-row ng-repeat="row in config.data.rows" index="$index">
+    <th ng-show="config.checkbox">
+      <input widget-checkbox type="checkbox">
+    </th>
+    <td ng-repeat="column in config.columns" class="active2">
+      {{row[column.field]}}
+    </td>
+  </tr>
+  </tbody>
+  <tfoot ng-show="config.pagination">
+  <tr>
+    <td colspan="{{config.columns.length + config.checkbox}}">
+      <ul class="pagination pull-left m0">
+        <li>
+          <a>
+            <i class="fa fa-angle-double-left"></i>
+          </a>
+        </li>
+        <li>
+          <a>
+            <i class="fa fa-angle-left"></i>
+          </a>
+        </li>
+        <li>
+          <a class="p0">
+            <input type="text" class="page-input" ng-model="config.pageNumber">
+          </a>
+        </li>
+        <li>
+          <a>
+            <i class="fa fa-angle-right"></i>
+          </a>
+        </li>
+        <li>
+          <a>
+            <i class="fa fa-angle-double-right"></i>
+          </a>
+        </li>
+        <li>
+          <a>
+            <i class="fa fa-refresh"></i>
+          </a>
+        </li>
+      </ul>
+      <div class="pull-right page-info">
+        <span>{{config.data.total}}条记录</span>
+      </div>
+    </td>
+  </tr>
+  </tfoot>
 
-  </table>
-</div>
+</table>

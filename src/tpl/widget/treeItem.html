@@ -6,7 +6,11 @@
   }">
 </i>
 
-<input id="checkItem" type="checkbox" ng-model="item.$$isChecked" class="check-box" ng-if="canChecked"
+<input id="checkItem"
+       type="checkbox"
+       ng-model="item.$$isChecked"
+       class="check-box"
+       ng-if="canChecked"
        ng-change="warpCallback('itemCheckedChanged', item, $event)">
 
 <span class='text-field' ng-click="warpCallback('itemClicked', item, $event);"></span>

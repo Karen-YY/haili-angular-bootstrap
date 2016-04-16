@@ -1,17 +1,18 @@
 /**=========================================================
  * Module: src/js/module/directive/widget/tree.js
- * tree 指令
+ * tree 指令, 递归调用
  * @author: haili042
  * @time: 2016年4月13日 15:05:42
  =========================================================*/
 
 App
 
-    // 复选框
+    // 树
     .directive('widgetTree', ['$q', '$http', function ($q, $http) {
         return {
             restrict: 'E',
             templateUrl: '/app/tpl/widget/tree.html',
+
             scope: {
                 treeData: '=',
                 canChecked: '=',
@@ -77,4 +78,16 @@ App
             }
         }
     }])
+
+    // 树项
+    .directive('widgetTreeItem', function() {
+        return {
+            restrict: 'EA',
+            require: '^widgetTree',
+            template: '',
+            link: function($scope, $elem, $attrs, $superCtrl) {
+
+            }
+        };
+    })
 ;

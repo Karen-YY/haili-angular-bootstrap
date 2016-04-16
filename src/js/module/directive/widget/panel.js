@@ -15,7 +15,7 @@ App
                 title: '@',
                 minable: '=', // 是否可以最小化
                 closeable: '=', // 是否可以关闭
-                data: "=" // 注意要小写, 因为 html 不识别大小写
+                responsive: '=' // 是否是响应式
             },
             templateUrl: '/app/tpl/widget/panel.html',
 
@@ -31,31 +31,22 @@ App
                     $element.find('.panel').append(element);
                 };
 
-                // 每个指令只能定义一个 ng-transclude, 所以需要 $transclude, 注意这时不能出现 ng-transclude
-                // -----------------------
-                //$transclude(function (clone) {
-                //    var bodyBlock = $element.find('div.transclude-body'); // 模版中定位
-                //
-                //    clone.filter(function (i, e, arr) { // clone 是html 中的代码
-                //
-                //        // 若有 widget-panel-footer 指令, 则加入
-                //        if (e.nodeName.toLowerCase() === 'widget-panel-footer') {
-                //            bodyBlock.parent().after(e); // 添加到body后面
-                //        } else {
-                //            bodyBlock.append(e);
-                //        }
-                //    });
-                //});
             },
+
             link: function ($scope, $elem, $attrs) {
                 // 定义组件的默认行为
                 // -----------------------
+
+                // 默认为展开
                 $scope.isHide = false;
-                $scope.icon = 'fa fa-minus';
+
+                // 展开 / 收起
                 $scope.toggle = function () {
                     $scope.isHide = !$scope.isHide;
                     $scope.icon = $scope.isHide ? 'fa fa-plus' : 'fa fa-minus';
                 };
+
+                // 关闭
                 $scope.close = function () {
                     $elem.remove();
                 };
