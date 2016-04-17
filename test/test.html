@@ -66,13 +66,31 @@
             100% {transform: rotate(360deg);}
         }
 
-
-        .animate5 {
-            margin-left: 400px;
+        .widget-loading {
             position: relative;
+            width: 200px;
+            height: 200px;
+            margin-left: 200px;;
         }
 
-        .animate5 div {
+        .widget-loading .mask {
+            top: 0;
+            right: 0;
+            bottom: 0;
+            left: 0;
+
+            position: absolute;
+            background-color: rgba(222,222,222,0.8);
+        }
+
+        .widget-loading .icon-wrap {
+            top: 50%;
+            left: 50%;
+            margin-top: -32px;
+            margin-left: -32px;
+            position: absolute;
+        }
+        .widget-loading .icon-wrap div {
             position: absolute;
             width: 16px;
             height: 16px;
@@ -80,56 +98,54 @@
             box-sizing: border-box;
             border-radius: 100%;
             background: #569ced;
-            animation: scale1 0.8s linear infinite;
+            animation: loading 0.8s linear infinite;
         }
-
-        .animate5 div:nth-child(1) {
+        .widget-loading .icon-wrap div:nth-child(1) {
             left: 24px;
+            top: 0;
         }
-        .animate5 div:nth-child(2) {
+        .widget-loading .icon-wrap div:nth-child(2) {
             left: 40px;
             top: 8px;
             animation-delay: -0.1s;
         }
-        .animate5 div:nth-child(3) {
+        .widget-loading .icon-wrap div:nth-child(3) {
             left: 48px;
             top: 24px;
             animation-delay: -0.2s;
         }
-        .animate5 div:nth-child(4) {
+        .widget-loading .icon-wrap div:nth-child(4) {
             left: 40px;
             top: 40px;
             animation-delay: -0.3s;
         }
-        .animate5 div:nth-child(5) {
+        .widget-loading .icon-wrap div:nth-child(5) {
             left: 24px;
             top: 48px;
             animation-delay: -0.4s;
         }
-        .animate5 div:nth-child(6) {
+        .widget-loading .icon-wrap div:nth-child(6) {
             left: 8px;
             top: 40px;
             animation-delay: -0.5s;
         }
-        .animate5 div:nth-child(7) {
+        .widget-loading .icon-wrap div:nth-child(7) {
+            left: 0;
             top: 24px;
             animation-delay: -0.6s;
         }
-        .animate5 div:nth-child(8) {
+        .widget-loading .icon-wrap div:nth-child(8) {
             left: 8px;
             top: 8px;
             animation-delay: -0.7s;
         }
-
-
-        @keyframes scale1 {
+        @keyframes loading {
             100% {
                 opacity: 0.4;
                 transition: opacity 0.8s;
                 transform: scale(0.4);
             }
         }
-
 
 
     </style>
@@ -150,17 +166,20 @@
 
     <div class="animate4"></div>
 
-
-    <div class="animate5">
-        <div></div>
-        <div></div>
-        <div></div>
-        <div></div>
-        <div></div>
-        <div></div>
-        <div></div>
-        <div></div>
+    <div class="widget-loading">
+        <div class="mask"></div>
+        <div class="icon-wrap">
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
     </div>
+
 
     <div class="div" style="background-color: #453474;">a
         <div class="div" style="position: relative; background-color: #dddddd">

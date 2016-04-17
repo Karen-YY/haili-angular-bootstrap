@@ -2,8 +2,8 @@
   <div class="dropdown" ng-class="{'open': open}">
 
     <div class="has-feedback">
-      <input class="form-control selector" ng-click="toggle()" readonly="readonly"
-           value="{{config.selectedItems | selectFilter:'text'}}"  />
+      <input class="form-control inputer" ng-click="toggle()" readonly="readonly"
+           value="{{config.selectedItems | selectFilter:config.textField}}" />
       <span class="fa fa-caret-down form-control-feedback text-muted"></span>
     </div>
 
@@ -25,6 +25,8 @@
       </div>
 
       <ul class="mt-sm">
+        <widget-loading ng-hide="loaded" class="oval"></widget-loading>
+
         <li ng-repeat="item in config.data | filter:{text:searchText}"
             widget-select-item
             data="item"

@@ -1,0 +1,142 @@
+/* ========================================================================
+   Component: src/less/widget/loading.less
+   loading 菊花
+   @author: haili042
+   @time: 2016年4月17日 11:12:00
+ ========================================================================== */
+
+@icon-wd:             40px; // icon大小
+
+// 基本样式
+.widget-mask-base {
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 200;
+  position: absolute;
+  min-height: 160px;
+}
+
+// 蒙板样式
+.widget-mask {
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background-color: rgba(222, 222, 222, 0.4);
+  position: absolute;
+}
+
+// 图标位置
+.icon-wrap-position {
+  top: 50%;
+  left: 50%;
+  margin-top: -@icon-wd/2;
+  margin-left: -@icon-wd/2;
+  position: absolute;
+}
+
+// 形状1
+.widget-loading {
+
+  .widget-mask-base;
+
+  .mask {
+    .widget-mask;
+  }
+
+  .icon-wrap {
+    .icon-wrap-position;
+    div {
+      @icon-item-wd: @icon-wd/4;
+
+      position: absolute;
+      width: @icon-item-wd;
+      height: @icon-item-wd;
+      opacity: 1;
+      box-sizing: border-box;
+      border-radius: 100%;
+      background: #569ced;
+      animation: animation-widget-loading 0.8s linear infinite;
+
+      &:nth-child(1) {
+        left: @icon-item-wd * 3/2;
+        top: 0;
+      }
+      &:nth-child(2) {
+        left: @icon-item-wd * 5/2;
+        top: @icon-item-wd * 1/2;
+        animation-delay: -0.1s;
+      }
+      &:nth-child(3) {
+        left: @icon-item-wd * 3;
+        top: @icon-item-wd * 3/2;
+        animation-delay: -0.2s;
+      }
+      &:nth-child(4) {
+        left: @icon-item-wd * 5/2;
+        top: @icon-item-wd * 5/2;
+        animation-delay: -0.3s;
+      }
+      &:nth-child(5) {
+        left: @icon-item-wd * 3/2;
+        top: @icon-item-wd * 3;
+        animation-delay: -0.4s;
+      }
+      &:nth-child(6) {
+        left: @icon-item-wd * 1/2;
+        top: @icon-item-wd * 5/2;
+        animation-delay: -0.5s;
+      }
+      &:nth-child(7) {
+        left: 0;
+        top: @icon-item-wd * 3/2;
+        animation-delay: -0.6s;
+      }
+      &:nth-child(8) {
+        left: @icon-item-wd * 1/2;
+        top: @icon-item-wd * 1/2;
+        animation-delay: -0.7s;
+      }
+    }
+  }
+
+  @keyframes animation-widget-loading {
+    100% {
+      opacity: 0.4;
+      transition: opacity 0.8s;
+      transform: scale(0.4);
+    }
+  }
+}
+
+// 形状2, 圆形
+.widget-loading-oval {
+
+  .widget-mask-base;
+
+  .mask {
+    .widget-mask;
+  }
+
+  .icon-wrap {
+    .icon-wrap-position;
+
+    width: @icon-wd;
+    height: @icon-wd;
+    background-color: transparent;
+    border-radius: 50%;
+    box-sizing: border-box;
+    border: @icon-wd/10 solid #5d9cec;
+    border-right-color: #f1c40f;
+    border-top-color: #7266ba;
+    animation: animation-widget-loading-oval 1s linear infinite;
+  }
+
+  @keyframes animation-widget-loading-oval {
+    100% {
+      transform: rotate(360deg);
+    }
+  }
+}

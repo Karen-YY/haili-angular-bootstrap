@@ -20,8 +20,8 @@ App
             controller: function ($scope) {
 
                 // 选中一条
-                this.selectItem = function (index, selected, data) {
-                    $scope.selectItem(index, selected, data);
+                this.select = function (index, selected, data) {
+                    $scope.select(index, selected, data);
                 };
 
                 // 点击时触发
@@ -41,8 +41,12 @@ App
 
                         }
                     },
-                    newConfig = $scope.config // 传进来的参数
+                    newConfig = $scope.config, // 传进来的参数
+                    inputerElem = $elem.find('input.inputer')
                     ;
+
+                // 转移类到输入元素中...
+                widgetService.transferAttr($elem, inputerElem, $attr, 'class');
 
                 $scope.config = widgetService.concatConfig(defaultConfig, newConfig);
 
@@ -50,8 +54,13 @@ App
                 widgetService.getData($scope.config,
                     function (data) {
                         $scope.config.data = data;
+                        $scope.loaded = true;
 
                     });
+
+
+                // 属性设置
+                // ------------------------------
 
 
                 // 事件绑定
@@ -68,7 +77,7 @@ App
                 };
 
                 // 选中一条
-                $scope.selectItem = function (index, selected, data) {
+                $scope.select = function (index, selected, data) {
 
                     if (!$scope.config.selectedItems[index]) {
                         $scope.config.selectedItems[index] = data;
@@ -79,8 +88,18 @@ App
                     }
                 };
 
-                // 搜索文本
-                $scope.searchText = '';
+                //// 搜索文本
+                $scope.config.getValue = function () {
+                    var output = '',
+                        input = $scope.config.selectedItems,
+                        textField = $scope.config.textField;
+                    for (var k in input) {
+                        if (input.hasOwnProperty(k) && k !== 'length') {
+                            output += (input[k][textField] || '') + ',';
+                        }
+                    }
+                    return output;
+                };
             }
         };
     }])
@@ -123,7 +142,7 @@ App
                 //    };
                 //
                 //    // 添加到已选对象
-                //    $superCtrl.selectItem($scope.index, item);
+                //    $superCtrl.select($scope.index, item);
                 //
                 //    // 点击时触发
                 //    $superCtrl.onSelect(item);
@@ -140,14 +159,13 @@ App
 
                 // 全选
                 $scope.$on('widget-select:selectAll', function (event, selected) {
-
-                    $scope.selected = selected;
+                    $scope.selected = selected ? selected : !$scope.selected;
                     changeState(selected);
                 });
 
                 function changeState(selected) {
 
-                    $superCtrl.selectItem($scope.index, selected, $scope.data); // 与父指令通信
+                    $superCtrl.select($scope.index, selected, $scope.data); // 与父指令通信
                     $superCtrl.onSelect($scope.index, selected, $scope.data); // 点击时触发
                 }
 
