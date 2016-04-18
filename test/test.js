@@ -123,6 +123,7 @@ function walk(i, j) {
 walk(0, 0);
 console.log(res);
 */
+/*
 
 var assert = require('assert');
 
@@ -139,4 +140,7 @@ describe('Array 测试', function() {
         });
     });
 });
+*/
+
+
 

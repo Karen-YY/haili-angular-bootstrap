@@ -9,7 +9,8 @@
 	del 			= 			require('del'),						// node 的删除文件库
 	q 				= 			require('q'),						// node 的异步处理库
 	jshint			= 			require('gulp-jshint'),				// jshint 代码检测
-	htmlhint		= 			require('gulp-htmlhint')			// html 代码检测
+	htmlhint		= 			require('gulp-htmlhint'),			// html 代码检测
+	stripDebug		= 			require('gulp-strip-debug')			// 去除console.log, debugger
 	//karma			= 			require('karma')					// karma 测试驱动, 让测试在浏览器里运行
 ;
 
@@ -46,7 +47,7 @@ var output = {
 // ----------------------
 // 任务入口
 // ----------------------
-gulp.task('default', ['build']);
+gulp.task('default', ['watch']);
 var build_tasks = ['js', 'css', 'img', 'tpl', 'lib'];				// 发布任务
 var dev_tasks = ['js-dev', 'css-dev', 'img', 'tpl', 'lib'];			// 开发任务
 
@@ -89,6 +90,7 @@ gulp.task('build', function() {
 gulp.task('js', function() {
 	return gulp.src(src.js)											// 返回 gulp 流对象
 		.pipe(sourcemaps.init())									// 插件需要在 init 和 write 之间
+		.pipe(stripDebug())											// 去除console debugger
 		.pipe(concat(output.jsApp))									// 合并js
 		.pipe(uglify())												// 混淆js
 		.pipe(sourcemaps.write('.'))								// 插件需要在 init 和 write 之间
@@ -124,6 +126,7 @@ gulp.task('css-dev', function() {
 			errorHandler: function(e) {
 				console.log('编译 .less 出错了!');
 				plumber.stop();										// 跳过这个任务
+				gulp.watch(src.lessWatch, ['css-dev', 'css-reload']);
 			}
 		}))
 		.pipe(less())												// 编译less

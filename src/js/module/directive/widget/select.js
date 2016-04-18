@@ -14,7 +14,6 @@ App
             scope: {
                 config: '='
             },
-
             templateUrl: '/app/tpl/widget/form-select.html',
 
             controller: function ($scope) {

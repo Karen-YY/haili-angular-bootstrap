@@ -3,16 +3,23 @@
   <h3 class="m0">下拉框</h3>
   <hr/>
 
-  <div class="row">
-    <div class="col-xs-6">
-      <widget-panel title="普通下拉框" minable="true" >
+  <div class="row-masonry row-masonry-md-2">
+    <div class="col-masonry">
+      <widget-panel title="普通下拉框" minable="true">
 
         <widget-select config="config1" class="form-control"></widget-select>
 
       </widget-panel>
     </div>
 
-    <div class="col-xs-6">
+    <div class="col-masonry">
+      <widget-panel title="loading">
+
+        <widget-loading class="oval"></widget-loading>
+      </widget-panel>
+    </div>
+
+    <div class="col-masonry">
       <widget-panel title="联动下拉框" minable="true">
 
 
@@ -29,7 +36,8 @@
         </div>
 
         <div>
-          <select ng-model="seleted" class="form-control" ng-options="(a.name + '的爱好是' + a.favor) group by a.sex for a in animals">
+          <select ng-model="seleted" class="form-control"
+                  ng-options="(a.name + '的爱好是' + a.favor) group by a.sex for a in animals">
             <option value="">请选择你的萌宠</option>
           </select>
         </div>
@@ -42,18 +50,10 @@
 
       </widget-panel>
     </div>
-  </div>
 
-  <div class="row">
-    <div class="col-xs-6">
+
+    <div class="col-masonry">
       <widget-panel title="loading">
-
-        <widget-loading class="oval"></widget-loading>
-      </widget-panel>
-    </div>
-    <div class="col-xs-6">
-      <widget-panel title="loading">
-
         <widget-loading class="rotate"></widget-loading>
       </widget-panel>
     </div>

@@ -9,9 +9,17 @@ App
     // 基本
     .directive('widgetLoading', function() {
         return {
+            $scope: {
+                abs: '='
+            },
             restrict: 'EA',
+            controller: function($scope) {
+                this.d = function(d) {
+                    $scope.d = d;
+                };
+            },
             link: function($scope, $elem, $attr) {
-
+                $elem.addClass();
             }
         };
     })
@@ -51,7 +59,10 @@ App
                 '<div class="widget-loading-oval">' +
                     '<div class="mask"></div>' +
                     '<div class="icon-wrap"></div>' +
-                '</div>'
+                '</div>',
+            link: function($scope, $elem, $attr) {
+
+            }
         };
     })
 ;
