@@ -3810,6 +3810,13 @@ body {
     width: 1140px;
   }
 }
+#modal-base .modal {
+  z-index: 131;
+  background-color: rgba(222, 222, 222, 0.4);
+}
+#modal-base .modal .modal-dialog {
+  margin-top: 12%;
+}
 /* ========================================================================
    Component: src/less/theme/theme-blue-dark.less
    @author: haili042

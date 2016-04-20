@@ -39,6 +39,10 @@
       {
         "title": "下拉框",
         "url": "app.example-form-select"
+      },
+      {
+        "title": "模态框",
+        "url": "app.example-modal"
       }
     ],
     "translate": "sidebar.nav.form.FORM"

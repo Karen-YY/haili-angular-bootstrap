@@ -50,6 +50,11 @@ App
                 templateUrl: 'app/tpl/example/example-form-select.html'
             })
 
+            .state('app.example-modal', {
+                url: '/example-modal',
+                templateUrl: 'app/tpl/example/example-modal.html'
+            })
+
             .state('app.example-chart', {
                 url: '/example-chart',
                 templateUrl: 'app/tpl/example/example-chart.html'

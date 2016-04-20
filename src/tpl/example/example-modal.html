@@ -1,0 +1,40 @@
+<!-- 主要内容 -->
+<div class="container-fluid" ng-controller="ModalCtrl">
+  <h3 class="m0">dialog 模态框</h3>
+  <hr/>
+
+  <div class="row">
+    <div class="col-xs-12">
+      <div class="col-xs-6">
+        <button class="btn btn-default" ng-click="openDialog(config1)">弹出1</button>
+      </div>
+      <div class="col-xs-6">
+        <button class="btn btn-default" ng-click="openDialog(config2)">弹出2</button>
+      </div>
+    </div>
+  </div>
+
+  <widget-modal config="config1">
+    <!-- header 已经定义好了, 不用写了 -->
+    <div class="modal-body">
+      <p>111111111111111111One fine body............</p>
+    </div>
+    <div class="modal-footer">
+      <button type="button" class="btn btn-primary">确认</button>
+      <button type="button" class="btn btn-default" ng-click="closeDialog(config1)">关闭</button>
+    </div>
+  </widget-modal>
+
+  <widget-modal config="config2">
+    <!-- header 已经定义好了, 不用写了 -->
+    <div class="modal-body">
+      <p>222222222222222222222One fine body............</p>
+    </div>
+    <div class="modal-footer">
+      <button type="button" class="btn btn-primary">确认</button>
+      <button type="button" class="btn btn-default" ng-click="closeDialog(config2)">关闭</button>
+    </div>
+  </widget-modal>
+
+</div>
+
