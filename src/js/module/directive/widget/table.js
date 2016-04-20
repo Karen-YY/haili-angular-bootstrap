@@ -44,13 +44,14 @@ App
                 queryParams.sortOrder = $scope.config.sortOrder;
 
 
-
                 $scope.config = widgetService.concatConfig(defaultConfig, newConfig);
 
                 // 等待请求返回的数据
                 widgetService.getData($scope.config,
                     function (data) {
                         $scope.config.data = data;
+                        $scope.loaded = true;
+
                     });
 
 
