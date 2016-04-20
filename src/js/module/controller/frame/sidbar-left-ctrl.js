@@ -102,4 +102,6 @@ App.controller('SideBarLeftCtrl', ['$http', '$scope', '$state', '$rootScope', '$
         function isChild($index) {
             return (typeof $index === 'string') && !($index.indexOf('-') < 0);
         }
+
+
     }]);

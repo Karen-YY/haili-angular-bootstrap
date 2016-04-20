@@ -8,24 +8,74 @@
 App
 
     // 复选框
-    .directive('widgetSelect', ['$q', '$http', 'widgetService', function ($q, $http, widgetService) {
+    .directive('widgetSelect', ['widgetService', function (widgetService) {
         return {
             restrict: 'EA',
             scope: {
                 config: '='
             },
             templateUrl: '/app/tpl/widget/form-select.html',
+           /* template:
+            '<div class="widget-select">'+
+            '  <div class="dropdown" ng-class="{\'open\': open}">'+
+            '    <div class="has-feedback">'+
+            '      <input class="form-control inputer" ng-click="toggle()" readonly="readonly"'+
+            '           value="{{selectedItems | selectFilter:config.textField}}" />'+
+            '      <span class="fa fa-caret-down form-control-feedback text-muted"></span>'+
+            '    </div>'+
+            '    <div class="dropdown-menu p-sm">'+
+            '      <div class="input-group input-group-sm">'+
+            '        <input type="text" class="form-control" ng-model="searchText"/>'+
+            '        <span class="input-group-btn">'+
+            '          <button class="btn btn-default" type="button">'+
+            '            <i class="fa fa-search text-muted"></i>'+
+            '          </button>'+
+            '        </span>'+
+            '      </div>'+
+            '      <div class="actionbox mt-sm" ng-if="config.multiple">'+
+            '        <div class="btn-group btn-group-sm btn-block text-center">'+
+            '          <button class="btn btn-default" ng-click="selectAll(true)">全选</button>'+
+            '          <button class="btn btn-default" ng-click="selectAll(false)">反选</button>'+
+            '        </div>'+
+            '      </div>'+
+            '      <ul class="mt-sm">'+
+            '        <widget-loading ng-hide="loaded" class="oval"></widget-loading>'+
+            '        <li ng-repeat="item in config.data | filter:{text:searchText}"'+
+            '            widget-select-item'+
+            '            index="{{$index}}"'+
+            '            selected="selectedItems[$index]"'+
+            '            data="item"'+
+            '                >'+
+            '        </li>'+
+            '      </ul>'+
+            '    </div>'+
+            '  </div>'+
+            '</div>',*/
 
             controller: function ($scope) {
 
                 // 选中一条
-                this.select = function (index, selected, data) {
-                    $scope.select(index, selected, data);
+                this.select = function (index, itemEle) {
+                    var itemData = $scope.config.data[index];
+                    $scope.select(index, itemEle);
+                };
+
+                // 反选中一条
+                this.unSelect = function (index) {
+                    var itemData = $scope.config.data[index];
+                    $scope.unSelect(index, itemData);
                 };
 
                 // 点击时触发
-                this.onSelect = function (index, selected, data) {
-                    $scope.config.onSelect && $scope.config.onSelect(index, selected, data);
+                this.onSelect = function (index) {
+                    var itemData = $scope.config.data[index];
+                    $scope.config.onSelect && $scope.config.onSelect(index, itemData);
+                };
+
+                // 点击时触发
+                this.onUnSelect = function (index) {
+                    var itemData = $scope.config.data[index];
+                    $scope.config.onUnSelect && $scope.config.onUnSelect(index, itemData);
                 };
 
             },
@@ -33,9 +83,7 @@ App
 
                 // 默认参数
                 var defaultConfig = {
-                        selectedItems: {
-                            length: 0
-                        }, // 已选的项初始化
+                        valueField: 'index',
                         getSelect: function () {
 
                         }
@@ -44,11 +92,13 @@ App
                     inputerElem = $elem.find('input.inputer')
                     ;
 
-                // 转移类到输入元素中...
+
+                /* <-------------- 初始化 -------------- */
+
+                // 转移属性到目标元素中
                 widgetService.transferAttr($elem, inputerElem, $attr, 'class');
-
+                // 更新配置
                 $scope.config = widgetService.concatConfig(defaultConfig, newConfig);
-
                 // 等待请求返回的数据
                 widgetService.getData($scope.config,
                     function (data) {
@@ -56,15 +106,12 @@ App
                         $scope.loaded = true;
 
                     });
+                // 已选项
+                $scope.selectedItems = { length: 0 };
+                /* -------------- end 初始化 --------------> */
 
 
-                // 属性设置
-                // ------------------------------
-
-
-                // 事件绑定
-                // ------------------------------
-
+                /* <-------------- 事件绑定 -------------- */
                 // 打开, 关闭下拉框
                 $scope.toggle = function () {
                     $scope.open = !$scope.open;
@@ -72,22 +119,63 @@ App
 
                 // 全选
                 $scope.selectAll = function (data) {
-                    $scope.$broadcast('widget-select:selectAll', data);
+                    $scope.$broadcast('widget-select-item:selectAll', data);
                 };
 
                 // 选中一条
-                $scope.select = function (index, selected, data) {
+                $scope.select = function (index, itemEle) {
 
-                    if (!$scope.config.selectedItems[index]) {
-                        $scope.config.selectedItems[index] = data;
-                        $scope.config.selectedItems.length++;
-                    } else if(!selected) {
-                        delete $scope.config.selectedItems[index];
-                        $scope.config.selectedItems.length--;
+                    var data = $scope.config.data[index];
+                    if ($scope.config.multiple) {
+                        // 多选
+                        $scope.selectedItems[index] = true;
+                        $scope.selectedItems.length++;
+                    } else {
+                        // 单选
+                        for (var i = 0, len = $scope.config.data.length; i < len; i++) {
+                            if ($scope.config.data[i].selected) {
+                                $scope.config.data[i].selected = false; // 删除旧的
+                            }
+                        }
+                        $scope.$apply();
+
+                        $scope.config.data[index].selected = true; // 增加新的
+                    }
+
+                    //if (!$scope.config.selectedItems[index]) {
+                    //
+                    //    if ($scope.config.multiple) {
+                    //        // 多选
+                    //        $scope.config.selectedItems[index] = data;
+                    //        $scope.config.selectedItems.length++;
+                    //    } else {
+                    //        // 单选
+                    //        for (var k in $scope.config.selectedItems) {
+                    //            if (k !== 'length' && $scope.config.selectedItems.hasOwnProperty(k)) {
+                    //                delete $scope.config.selectedItems[k]; // 删除旧的
+                    //            }
+                    //        }
+                    //        $scope.config.selectedItems[index] = data; // 增加新的
+                    //    }
+                    //
+                    //    $scope.config.selectedItems[index] = data;
+                    //    $scope.config.selectedItems.length++;
+                    //}
+                };
+
+                // 取消选择
+                $scope.unSelect = function (index, data) {
+                    delete $scope.selectedItems[index];
+                    $scope.selectedItems.length--;
+                    if ($scope.config.multiple) {
+                        // 多选
+                    } else {
+                        // 单选
+
                     }
                 };
 
-                //// 搜索文本
+                // 获取文本
                 $scope.config.getValue = function () {
                     var output = '',
                         input = $scope.config.selectedItems,
@@ -99,6 +187,12 @@ App
                     }
                     return output;
                 };
+
+                $scope.config.getSelectedItems = function() {
+                    return $scope.selectedItems;
+                };
+                /* -------------- end 事件绑定 --------------> */
+
             }
         };
     }])
@@ -108,15 +202,15 @@ App
             restrict: 'EA',
             require: '^widgetSelect',
             scope: {
-                index: '=',
-                data: '='
+                index: "@",
+                item: '=' // 减少双向绑定
             },
             template:
             '<li>' +
-            '<a ng-class="{\'selected\': selected}">' +
-            '<span>{{data.text}}</span>' +
-            '<i class="fa" ng-class="{\'fa-check\': selected}"></i>' +
-            '</a>' +
+            '  <a ng-class="{\'selected\': item.selected}">' +
+            '    <span>{{item.text}}</span>' +
+            '    <i class="fa" ng-class="{\'fa-check\': item.selected}"></i>' +
+            '  </a>' +
             '</li>',
 
             link: function ($scope, $elem, $attr, $superCtrl) {
@@ -150,24 +244,36 @@ App
                 // 点击事件
                 $elem.on('click', function (e) {
                     // 强制进入 $digest 循环
-                    $scope.$apply(function () {
-                        $scope.selected = !$scope.selected;
-                        changeState($scope.selected);
-                    });
+                    //$scope.$apply(function () {
+                        $scope.item.selected = !$scope.item.selected;
+                    //});
+                    //changeState($scope.item.selected);
                 });
 
-                // 全选
-                $scope.$on('widget-select:selectAll', function (event, selected) {
-                    $scope.selected = selected ? selected : !$scope.selected;
-                    changeState(selected);
+                // 全选 / 反选
+                $scope.$on('widget-select-item:selectAll', function (event, type) {
+                    if (type) {
+                        // 全选
+                        $scope.selected && $elem.click();
+                    } else {
+                        // 反选
+                        $elem.click();
+                    }
+                    //$scope.selected = selected ? selected : !$scope.selected;
+                    //changeState(selected);
                 });
+
 
                 function changeState(selected) {
 
-                    $superCtrl.select($scope.index, selected, $scope.data); // 与父指令通信
-                    $superCtrl.onSelect($scope.index, selected, $scope.data); // 点击时触发
+                    if (selected) {
+                        $superCtrl.select($scope.index, $elem); // 与父指令通信
+                        $superCtrl.onSelect($scope.index, $elem); // 点击时触发
+                    } else {
+                        $superCtrl.unSelect($scope.index, $elem); // 与父指令通信
+                        $superCtrl.onUnSelect($scope.index, $elem); // 点击时触发
+                    }
                 }
-
             }
         };
     })

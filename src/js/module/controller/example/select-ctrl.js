@@ -12,6 +12,8 @@ App
             $scope.config1 = {
                 url: '/test/data/select.json',
                 textField: 'text',
+                valueFiled: 'id',
+                multiple: true,
                 editable: true,
                 //data: [
                 //    {
@@ -41,8 +43,12 @@ App
                 //        "desc": "A family of general-purpose, high-level programming languages"
                 //    }
                 //],
-                onSelect: function(index, selected, data) {
-                    var c = this.getValue();
+                onSelect: function(index, data) {
+                    var c = this.getSelectedItems();
+                    console.log(c);
+                },
+                onUnSelect: function(index, data) {
+                    var c = this.getSelectedItems();
                     console.log(c);
                 }
             };

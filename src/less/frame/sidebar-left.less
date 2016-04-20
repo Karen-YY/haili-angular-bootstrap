@@ -59,9 +59,11 @@
 
 
 @sidebar-bg:                      @bg-clr-aside-l;
+@submenu-header-bg:               @bg-clr-aside-sub-l;
+@submenu-hover-bg:                @bg-clr-nav;
 
-@sidebar-item-color:              @clr-aside-l;
-@sidebar-item-color-active:       #515253;
+@sidebar-item-color:              #fff;
+@sidebar-item-color-active:       #fff;
 @sidebar-item-bg-active:          darken(@sidebar-bg, 1%);
 
 @sidebar-icon-color:              inherits;
@@ -175,7 +177,7 @@
 
 // Sub Levels
 .sidebar-subnav {
-  background-color: @sidebar-bg;
+  background-color: @submenu-header-bg;
 
   > .sidebar-subnav-header {
     color: @sidebar-item-color;
@@ -186,6 +188,7 @@
 
   > li  {
     border-left: 0 !important;
+
     > a,
     > .nav-item {
       display: block;
@@ -193,10 +196,12 @@
       padding: 10px 20px;
       padding-left: 53px;
       font-weight: normal;
-      background-color: transparent !important;
+      //background-color: transparent !important;
       color: @sidebar-item-color;
       &:focus, &:hover {
         color: @sidebar-item-color-active;
+        background-color: @submenu-hover-bg;
+        //padding-left: 70px;
       }
       // submenu icons
       > em {

@@ -3,7 +3,7 @@
 
     <div class="has-feedback">
       <input class="form-control inputer" ng-click="toggle()" readonly="readonly"
-           value="{{config.selectedItems | selectFilter:config.textField}}" />
+           value="{{selectedItems | selectFilter:config.textField}}" />
       <span class="fa fa-caret-down form-control-feedback text-muted"></span>
     </div>
 
@@ -17,7 +17,7 @@
           </button>
         </span>
       </div>
-      <div class="actionbox mt-sm">
+      <div class="actionbox mt-sm" ng-if="config.multiple">
         <div class="btn-group btn-group-sm btn-block text-center">
           <button class="btn btn-default" ng-click="selectAll(true)">全选</button>
           <button class="btn btn-default" ng-click="selectAll(false)">反选</button>
@@ -26,11 +26,10 @@
 
       <ul class="mt-sm">
         <widget-loading ng-hide="loaded" class="oval"></widget-loading>
-
         <li ng-repeat="item in config.data | filter:{text:searchText}"
             widget-select-item
-            data="item"
-            index="$index"
+            index="{{$index}}"
+            item="item"
                 >
         </li>
       </ul>

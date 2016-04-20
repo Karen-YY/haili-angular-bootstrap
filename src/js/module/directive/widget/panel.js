@@ -13,11 +13,30 @@ App
             transclude: true, // 替换位置
             scope: {
                 title: '@',
-                minable: '=', // 是否可以最小化
-                closeable: '=', // 是否可以关闭
-                responsive: '=' // 是否是响应式
+                minable: '@', // 是否可以最小化
+                closeable: '@', // 是否可以关闭
+                responsive: '@' // 是否是响应式
             },
-            templateUrl: '/app/tpl/widget/panel.html',
+            //templateUrl: '/app/tpl/widget/panel.html',
+
+            template:
+                '<!-- 面板组件 -->'+
+                '<div class="panel panel-default widget-panel">'+
+                '  <div class="panel-heading">'+
+                '    <h4 class="pull-left">'+
+                '      {{title}}'+
+                '    </h4>'+
+                '    <div class="pull-right">'+
+                '      <i ng-click="toggle()" class="fa"'+
+                '         ng-class="{false: \'fa-minus\', true: \'fa-plus\'}[isHide]" ng-show="minable"></i>'+
+                '      <i ng-click="close()" class="fa fa-close" ng-show="closeable"></i>'+
+                '    </div>'+
+                '    <hr/>'+
+                '  </div>'+
+                '  <div class="panel-body table" ng-hide="isHide">'+
+                '    <div ng-transclude="" ng-class="{\'table-responsive\': responsive}"></div>'+
+                '  </div>'+
+                '</div>',
 
             controller: function ($scope, $element, $attrs, $transclude) {
                 /**
@@ -61,7 +80,8 @@ App
             require: '^widgetPanel', // 依赖父控制器
             restrict: 'EA',
             transclude: true,
-            template: '<div class="panel-footer" ng-transclude=""></div>',
+            template:
+                '<div class="panel-footer" ng-transclude=""></div>',
 
             // 只有依赖了父指令, 才有 superCtrl 参数
             link: function ($scope, $elem, $attrs, $superCtrl) {

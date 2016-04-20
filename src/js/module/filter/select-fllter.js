@@ -11,13 +11,19 @@ App
         // 该函数的参数以 selectFilter:arg1:arg2 的形式接收
         return function(input, textField) {
             input = input || {};
-            var output = '';
+            var output = '',
+                len = input.length || 0;
 
             for (var k in input) {
                 if (input.hasOwnProperty(k) && k !== 'length') {
-                    output += (input[k][textField] || '') + ',';
+                    if (len-- > 1) {
+                        output += (input[k][textField] || '') + ',';
+                    } else {
+                        output += (input[k][textField] || '');
+                    }
                 }
             }
+
             return output;
         };
     });

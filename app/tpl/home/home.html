@@ -1,47 +1,47 @@
 <div class="container-fluid" ng-controller="HomeCtrl">
-    <h3 class="m0">主页</h3>
-    <hr/>
+  <h3 class="m0">主页</h3>
+  <hr/>
 
-    <div>
-        <a ui-sref="page.login">login</a>
-    </div>
-    <div>
-        <a ui-sref="app.example-form">form</a>
-    </div>
-    <div>
-        <a ui-sref="app.example-chart">chart</a>
-    </div>
-    <div>
-        <a ui-sref="app.example-table">table</a>
-    </div>
-    <div>
-        <a ui-sref="app.example-form-select">select</a>
-    </div>
-    <div>
-        <a ui-sref="page.404">404</a>
-    </div>
-    <div>
-        user: {{$storage.user}}
-    </div>
 
-    <div class="row">
-        <div class="col-md-4 col-sm-6 p-lg">
-            <widget-row-messager config="rowMessagerConfig"></widget-row-messager>
-        </div>
-        <div class="col-md-4 col-sm-6 p-lg">
-            <widget-row-messager config="rowMessagerConfig2"></widget-row-messager>
-        </div>
-        <div class="col-md-4 col-sm-6 p-lg">
-            <widget-row-messager config="rowMessagerConfig3"></widget-row-messager>
-        </div>
+  <div class="row">
+    <div class="col-md-2 col-xs-4">
+      <button class="btn btn-primary" ui-sref="page.login">login</button>
     </div>
+    <div class="col-md-2 col-xs-4">
+      <button class="btn btn-primary" ui-sref="app.example-form">form</button>
+    </div>
+    <div class="col-md-2 col-xs-4">
+      <button class="btn btn-primary" ui-sref="app.example-chart">chart</button>
+    </div>
+    <div class="col-md-2 col-xs-4">
+      <button class="btn btn-primary" ui-sref="app.example-table">table</button>
+    </div>
+    <div class="col-md-2 col-xs-4">
+      <button class="btn btn-primary" ui-sref="app.example-form-select">select</button>
+    </div>
+    <div class="col-md-2 col-xs-4">
+      <button class="btn btn-primary" ui-sref="page.404">404</button>
+    </div>
+  </div>
 
-    <div class="row">
-        <div class="col-xs-12">
-            <widget-panel title="面板1" minable="true">
-                <widget-chart class="col-xs-12 max-wd-sm" config="chartconfig"></widget-chart>
-            </widget-panel>
-        </div>
+  <div class="row">
+    <div class="col-md-4 col-sm-6 p-lg">
+      <widget-row-messager config="rowMessagerConfig"></widget-row-messager>
     </div>
+    <div class="col-md-4 col-sm-6 p-lg">
+      <widget-row-messager config="rowMessagerConfig2"></widget-row-messager>
+    </div>
+    <div class="col-md-4 col-sm-6 p-lg">
+      <widget-row-messager config="rowMessagerConfig3"></widget-row-messager>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-xs-12">
+      <widget-panel title="面板1" minable="true" responsive="true">
+        <widget-chart class="col-xs-12 min-wd-md" config="chartconfig"></widget-chart>
+      </widget-panel>
+    </div>
+  </div>
 </div>
 

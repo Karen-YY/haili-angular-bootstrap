@@ -11,7 +11,10 @@
 
           <div ng-if="i.alert" ng-class="i.label || 'label label-success'" class="pull-right">{{i.alert}}</div>
 
-          <span>{{i.title}}</span>
+          <span>
+            {{i.title}}
+            <i class="fa fa-angle-down pull-right"></i>
+          </span>
         </a>
 
         <ul ng-if="i.submenu" class="nav sidebar-subnav" collapse="isCollapse(pIndex)" ng-init="addCollapse(pIndex, item)">
