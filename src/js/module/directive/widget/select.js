@@ -83,7 +83,7 @@ App
 
                 // 默认参数
                 var defaultConfig = {
-                        valueField: 'index',
+                        //valueField: 'index',
                         getSelect: function () {
 
                         }
@@ -92,32 +92,36 @@ App
                     inputerElem = $elem.find('input.inputer')
                     ;
 
-
                 /* <-------------- 初始化 -------------- */
 
                 // 转移属性到目标元素中
                 widgetService.transferAttr($elem, inputerElem, $attr, 'class');
+
                 // 更新配置
                 $scope.config = widgetService.concatConfig(defaultConfig, newConfig);
+
                 // 等待请求返回的数据
                 widgetService.getData($scope.config,
                     function (data) {
                         $scope.config.data = data;
                         $scope.loaded = true;
+                        $scope.config.select('Java');
 
                     });
+
                 // 已选项
                 $scope.selectedItems = { length: 0 };
                 /* -------------- end 初始化 --------------> */
 
 
                 /* <-------------- 事件绑定 -------------- */
+
                 // 打开, 关闭下拉框
                 $scope.toggle = function () {
                     $scope.open = !$scope.open;
                 };
 
-                // 全选
+                // 全选 反选
                 $scope.selectAll = function (data) {
                     $scope.$broadcast('widget-select-item:selectAll', data);
                 };
@@ -161,6 +165,26 @@ App
                     //    $scope.config.selectedItems[index] = data;
                     //    $scope.config.selectedItems.length++;
                     //}
+                };
+
+
+                $scope.config.select = function (value) {
+                    var item = $scope.getItem(value);
+                    if (item) {
+                        item.selected = true;
+                    }
+                };
+
+                $scope.getItem = function (value) {
+                    var data = $scope.config.data,
+                        valueField = $scope.config.valueField;
+
+                    for (var i = 0, len = data.length; i < len; i++) {
+                        if (data[i][valueField] === value) {
+                            return data[i];
+                        }
+                    }
+                    return null;
                 };
 
                 // 取消选择
@@ -207,7 +231,7 @@ App
             },
             template:
             '<li>' +
-            '  <a ng-class="{\'selected\': item.selected}">' +
+            '  <a ng-class="{\'selected\': item.selected}" ng-click="select()">' +
             '    <span>{{item.text}}</span>' +
             '    <i class="fa" ng-class="{\'fa-check\': item.selected}"></i>' +
             '  </a>' +
@@ -242,35 +266,32 @@ App
                 //});
 
                 // 点击事件
-                $elem.on('click', function (e) {
-                    // 强制进入 $digest 循环
-                    //$scope.$apply(function () {
-                        $scope.item.selected = !$scope.item.selected;
-                    //});
-                    //changeState($scope.item.selected);
-                });
+                $scope.select = function () {
+                    $scope.item.selected = !$scope.item.selected;
+                    changeState($scope.item.selected);
+                };
 
                 // 全选 / 反选
                 $scope.$on('widget-select-item:selectAll', function (event, type) {
                     if (type) {
                         // 全选
-                        $scope.selected && $elem.click();
+                        $scope.item.selected = true;
                     } else {
                         // 反选
-                        $elem.click();
+                        $scope.item.selected = !$scope.item.selected;
                     }
-                    //$scope.selected = selected ? selected : !$scope.selected;
-                    //changeState(selected);
+                    changeState($scope.item.selected);
                 });
 
-
-
+                // 改变状态时触发
                 function changeState(selected) {
 
                     if (selected) {
+                        // 选中
                         $superCtrl.select($scope.index, $elem); // 与父指令通信
                         $superCtrl.onSelect($scope.index, $elem); // 点击时触发
                     } else {
+                        // 取消选中
                         $superCtrl.unSelect($scope.index, $elem); // 与父指令通信
                         $superCtrl.onUnSelect($scope.index, $elem); // 点击时触发
                     }

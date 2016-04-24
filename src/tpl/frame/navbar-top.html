@@ -11,11 +11,11 @@
         <ul class="nav navbar-nav">
             <li>
                 <!-- Button used to collapse the left sidebar. Only visible on tablet and desktops-->
-                <a href="#" trigger-resize="" ng-click="app.layout.isCollapsed = !app.layout.isCollapsed" class="hidden-xs">
+                <a ng-click="app.layout.isCollapsed = !app.layout.isCollapsed" class="hidden-xs">
                     <em class="fa fa-navicon"></em>
                 </a>
                 <!-- Button to show/hide the sidebar on mobile. Visible on mobile only.-->
-                <a href="#" toggle-state="aside-toggled" no-persist="no-persist" class="visible-xs sidebar-toggle">
+                <a toggle-state="aside-toggled" no-persist="no-persist" class="visible-xs sidebar-toggle">
                     <em class="fa fa-navicon"></em>
                 </a>
             </li>

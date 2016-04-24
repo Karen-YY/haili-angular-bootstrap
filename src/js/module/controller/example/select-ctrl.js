@@ -12,7 +12,7 @@ App
             $scope.config1 = {
                 url: '/test/data/select.json',
                 textField: 'text',
-                valueFiled: 'id',
+                valueField: 'text',
                 multiple: true,
                 editable: true,
                 //data: [
@@ -46,11 +46,11 @@ App
                 onSelect: function(index, data) {
                     var c = this.getSelectedItems();
                     console.log(c);
-                },
-                onUnSelect: function(index, data) {
-                    var c = this.getSelectedItems();
-                    console.log(c);
                 }
+                //onUnSelect: function(index, data) {
+                //    var c = this.getSelectedItems();
+                //    console.log(c);
+                //}
             };
 
 
