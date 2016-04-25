@@ -2,8 +2,7 @@
   <div class="dropdown" ng-class="{'open': open}">
 
     <div class="has-feedback">
-      <input class="form-control inputer" ng-click="toggle()" readonly="readonly"
-             value="{{config.data | selectFilter:config.textField}}"/>
+      <input class="form-control inputer" ng-click="open = !open" readonly="readonly"/>
       <span class="fa fa-caret-down form-control-feedback text-muted"></span>
     </div>
 

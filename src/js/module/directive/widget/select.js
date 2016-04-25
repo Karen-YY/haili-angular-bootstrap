@@ -62,14 +62,16 @@ App
                         }
                     },
                     newConfig = $scope.config, // 传进来的参数
-                    inputerElem = $elem.find('input.inputer'),
-                    lastItem = {} // 记住上次选择的, 用于单选
+                    inputElem = $elem.find('input.inputer'), // input 标签
+                    lastItem = {}, // 记住上次选择的, 用于单选
+                    selectedText = '', // 文本
+                    selectedItems = {} // 保存已选的 item
                     ;
 
                 /* <-------------- 初始化 -------------- */
 
                 // 转移属性到目标元素中
-                widgetService.transferAttr($elem, inputerElem, $attr, 'class');
+                widgetService.transferAttr($elem, inputElem, $attr, 'class');
 
                 // 更新配置
                 $scope.config = widgetService.concatConfig(defaultConfig, newConfig);
@@ -77,26 +79,17 @@ App
                 // 等待请求返回的数据
                 widgetService.getData($scope.config,
                     function (data) {
-                        setTimeout(function () {
-                            $scope.config.data = data;
-                            $scope.loaded = true;
-                            $scope.select($scope.getItem('Java'));
-                            $scope.$apply();
-                        }, 5000000);
+                        $scope.config.data = data;
+                        $scope.loaded = true;
+                        $scope.select(getItem('Java'));
 
                     });
 
                 // 已选项
                 $scope.selectedItems = { length: 0 };
-                /* -------------- end 初始化 --------------> */
 
 
                 /* <-------------- 事件绑定 -------------- */
-
-                // 打开, 关闭下拉框
-                $scope.toggle = function () {
-                    $scope.open = !$scope.open;
-                };
 
                 // 全选 反选
                 $scope.selectAll = function (type) {
@@ -112,7 +105,7 @@ App
                     }
                 };
 
-
+                // 选择
                 $scope.select = function (item) {
 
                     if ($scope.config.multiple || lastItem === item) {
@@ -124,19 +117,35 @@ App
                         item.selected = !item.selected;
                         lastItem = item;
                     }
+                    selectFilter(); // 更新
                     item.selected && $scope.config.onSelect && $scope.config.onSelect(item);
                     !item.selected && $scope.config.onUnSelect && $scope.config.onUnSelect(item);
                 };
 
+                // 更新操作
+                function selectFilter() {
+                    var data = $scope.config.data,
+                        textField = $scope.config.textField,
+                        flag = false;
 
-                $scope.config.select = function (value) {
-                    var item = $scope.getItem(value);
-                    if (item) {
-                        item.selected = true;
+                    selectedText = '';
+                    selectedItems = {};
+
+                    for (var i = 0, len = data.length; i < len; i++) {
+                        if (data[i].selected) {
+                            if (flag) {
+                                selectedText += ',';
+                            }
+                            flag = true;
+                            selectedText += data[i][textField] || '';
+                            selectedItems[i] = data[i];
+                        }
                     }
-                };
+                    inputElem.val(selectedText);
+                }
 
-                $scope.getItem = function (value) {
+                // getItem
+                function getItem (value) {
                     var data = $scope.config.data,
                         valueField = $scope.config.valueField;
 
@@ -146,37 +155,16 @@ App
                         }
                     }
                     return null;
-                };
-
-                // 取消选择
-                $scope.unSelect = function (index, data) {
-                    delete $scope.selectedItems[index];
-                    $scope.selectedItems.length--;
-                    if ($scope.config.multiple) {
-                        // 多选
-                    } else {
-                        // 单选
-
-                    }
-                };
+                }
 
                 // 获取文本
                 $scope.config.getValue = function () {
-                    var output = '',
-                        input = $scope.config.selectedItems,
-                        textField = $scope.config.textField;
-                    for (var k in input) {
-                        if (input.hasOwnProperty(k) && k !== 'length') {
-                            output += (input[k][textField] || '') + ',';
-                        }
-                    }
-                    return output;
+                    return selectedText;
                 };
 
                 $scope.config.getSelectedItems = function() {
-                    return $scope.selectedItems;
+                    return selectedItems;
                 };
-                /* -------------- end 事件绑定 --------------> */
 
             }
         };

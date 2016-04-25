@@ -45,8 +45,9 @@ App
                 //],
                 onSelect: function(item) {
                     var c = this.getSelectedItems();
-                    console.log(item);
-                    console.log(this.text);
+                    var v = this.getValue();
+                    console.log(v);
+                    console.log(c);
                 },
                 onUnSelect: function(item) {
                     var c = this.getSelectedItems();

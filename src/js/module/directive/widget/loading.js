@@ -7,18 +7,18 @@
 
 App
     // 基本
-    .directive('widgetLoading', function() {
+    .directive('widgetLoading', function () {
         return {
             $scope: {
                 abs: '='
             },
             restrict: 'EA',
-            controller: function($scope) {
-                this.d = function(d) {
+            controller: function ($scope) {
+                this.d = function (d) {
                     $scope.d = d;
                 };
             },
-            link: function($scope, $elem, $attr) {
+            link: function ($scope, $elem, $attr) {
                 $elem.addClass();
             }
         };
@@ -26,41 +26,42 @@ App
 
     // 形状1
     // 因为限制类型那个为class, 所以命名不要名为 widget-loading-rotate, 防止循环调用
-    .directive('rotate', function() {
+    .directive('rotate', function () {
         return {
             restrict: 'C',
             require: '^widgetLoading',
-            template:
-                '<div class="widget-loading">' +
-                    '<div class="mask"></div>' +
-                    '<div class="icon-wrap">' +
-                        '<div></div>' +
-                        '<div></div>' +
-                        '<div></div>' +
-                        '<div></div>' +
-                        '<div></div>' +
-                        '<div></div>' +
-                        '<div></div>' +
-                        '<div></div>' +
-                    '</div>' +
-                '</div>',
-            link: function($scope, $elem, $attr) {
+            template: '<div class="widget-loading">' +
+            '<div class="mask"></div>' +
+            '  <div class="icon-wrap" >' +
+            '    <div class="icon">' +
+            '      <div></div>' +
+            '      <div></div>' +
+            '      <div></div>' +
+            '      <div></div>' +
+            '      <div></div>' +
+            '      <div></div>' +
+            '      <div></div>' +
+            '      <div></div>' +
+            '    </div>' +
+            '  </div>' +
+            '</div>',
+            link: function ($scope, $elem, $attr) {
 
             }
         };
     })
 
     // 形状2
-    .directive('oval', function() {
+    .directive('oval', function () {
         return {
             restrict: 'C',
             require: '^widgetLoading',
             template:
-                '<div class="widget-loading-oval">' +
-                    '<div class="mask"></div>' +
-                    '<div class="icon-wrap"></div>' +
-                '</div>',
-            link: function($scope, $elem, $attr) {
+            '<div class="widget-loading-oval">' +
+            '  <div class="mask"></div>' +
+            '  <div class="icon-wrap"><div class="icon"></div></div>' +
+            '</div>',
+            link: function ($scope, $elem, $attr) {
 
             }
         };

@@ -48,56 +48,59 @@
 
   .icon-wrap {
     .icon-wrap-position;
-    div {
-      @icon-item-wd: @icon-wd/4;
 
-      position: absolute;
-      width: @icon-item-wd;
-      height: @icon-item-wd;
-      opacity: 1;
-      box-sizing: border-box;
-      border-radius: 100%;
-      background: #569ced;
-      animation: animation-widget-loading 0.8s linear infinite;
+    .icon {
+      div {
+        @icon-item-wd: @icon-wd/4;
 
-      &:nth-child(1) {
-        left: @icon-item-wd * 3/2;
-        top: 0;
-      }
-      &:nth-child(2) {
-        left: @icon-item-wd * 5/2;
-        top: @icon-item-wd * 1/2;
-        animation-delay: -0.1s;
-      }
-      &:nth-child(3) {
-        left: @icon-item-wd * 3;
-        top: @icon-item-wd * 3/2;
-        animation-delay: -0.2s;
-      }
-      &:nth-child(4) {
-        left: @icon-item-wd * 5/2;
-        top: @icon-item-wd * 5/2;
-        animation-delay: -0.3s;
-      }
-      &:nth-child(5) {
-        left: @icon-item-wd * 3/2;
-        top: @icon-item-wd * 3;
-        animation-delay: -0.4s;
-      }
-      &:nth-child(6) {
-        left: @icon-item-wd * 1/2;
-        top: @icon-item-wd * 5/2;
-        animation-delay: -0.5s;
-      }
-      &:nth-child(7) {
-        left: 0;
-        top: @icon-item-wd * 3/2;
-        animation-delay: -0.6s;
-      }
-      &:nth-child(8) {
-        left: @icon-item-wd * 1/2;
-        top: @icon-item-wd * 1/2;
-        animation-delay: -0.7s;
+        position: absolute;
+        width: @icon-item-wd;
+        height: @icon-item-wd;
+        opacity: 1;
+        box-sizing: border-box;
+        border-radius: 100%;
+        background: #569ced;
+        animation: animation-widget-loading 0.8s linear infinite;
+
+        &:nth-child(1) {
+          left: @icon-item-wd * 3/2;
+          top: 0;
+        }
+        &:nth-child(2) {
+          left: @icon-item-wd * 5/2;
+          top: @icon-item-wd * 1/2;
+          animation-delay: -0.1s;
+        }
+        &:nth-child(3) {
+          left: @icon-item-wd * 3;
+          top: @icon-item-wd * 3/2;
+          animation-delay: -0.2s;
+        }
+        &:nth-child(4) {
+          left: @icon-item-wd * 5/2;
+          top: @icon-item-wd * 5/2;
+          animation-delay: -0.3s;
+        }
+        &:nth-child(5) {
+          left: @icon-item-wd * 3/2;
+          top: @icon-item-wd * 3;
+          animation-delay: -0.4s;
+        }
+        &:nth-child(6) {
+          left: @icon-item-wd * 1/2;
+          top: @icon-item-wd * 5/2;
+          animation-delay: -0.5s;
+        }
+        &:nth-child(7) {
+          left: 0;
+          top: @icon-item-wd * 3/2;
+          animation-delay: -0.6s;
+        }
+        &:nth-child(8) {
+          left: @icon-item-wd * 1/2;
+          top: @icon-item-wd * 1/2;
+          animation-delay: -0.7s;
+        }
       }
     }
   }
@@ -123,19 +126,21 @@
   .icon-wrap {
     .icon-wrap-position;
 
-    width: @icon-wd;
-    height: @icon-wd;
-    background-color: transparent;
-    border-radius: 50%;
-    box-sizing: border-box;
-    border: @icon-wd/10 solid #5d9cec;
-    border-right-color: #f1c40f;
-    border-top-color: #7266ba;
-    animation: animation-widget-loading-oval 1s linear infinite;
+    .icon {
+      width: @icon-wd;
+      height: @icon-wd;
+      background-color: transparent;
+      border-radius: 50%;
+      box-sizing: border-box;
+      border: @icon-wd/10 solid #5d9cec;
+      border-right-color: #f1c40f;
+      border-top-color: #7266ba;
+      animation: animation-widget-loading-oval 1s linear infinite;
+    }
   }
 
   @keyframes animation-widget-loading-oval {
-    100% {
+    0% {
       transform: rotate(360deg);
     }
   }
