@@ -5,7 +5,7 @@
   <caption>{{config.title}}</caption>
   <thead>
   <tr>
-    <th ng-show="config.checkbox">
+    <th ng-if="config.checkbox">
       <input widget-checkbox type="checkbox" ng-click="selectAll()">
     </th>
     <th ng-repeat="column in config.columns">{{column.title}}</th>
@@ -13,7 +13,7 @@
   </thead>
   <tbody>
   <tr widget-table-row ng-repeat="row in config.data.rows" index="$index">
-    <th ng-show="config.checkbox">
+    <th ng-if="config.checkbox">
       <input widget-checkbox type="checkbox">
     </th>
     <td ng-repeat="column in config.columns" class="active2">

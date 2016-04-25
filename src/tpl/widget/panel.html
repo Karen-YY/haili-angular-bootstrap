@@ -7,12 +7,12 @@
 
     <div class="pull-right">
       <i ng-click="toggle()" class="fa"
-         ng-class="{false: 'fa-minus', true: 'fa-plus'}[isHide]" ng-show="minable"></i>
-      <i ng-click="close()" class="fa fa-close" ng-show="closeable"></i>
+         ng-class="{'false': 'fa-minus', 'true': 'fa-plus'}[isHide]" ng-if="minable"></i>
+      <i ng-click="close()" class="fa fa-close" ng-if="closeable"></i>
     </div>
     <hr/>
   </div>
-  <div class="panel-body table" ng-hide="isHide">
+  <div class="panel-body table" ng-if="!isHide">
     <div ng-transclude="" ng-class="{'table-responsive': responsive}"></div>
   </div>
 </div>

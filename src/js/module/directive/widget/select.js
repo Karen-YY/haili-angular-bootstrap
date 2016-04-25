@@ -52,33 +52,6 @@ App
             '  </div>'+
             '</div>',*/
 
-            controller: function ($scope) {
-
-                // 选中一条
-                this.select = function (index, itemEle) {
-                    var itemData = $scope.config.data[index];
-                    $scope.select(index, itemEle);
-                };
-
-                // 反选中一条
-                this.unSelect = function (index) {
-                    var itemData = $scope.config.data[index];
-                    $scope.unSelect(index, itemData);
-                };
-
-                // 点击时触发
-                this.onSelect = function (index) {
-                    var itemData = $scope.config.data[index];
-                    $scope.config.onSelect && $scope.config.onSelect(index, itemData);
-                };
-
-                // 点击时触发
-                this.onUnSelect = function (index) {
-                    var itemData = $scope.config.data[index];
-                    $scope.config.onUnSelect && $scope.config.onUnSelect(index, itemData);
-                };
-
-            },
             link: function ($scope, $elem, $attr) {
 
                 // 默认参数
@@ -89,7 +62,8 @@ App
                         }
                     },
                     newConfig = $scope.config, // 传进来的参数
-                    inputerElem = $elem.find('input.inputer')
+                    inputerElem = $elem.find('input.inputer'),
+                    lastItem = {} // 记住上次选择的, 用于单选
                     ;
 
                 /* <-------------- 初始化 -------------- */
@@ -103,9 +77,12 @@ App
                 // 等待请求返回的数据
                 widgetService.getData($scope.config,
                     function (data) {
-                        $scope.config.data = data;
-                        $scope.loaded = true;
-                        $scope.config.select('Java');
+                        setTimeout(function () {
+                            $scope.config.data = data;
+                            $scope.loaded = true;
+                            $scope.select($scope.getItem('Java'));
+                            $scope.$apply();
+                        }, 5000000);
 
                     });
 
@@ -122,49 +99,33 @@ App
                 };
 
                 // 全选 反选
-                $scope.selectAll = function (data) {
-                    $scope.$broadcast('widget-select-item:selectAll', data);
+                $scope.selectAll = function (type) {
+                    var data = $scope.config.data;
+                    for (var i = 0, len = data.length; i < len; i++) {
+                        if (type) {
+                            // 全选
+                            !data[i].selected && $scope.select(data[i]);
+                        } else {
+                            // 反选
+                            $scope.select(data[i]);
+                        }
+                    }
                 };
 
-                // 选中一条
-                $scope.select = function (index, itemEle) {
 
-                    var data = $scope.config.data[index];
-                    if ($scope.config.multiple) {
+                $scope.select = function (item) {
+
+                    if ($scope.config.multiple || lastItem === item) {
                         // 多选
-                        $scope.selectedItems[index] = true;
-                        $scope.selectedItems.length++;
+                        item.selected = !item.selected;
                     } else {
                         // 单选
-                        for (var i = 0, len = $scope.config.data.length; i < len; i++) {
-                            if ($scope.config.data[i].selected) {
-                                $scope.config.data[i].selected = false; // 删除旧的
-                            }
-                        }
-                        $scope.$apply();
-
-                        $scope.config.data[index].selected = true; // 增加新的
+                        lastItem.selected = false;
+                        item.selected = !item.selected;
+                        lastItem = item;
                     }
-
-                    //if (!$scope.config.selectedItems[index]) {
-                    //
-                    //    if ($scope.config.multiple) {
-                    //        // 多选
-                    //        $scope.config.selectedItems[index] = data;
-                    //        $scope.config.selectedItems.length++;
-                    //    } else {
-                    //        // 单选
-                    //        for (var k in $scope.config.selectedItems) {
-                    //            if (k !== 'length' && $scope.config.selectedItems.hasOwnProperty(k)) {
-                    //                delete $scope.config.selectedItems[k]; // 删除旧的
-                    //            }
-                    //        }
-                    //        $scope.config.selectedItems[index] = data; // 增加新的
-                    //    }
-                    //
-                    //    $scope.config.selectedItems[index] = data;
-                    //    $scope.config.selectedItems.length++;
-                    //}
+                    item.selected && $scope.config.onSelect && $scope.config.onSelect(item);
+                    !item.selected && $scope.config.onUnSelect && $scope.config.onUnSelect(item);
                 };
 
 
@@ -221,82 +182,4 @@ App
         };
     }])
 
-    .directive('widgetSelectItem', function () {
-        return {
-            restrict: 'EA',
-            require: '^widgetSelect',
-            scope: {
-                index: "@",
-                item: '=' // 减少双向绑定
-            },
-            template:
-            '<li>' +
-            '  <a ng-class="{\'selected\': item.selected}" ng-click="select()">' +
-            '    <span>{{item.text}}</span>' +
-            '    <i class="fa" ng-class="{\'fa-check\': item.selected}"></i>' +
-            '  </a>' +
-            '</li>',
-
-            link: function ($scope, $elem, $attr, $superCtrl) {
-
-                //// 点击事件
-                //$elem.click(function (e) {
-                //    $scope.selected = !$scope.selected;
-                //    $scope.$apply(); // 强制进入 $digest 循环
-                //});
-                //
-                //// 全选事件
-                //$scope.$on('widget-select:selectAll', function(event, data) {
-                //    $scope.selected = data;
-                //});
-                //
-                //// 监听值的变化
-                //$scope.$watch('selected', function(oldV, newV) {
-                //    var item = {
-                //        index: $scope.index,
-                //        selected: $scope.selected,
-                //        data: $scope.data
-                //    };
-                //
-                //    // 添加到已选对象
-                //    $superCtrl.select($scope.index, item);
-                //
-                //    // 点击时触发
-                //    $superCtrl.onSelect(item);
-                //});
-
-                // 点击事件
-                $scope.select = function () {
-                    $scope.item.selected = !$scope.item.selected;
-                    changeState($scope.item.selected);
-                };
-
-                // 全选 / 反选
-                $scope.$on('widget-select-item:selectAll', function (event, type) {
-                    if (type) {
-                        // 全选
-                        $scope.item.selected = true;
-                    } else {
-                        // 反选
-                        $scope.item.selected = !$scope.item.selected;
-                    }
-                    changeState($scope.item.selected);
-                });
-
-                // 改变状态时触发
-                function changeState(selected) {
-
-                    if (selected) {
-                        // 选中
-                        $superCtrl.select($scope.index, $elem); // 与父指令通信
-                        $superCtrl.onSelect($scope.index, $elem); // 点击时触发
-                    } else {
-                        // 取消选中
-                        $superCtrl.unSelect($scope.index, $elem); // 与父指令通信
-                        $superCtrl.onUnSelect($scope.index, $elem); // 点击时触发
-                    }
-                }
-            }
-        };
-    })
 ;

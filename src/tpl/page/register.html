@@ -13,16 +13,16 @@
                     <input id="exampleInputEmail1" type="email" name="account_email" placeholder="Enter email"
                            autocomplete="off" ng-model="account.email" required="" class="form-control"/>
                     <span class="fa fa-envelope form-control-feedback text-muted"></span>
-                    <span ng-show="loginForm.account_email.$dirty &amp;&amp; loginForm.account_email.$error.required"
+                    <span ng-if="loginForm.account_email.$dirty &amp;&amp; loginForm.account_email.$error.required"
                           class="text-danger">请填入帐号</span>
-                    <span ng-show="loginForm.account_email.$dirty &amp;&amp; loginForm.account_email.$error.email"
+                    <span ng-if="loginForm.account_email.$dirty &amp;&amp; loginForm.account_email.$error.email"
                           class="text-danger">请输入正确的邮箱帐号</span>
                 </div>
                 <div class="form-group has-feedback">
                     <input id="exampleInputPassword1" type="password" name="account_password" placeholder="Password"
                            ng-model="account.password" required="" class="form-control"/>
                     <span class="fa fa-lock form-control-feedback text-muted"></span>
-                    <span ng-show="loginForm.account_password.$dirty &amp;&amp; loginForm.account_password.$error.required"
+                    <span ng-if="loginForm.account_password.$dirty &amp;&amp; loginForm.account_password.$error.required"
                           class="text-danger">请填入密码</span>
                 </div>
                 <div class="clearfix">
@@ -36,7 +36,7 @@
                 </div>
                 <button type="submit" class="btn btn-block btn-primary mt-lg">登录</button>
             </form>
-            <div ng-show="authMsg" class="alert alert-danger text-center">{{authMsg}}</div>
+            <div ng-if="authMsg" class="alert alert-danger text-center">{{authMsg}}</div>
             <p class="pt-lg text-center">没有帐号?</p>
             <a ui-sref="page.register"
                class="btn btn-block btn-default">注册</a>

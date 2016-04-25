@@ -12,15 +12,15 @@ App
         return function(input, textField) {
             input = input || {};
             var output = '',
-                len = input.length || 0;
+                flag = false;
 
-            for (var k in input) {
-                if (input.hasOwnProperty(k) && k !== 'length') {
-                    if (len-- > 1) {
-                        output += (input[k][textField] || '') + ',';
-                    } else {
-                        output += (input[k][textField] || '');
+            for (var i = 0, len = input.length; i < len; i++) {
+                if (input[i].selected) {
+                    if (flag) {
+                        output += ',';
                     }
+                    flag = true;
+                    output += (input[i][textField] || '');
                 }
             }
 

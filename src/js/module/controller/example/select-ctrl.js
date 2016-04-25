@@ -43,9 +43,14 @@ App
                 //        "desc": "A family of general-purpose, high-level programming languages"
                 //    }
                 //],
-                onSelect: function(index, data) {
+                onSelect: function(item) {
                     var c = this.getSelectedItems();
-                    console.log(c);
+                    console.log(item);
+                    console.log(this.text);
+                },
+                onUnSelect: function(item) {
+                    var c = this.getSelectedItems();
+                    console.log(item);
                 }
                 //onUnSelect: function(index, data) {
                 //    var c = this.getSelectedItems();
