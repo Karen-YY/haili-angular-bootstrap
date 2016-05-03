@@ -30,10 +30,11 @@ App
         return {
             restrict: 'C',
             require: '^widgetLoading',
-            template: '<div class="widget-loading">' +
-            '<div class="mask"></div>' +
+            template:
+            '<div class="widget-loading">' +
+            '  <div class="mask"></div>' +
             '  <div class="icon-wrap" >' +
-            '    <div class="icon">' +
+            '    <div class="icon-rotate">' +
             '      <div></div>' +
             '      <div></div>' +
             '      <div></div>' +
@@ -57,9 +58,25 @@ App
             restrict: 'C',
             require: '^widgetLoading',
             template:
-            '<div class="widget-loading-oval">' +
+            '<div class="widget-loading">' +
             '  <div class="mask"></div>' +
-            '  <div class="icon-wrap"><div class="icon"></div></div>' +
+            '  <div class="icon-wrap"><div class="icon-oval"></div></div>' +
+            '</div>',
+            link: function ($scope, $elem, $attr) {
+
+            }
+        };
+    })
+
+    // 形状3 , gif 图片
+    .directive('gif', function () {
+        return {
+            restrict: 'C',
+            require: '^widgetLoading',
+            template:
+            '<div class="widget-loading">' +
+            '  <div class="mask"></div>' +
+            '  <div class="icon-wrap"><img src="/app/img/loading.gif" class="icon-gif"></div>' +
             '</div>',
             link: function ($scope, $elem, $attr) {
 

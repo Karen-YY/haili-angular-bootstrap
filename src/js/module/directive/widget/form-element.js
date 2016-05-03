@@ -8,26 +8,24 @@
 App
 
     // 单选框
-    .directive('widgetCheckbox', function () {
+    .directive('widgetCheckbox', ['widgetService', function (widgetService) {
         return {
             restrict: 'EA',
             scope: {
-                checked: '='
+                //checked: '=',
+                index: '='
             },
             replace: true,
-            templateUrl: '/app/tpl/widget/form-checkbox.html',
 
+            template:
+            '<div class="checkbox c-checkbox m0">'+
+            '  <label>'+
+            '    <input type="checkbox" ng-click="click(this)" />'+
+            '    <span class="fa fa-check"></span>'+
+            '  </label>'+
+            '</div>',
             link: function ($scope, $elem, $attr) {
 
-                //var checkboxEle = $elem.find('input[type=checkbox]');
-                //
-                //// 表单元素必备
-                //['name', 'checked'].forEach(function (k, v) {
-                //    if ($attr[k]) {
-                //        checkboxEle.attr(k, $attr[k]);
-                //        $elem.removeAttr(k);
-                //    }
-                //});
 
                 //checkboxEle.on('click', function (e) {
                 //    e.stopPropagation();
@@ -36,17 +34,20 @@ App
                 //    $scope.$emit('widget-checkbox:checked', $scope.checked);
                 //});
 
-                $elem.on('change', function (e) {
+                //widgetService.transferAttr($elem, inputElem, $attr, 'class');
 
-                    $scope.$apply(function () {
-                        $scope.checked = !$scope.checked;
+                $scope.click = function (elem) {
+                    $scope.checked = elem.checked;
+                    var data = {
+                        index: $scope.index,
+                        checked: $scope.checked
+                    };
+                };
 
-                    });
+                $scope.$on('widget-checkbox:checkAll', function(event, data) {
+                    $scope.checked = data;
                 });
 
-                //$scope.$on('widget-checkbox:checking', function(event, data) {
-                //    $scope.checked = data;
-                //});
                 //
                 //$scope.$watch('checked', function (oldVal, newVal) {
                 //    //console.log(oldVal + ', ' + newVal);
@@ -55,7 +56,7 @@ App
                 //});
             }
         };
-    })
+    }])
 
     // 开关
     .directive('widgetSwitch', function () {

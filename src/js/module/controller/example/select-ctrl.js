@@ -48,13 +48,11 @@ App
                     var v = this.getValue();
                     console.log(v);
                     console.log(c);
-                },
-                onUnSelect: function(item) {
-                    var c = this.getSelectedItems();
-                    console.log(item);
                 }
-                //onUnSelect: function(index, data) {
+                //onUnSelect: function(item) {
                 //    var c = this.getSelectedItems();
+                //    var v = this.getValue();
+                //    console.log(v);
                 //    console.log(c);
                 //}
             };

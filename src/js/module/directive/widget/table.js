@@ -64,22 +64,6 @@ App
                 };
 
 
-                var checkedRows = {};
-
-                $scope.$on('widget-table-row:checked', function (event, data) {
-
-                    var index = data.index,
-                        checkedRow = {
-                            data: $scope.config.data.rows[index],
-                            index: index
-                        };
-                    if (data.checked) {
-                        checkedRows[index] = checkedRow;
-                    } else {
-                        delete checkedRows[index];
-                    }
-                    console.log(checkedRows);
-                });
             }
         };
     }])
@@ -97,6 +81,7 @@ App
             link: function ($scope, $elem, $attr, $superCtrl) {
 
                 $scope.checked = false;
+                $scope.checkbox = {};
 
                 // 接收checkbox 事件
                 $scope.$on('widget-checkbox:checked', function (event, data) {

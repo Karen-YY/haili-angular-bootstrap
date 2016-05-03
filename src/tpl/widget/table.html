@@ -11,8 +11,9 @@
     <th ng-repeat="column in config.columns">{{column.title}}</th>
   </tr>
   </thead>
+
   <tbody>
-  <tr widget-table-row ng-repeat="row in config.data.rows" index="$index">
+  <tr widget-table-row ng-repeat="row in config.data.rows" index="$index" checkbox="">
     <th ng-if="config.checkbox">
       <input widget-checkbox type="checkbox">
     </th>
@@ -21,6 +22,7 @@
     </td>
   </tr>
   </tbody>
+
   <tfoot ng-if="config.pagination">
   <tr>
     <td colspan="{{config.columns.length + config.checkbox}}">

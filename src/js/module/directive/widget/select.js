@@ -15,42 +15,6 @@ App
                 config: '='
             },
             templateUrl: '/app/tpl/widget/form-select.html',
-           /* template:
-            '<div class="widget-select">'+
-            '  <div class="dropdown" ng-class="{\'open\': open}">'+
-            '    <div class="has-feedback">'+
-            '      <input class="form-control inputer" ng-click="toggle()" readonly="readonly"'+
-            '           value="{{selectedItems | selectFilter:config.textField}}" />'+
-            '      <span class="fa fa-caret-down form-control-feedback text-muted"></span>'+
-            '    </div>'+
-            '    <div class="dropdown-menu p-sm">'+
-            '      <div class="input-group input-group-sm">'+
-            '        <input type="text" class="form-control" ng-model="searchText"/>'+
-            '        <span class="input-group-btn">'+
-            '          <button class="btn btn-default" type="button">'+
-            '            <i class="fa fa-search text-muted"></i>'+
-            '          </button>'+
-            '        </span>'+
-            '      </div>'+
-            '      <div class="actionbox mt-sm" ng-if="config.multiple">'+
-            '        <div class="btn-group btn-group-sm btn-block text-center">'+
-            '          <button class="btn btn-default" ng-click="selectAll(true)">全选</button>'+
-            '          <button class="btn btn-default" ng-click="selectAll(false)">反选</button>'+
-            '        </div>'+
-            '      </div>'+
-            '      <ul class="mt-sm">'+
-            '        <widget-loading ng-hide="loaded" class="oval"></widget-loading>'+
-            '        <li ng-repeat="item in config.data | filter:{text:searchText}"'+
-            '            widget-select-item'+
-            '            index="{{$index}}"'+
-            '            selected="selectedItems[$index]"'+
-            '            data="item"'+
-            '                >'+
-            '        </li>'+
-            '      </ul>'+
-            '    </div>'+
-            '  </div>'+
-            '</div>',*/
 
             link: function ($scope, $elem, $attr) {
 
@@ -82,7 +46,6 @@ App
                         $scope.config.data = data;
                         $scope.loaded = true;
                         $scope.select(getItem('Java'));
-
                     });
 
                 // 已选项
